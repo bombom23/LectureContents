@@ -1,33 +1,19 @@
 <template>
-<div class="home">
- <div id="header">
-
-  <router-link :to="{ name: 'Home'}"
-          class="nav-link"
-          active-class="active">
-          Home
- </router-link>
- <router-link :to="{ name: 'SignupPage'}"
-          class="nav-link"
-          active-class="active">
-          회원가입 페이지
-        
- </router-link>
- 
- 
-
-
- </div>
+<div align="center">
+  <h3>NAG.Net</h3>
+  <nav-bar/>
 </div>
 </template>
 
 <script>
+import NavBar from './NavigationVar/NavBar.vue'
 
 
   export default {
     name: 'Home',
 
     components: {
+        NavBar
    
     },
   }

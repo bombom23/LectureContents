@@ -123,6 +123,18 @@
                     active-class="active">
                [welcome] VuetifyAllInOneTestPage 활용페이지[클릭]]
             </router-link>
+              <router-link :to="{ name: 'JpaDbSignupPage' }"
+                    class="nav-link"
+                    active-class="active">
+               jpa를 활용한 회원가입
+            </router-link>
+            <router-link :to="{ name: 'CoverflowTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+               커버플로우
+            </router-link>
+         
+              
 
             
         </div>

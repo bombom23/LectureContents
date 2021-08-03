@@ -14,8 +14,8 @@ export default {
     },
     methods: {
         onSubmit(payload){
-                const {userid, password, name, birthday, gender, address, phoneNo} = payload
-                axios.post('http://localhost:9999/vuesignup/register', {userid, password, name, birthday, gender, address, phoneNo})
+                const {userid, password, name, email, birthday, gender, address, phoneNo} = payload
+                axios.post('http://localhost:9999/vuesignup/register', {userid, password, name, email, birthday, gender, address, phoneNo})
                 .then(res =>{
                     alert('회원가입 성공' + res)
                     this.$router.push({

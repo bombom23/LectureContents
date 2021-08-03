@@ -1,0 +1,96 @@
+<template>
+    <form @submit.prevent="onSubmit">
+        <h3> 나그넷 회원가입</h3>
+        <v-container>
+    <div>
+           
+            <v-text-field  class="pl-3 pr-3"  v-model="userid"
+            label="아이디" type="text" prepend-icon="mdi-account" flat solo>
+            </v-text-field>
+             <v-text-field  class="pl-3 pr-3"  :rules="passwordRules" required  v-model="password"
+            label="비밀번호" type="password" prepend-icon="mdi-lock" flat solo>
+            </v-text-field>
+              <v-text-field class="pl-3 pr-3" :rules="emailRules" required v-model="email"
+            label="이메일" type="text" prepend-icon="mdi-email-multiple" flat solo>
+            </v-text-field>
+            <v-text-field class="pl-3 pr-3" :rules="nameRules" required v-model="name"
+            label="회원이름" type="text" prepend-icon="mdi-account" flat solo>
+            </v-text-field>
+            <v-text-field class="pl-3 pr-3"  required v-model="birthday"
+            label="생년월일" type="text" prepend-icon="mdi-cake" flat solo>
+            </v-text-field>
+            <v-text-field class="pl-3 pr-3"  required v-model="gender"
+            label="성별" type="text" prepend-icon="mdi-human-female-female" flat solo>
+            </v-text-field>
+            
+             <v-text-field class="pl-3 pr-3"   required v-model="phoneNo"
+            label="휴대전화" type="text" prepend-icon="mdi-phone" flat solo>
+            </v-text-field>
+             <v-text-field class="pl-3 pr-3"  required v-model="address"
+            label="주소" type="text" prepend-icon="mdi-home-map-marker" flat solo>
+            </v-text-field>
+             <v-btn class="blue" type="submit">회원가입</v-btn>
+           <v-btn class="red" @click="Cancellation">취소</v-btn>
+        
+        </div>
+        </v-container>
+    
+    </form>
+    
+</template>
+
+<script>
+
+import {mapState} from 'vuex'
+export default {
+    name: 'SignupRegisterForm',
+    data () {
+        return {
+            userid: '',
+            password: '',
+            name: '',
+            email: '',
+            birthday: '',
+            gender: '',
+            address: '',
+            phoneNo: '',
+        }
+    },
+    methods: {
+        onSubmit (){
+            const { userid, password, name, email, birthday, gender, address, phoneNo} = this
+            this.$emit('submit', {userid, password, name, email, birthday, gender, address, phoneNo})
+        },
+        Cancellation(){
+            alert('취소합니다.')
+        },
+        btn_click($event){
+            if($event.target.innerHTML == " 확인 "){
+                alert('어서오십쇼~')
+                this.dialog = false;
+            }else{
+                alert('z')
+                this.dialog = false;
+            }
+        },
+       
+    },
+    computed: {
+         ...mapState([
+             'emailRules',
+            'passwordRules',
+            'nameRules',
+            'loadingState',
+            
+            
+            
+         ])
+    }
+}
+</script>
+
+<style scoped>
+h3 {
+    font-size: 30px;
+}
+</style>

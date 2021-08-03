@@ -14,6 +14,7 @@ public class Signup {
     private String userid;
     private String password;
     private String name;
+    private String email;
     private int birthday;
     private String  gender;
     private String address;

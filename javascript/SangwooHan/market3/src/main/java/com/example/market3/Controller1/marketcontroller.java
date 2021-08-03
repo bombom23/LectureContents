@@ -17,6 +17,13 @@ class marketcontroller {
 
     @Autowired
     private marketService service;
+
+
+    @GetMapping("/")
+    public String gohome  () {
+
+        return "/Homepage/homepage";
+    }
     @GetMapping("/register")
     public String getRegister (Market market, Model model) throws Exception{
         log.info("getRegister()");

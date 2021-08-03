@@ -2,8 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
-import SignupPage from '../views/SignupPage'
-
+import SignupPage from '../views/SignupPage.vue'
+import MemberList from '../views/Manage/MemberList.vue'
+//로그인
+import LoginPage from '../views/login/LoginPage.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -21,6 +23,16 @@ const routes = [
     path: '/signuppage',
     name: 'SignupPage',
     component: SignupPage
+  },
+  {
+    path: '/memberlist',
+    name: 'MemberList',
+    component: MemberList
+  },
+  {
+    path: '/loginpage',
+    name: 'LoginPage',
+    component: LoginPage
   },
   
 ]

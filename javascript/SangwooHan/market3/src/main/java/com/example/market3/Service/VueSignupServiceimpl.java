@@ -5,6 +5,8 @@ import com.example.market3.Rapository.VueSignupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class VueSignupServiceimpl implements  VueSignupService {
 
@@ -14,5 +16,10 @@ public class VueSignupServiceimpl implements  VueSignupService {
     @Override
     public void register(Signup signup) throws Exception {
       repository.create(signup);
+    }
+
+    @Override
+    public List<Signup> list() throws Exception {
+        return repository.list();
     }
 }

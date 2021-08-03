@@ -64,6 +64,14 @@ import RecentSlotTestPage from '@/views/RecentSlotTestPage.vue'
 import MaterialzeTestPage from '@/views/MaterialzeTestPage.vue'
 import MaterializeGridTestPage from '@/views/MaterializeGridTestPage.vue'
 import VuetifyAllInOneTestPage from '@/views/VuetifyAllInOneTestPage.vue'
+
+// jpaDB 연동 회원가입 테스트
+import JpaDbSignupPage from '@/views/JpaDbSignupPage.vue'
+
+//coverflow
+import CoverflowTestPage from '@/views/CoverflowTestPage.vue'
+
+
 Vue.use(VueRouter)
 
 
@@ -301,6 +309,21 @@ const routes = [
       default: VuetifyAllInOneTestPage
     }
   },
+  { 
+    path: '/jpasignuppage',
+    name: 'JpaDbSignupPage',
+    components: {
+      default: JpaDbSignupPage
+    }
+  },
+  { 
+    path: '/coverflowtestpage',
+    name: 'CoverflowTestPage',
+    components: {
+      default: CoverflowTestPage
+    }
+  },
+
  
  
  
