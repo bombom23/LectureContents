@@ -20,13 +20,15 @@ import {
     FETCH_PRODUCT,
     // 괴물
     FETCH_MONSTER_LIST,
-    FETCH_MONSTER,
+   FETCH_MONSTER,
     //렌덤 던전
     ALLOC_RANDOM_DUNGEON,
     //성적관리
     SCORE_MANAGEMENT,
     //크롤링
     CRAWL_START,
+    //맴버 
+   
     
 } from './mutation-types'
 
@@ -148,5 +150,7 @@ export default {
                         router.push('/daumNewsCrawler')
                     }
                 })
-    }
+    },
+    //맴버 
+   
 }

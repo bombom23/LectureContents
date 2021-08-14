@@ -1,9 +1,14 @@
 <template>
     <form @submit.prevent="onSubmit">
-        <h3> 나그넷 회원가입</h3>
-        <v-container>
+        <h3> 회원가입</h3>
+        <v-container style="max-width:350px">
     <div>
-           
+            <div class="row">
+                <v-radio-group v-model="radioGroup" row>
+                    <v-radio v-for="kinds in kindsOfMember" :key="kinds" :label="`${kinds}`"> 
+                    </v-radio>
+                </v-radio-group>
+            </div>
             <v-text-field  class="pl-3 pr-3"  v-model="userid"
             label="아이디" type="text" prepend-icon="mdi-account" flat solo>
             </v-text-field>
@@ -30,7 +35,7 @@
             label="주소" type="text" prepend-icon="mdi-home-map-marker" flat solo>
             </v-text-field>
              <v-btn class="blue" type="submit">회원가입</v-btn>
-           <v-btn class="red" @click="Cancellation">취소</v-btn>
+           <v-btn class="red" route :to="{ name: 'Home' }">취소</v-btn>
         
         </div>
         </v-container>
@@ -54,12 +59,18 @@ export default {
             gender: '',
             address: '',
             phoneNo: '',
+            radioGroup: 1,
+            kindsOfMember: [
+                '개인',
+                '사업자'
+            ],
         }
     },
     methods: {
         onSubmit (){
-            const { userid, password, name, email, birthday, gender, address, phoneNo} = this
-            this.$emit('submit', {userid, password, name, email, birthday, gender, address, phoneNo})
+            const { userid, password, name, email, birthday, gender, address, phoneNo, radioGroup} = this
+            const auth = radioGroup == 0 ? 'individual' : 'businessman'
+            this.$emit('submit', {userid, password, name, email, birthday, gender, address, phoneNo, auth})
         },
         Cancellation(){
             alert('취소합니다.')

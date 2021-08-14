@@ -70,7 +70,23 @@ import JpaDbSignupPage from '@/views/JpaDbSignupPage.vue'
 
 //coverflow
 import CoverflowTestPage from '@/views/CoverflowTestPage.vue'
+import AwesomeSwiperTestPage from '@/views/AwesomeSwiperTestPage.vue'
 
+//likesFacebook
+//import LikesFacebookPage from '@/views/LikesFacebookPage.vue'
+//이미지 갤러리
+import ImageGalleryTestPage from '@/views/ImageGalleryTestPage.vue'
+//캘린더
+import CalendarTestPage from '@/views/CalendarTestPage.vue'
+
+//JPA Test Page
+import MemberJoinColumnTestPage from '@/views/MemberJoinColumnTestPage.vue'
+
+// 암호화 비밀번호 로그인
+import VuetifyMemberLoinPage from '@/views/VuetifyMemberLoinPage.vue'
+
+// test
+import TestSignupPage from '@/views/TestSignupPage.vue'
 
 Vue.use(VueRouter)
 
@@ -323,7 +339,50 @@ const routes = [
       default: CoverflowTestPage
     }
   },
-
+  { 
+    path: '/awesomeswiperTest',
+    name: 'AwesomeSwiperTestPage',
+    components: {
+      default: AwesomeSwiperTestPage
+    }
+  },
+  { 
+    path: '/imagegalleryTestPage',
+    name: 'ImageGalleryTestPage',
+    components: {
+      default: ImageGalleryTestPage
+    }
+  },
+  { 
+    path: '/calendartestpage',
+    name: 'CalendarTestPage',
+    components: {
+      default: CalendarTestPage
+    }
+  },
+  { 
+    path: '/memberjoincolumn',
+    name: 'MemberJoinColumnTestPage',
+    components: {
+      default: MemberJoinColumnTestPage
+    }
+  },
+  { 
+    path: '/memberjoincolumn',
+    name: 'VuetifyMemberLoinPage',
+    components: {
+      default: VuetifyMemberLoinPage
+    }
+  },
+  { 
+    path: '/testsignuppage',
+    name: 'TestSignupPage',
+    components: {
+      default: TestSignupPage
+    }
+  },
+ 
+ 
  
  
  

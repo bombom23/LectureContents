@@ -24,4 +24,5 @@ export default {
     students: [],
     // 크롤링
     list: [],
+    
 }

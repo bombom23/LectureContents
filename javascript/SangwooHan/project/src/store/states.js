@@ -15,6 +15,14 @@ export default {
     ],
     // 매니지먼트 회원리스트
     members: [],
+    member: null,
+    list: [],
+    isLogin: false,
+    loginUser: null,
+    //게시판
+    boards: [],
+
+    
    
   
     

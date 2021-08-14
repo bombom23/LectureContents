@@ -133,6 +133,37 @@
                     active-class="active">
                커버플로우
             </router-link>
+             <router-link :to="{ name: 'AwesomeSwiperTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+               어썸스와이퍼
+            </router-link>
+              <router-link :to="{ name: 'ImageGalleryTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+               이미지 테스트
+            </router-link>
+              <router-link :to="{ name: 'CalendarTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+               이미지 테스트
+            </router-link>
+               <router-link :to="{ name: 'MemberJoinColumnTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+             멤버 조인  컬럼 테스트
+            </router-link>
+              <router-link :to="{ name: 'VuetifyMemberLoinPage' }"
+                    class="nav-link"
+                    active-class="active">
+             비밀번호 암호화 로그인 
+            </router-link>
+              <router-link :to="{ name: 'TestSignupPage' }"
+                    class="nav-link"
+                    active-class="active">
+             테스트용
+            </router-link>
+         
          
               
 

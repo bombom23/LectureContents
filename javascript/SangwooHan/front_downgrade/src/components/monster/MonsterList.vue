@@ -21,11 +21,12 @@
                
                 <td align="left">
                     <router-link :to="{ name: 'MonsterReadPage',
-                                    params: { monsterNo: monster.monsterNo.toString() } }">
+                                    params: { monsterNo: monster.monsterNo.toString() } }"
+                                    > 
                         {{ monster.name }}
                     </router-link>
                 </td>
-                
+                    
                 <td align="center">{{ monster.hp }}</td>
                 <td align="center">{{ monster.exp }}</td>
                 <td align="center">{{ monster.dropMoney }}</td>

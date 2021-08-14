@@ -8,6 +8,7 @@
 
 
 
+
 insert into vuestudent (name, score) values
 ('김철수', '45');
 insert into vuestudent (name, score) values

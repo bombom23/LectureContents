@@ -29,7 +29,8 @@ import {
     SCORE_MANAGEMENT,
     //  크롤링
     CRAWL_START,
-
+    //멤버
+    
 
 } from './mutation-types'
 
@@ -116,6 +117,7 @@ export default {
     },
     [FETCH_MONSTER] (state, monster) {
         state.monster = monster
+        console.log(monster)
     },
     // 렌덤 던전 
     [ALLOC_RANDOM_DUNGEON] (state, dungeons) {
@@ -128,5 +130,8 @@ export default {
     //크롤링
     [CRAWL_START] (state, payload) {
         state.lists = payload
-    }
+    },
+  
+    
+ 
 }

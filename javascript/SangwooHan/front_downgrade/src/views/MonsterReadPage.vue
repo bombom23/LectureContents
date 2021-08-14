@@ -1,8 +1,9 @@
 <template>
     <div align="center">
-        <h2>몬스터 설명 읽기</h2>
-        <monster-read v-if="monster" :monster="monster"/>
-        <p v-else>로딩중 ...... </p>
+        <h2>몬스터 설명 읽기 내가선택한 몬스터번호{{ monsterNo }}</h2>
+       
+       <monster-read v-if="monster" :monster="monster"/>
+   <p v-else>로딩중 ...... </p>
        <router-link :to="{ name: 'MonsterModifyPage', params: { monsterNo } }">
             몬스터 존재 {정보 } 수정
         </router-link>
@@ -10,6 +11,10 @@
         <router-link :to="{ name: 'MosterListPage' }">
             상품 보기
         </router-link>
+        <v-btn @click="onDelete">삭제하기</v-btn>
+         <v-btn @click="show">몬스터보기</v-btn>
+       
+        
     </div>
 </template>
 
@@ -26,11 +31,12 @@ export default {
         }
     },
     components: {
-        MonsterRead
+       MonsterRead
     },
     computed: {
         ...mapState(['monster'])
     },
+    
     created () {
         this.fetchMonster(this.monsterNo)
                 .catch(err => {
@@ -39,7 +45,8 @@ export default {
                 })
     },
     methods: {
-        ...mapActions(['fetchMonster']),
+     ...mapActions(['fetchMonster']),
+     
         onDelete () {
             const { monsterNo } = this.monster
             axios.delete(`http://localhost:9999/vuemonster/${monsterNo}`)
@@ -50,7 +57,14 @@ export default {
                     .catch(err => {
                         alert(err.response.data.message)
                     })
+        },
+        show() {
+            console.log(this.monster)
         }
-    }
+        
+    },
+    
+
+    
 }
 </script>

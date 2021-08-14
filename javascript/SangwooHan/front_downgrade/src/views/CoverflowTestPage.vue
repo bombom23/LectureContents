@@ -12,7 +12,8 @@ export default {
                 {
                     // cover: 'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcVaw4d%2FbtqDURwZDoX%2Fq6XGmMMrktN33iW1v3gtMk%2Fimg.png',
                     cover: require('@/assets/img/람보르기니.jpg'),
-                    title: '람보르기니 '
+                    title: '람보르기니 ',
+                    route: '/Home'
                 }, {
                     cover: 'https://media.vlpt.us/images/devpark/post/3f691ef0-d5de-4fc2-81d0-951d8ed8a36d/Ekran-Resmi-2019-11-18-18.08.13.png',
                     title: 'Angular'

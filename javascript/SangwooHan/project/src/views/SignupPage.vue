@@ -1,21 +1,24 @@
 <template>
     <div align="center">
+
         <signup-register-form @submit="onSubmit"/>
     </div>
 </template>
 
 <script>
 import SignupRegisterForm from '../components/Signup/SignpupRegisterForm.vue'
+
 import axios from 'axios'
 export default {
     name: 'SignupPage',
     components: {
-        SignupRegisterForm
+        SignupRegisterForm,
+     
     },
     methods: {
         onSubmit(payload){
-                const {userid, password, name, email, birthday, gender, address, phoneNo} = payload
-                axios.post('http://localhost:9999/vuesignup/register', {userid, password, name, email, birthday, gender, address, phoneNo})
+                const {userid, password, name, email, birthday, gender, address, phoneNo, auth} = payload
+                axios.post('http://localhost:9999/jpamemberManage/register', {userid, password, name, email, birthday, gender, address, phoneNo, auth})
                 .then(res =>{
                     alert('회원가입 성공' + res)
                     this.$router.push({
@@ -29,3 +32,7 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+</style>
