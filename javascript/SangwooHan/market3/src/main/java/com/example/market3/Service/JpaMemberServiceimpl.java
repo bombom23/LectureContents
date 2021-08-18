@@ -97,5 +97,8 @@ public class JpaMemberServiceimpl implements JpaMemberService {
         return true;
     }
 
-
+    @Override
+    public void remove(Long memberNo) throws Exception {
+        memberRepository.deleteById(memberNo);
+    }
 }

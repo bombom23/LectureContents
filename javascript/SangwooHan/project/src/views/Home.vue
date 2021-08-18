@@ -1,7 +1,7 @@
 <template>
 
   <div id="main">
-     
+
     
 
    <v-container>
@@ -11,20 +11,13 @@
   <article >
     
     
-    <ul>
-     <li><img src="@/assets/충우/앱광고.jpg" width="600"/> <img src="@/assets/충우/앱광고.jpg" width="500"/></li> 
-       <li></li>
-       
-    </ul>
+   <coverflow :coverList="coverList" :coverWidth="260" :index="2" id="coverflow" @click="handleClick"></coverflow>
    
   </article>
   </div>
 </section>
    </v-container>
-<footer align="center">
-   <v-btn v-if="this.$store.state.isLogin == true " @click="removeSession" width="20" align="left" >logout</v-btn>
-  <p>&copy; 곤충박사위원회</p>
-</footer>
+
   
 
 
@@ -34,7 +27,7 @@
 </template>
 
 <script>
-
+import coverflow from 'vue-coverflow'
 import axios from 'axios'
 import { mapState } from 'vuex'
 
@@ -43,12 +36,45 @@ import { mapState } from 'vuex'
     name: 'Home',
 
     components: {
-     
+     coverflow
    
     },
     data(){
         return{
-          bgImage: require('@/assets/상우/타이틀.jpg')
+          bgImage: require('@/assets/상우/꿀벌.jpg'),
+          coverList: [
+                {
+                   cover: require('@/assets/상우/나비.jpg'),
+                    title: '나비',
+                    route: '/SignupPage',
+                    onclick
+                },
+
+                 {
+                    cover: require('@/assets/상우/매미.jpg'),
+                    title: '매미'
+                },
+
+                {
+                    cover: require('@/assets/상우/사슴벌레.jpg'),
+                    title: '사슴벌레'
+                },
+
+                 {
+                    cover: require('@/assets/상우/장수풍뎅이.jpg'),
+                    title: '장수풍뎅이'
+                },
+
+                 {
+                   cover: require('@/assets/상우/잠자리.jpg'),
+                    title: '잠자리'
+                },
+                {
+                    cover: require('@/assets/상우/하늘소.jpg'),
+                    title: '하늘소',
+                    
+                },
+            ]
         }
     },
     methods: {
@@ -61,15 +87,19 @@ import { mapState } from 'vuex'
                     })
         },
         ...mapState(['isLogin','loginUser']),
-        Redirect() {
-      this.$router.push({name: 'Home'})
-   .catch(err =>{console.log('홈페이지입니다.'+err.response.data.message)})
+        handleClick(value) {
+            console.log(value)
+        }
+      
     },
+    onclick(){
+      alert('ㅎㅇㅎㅇ')
+    }
     
     }
     
 
-  }
+  
 </script>
 
 <style scoped>
@@ -84,6 +114,9 @@ footer{
 }
 p{
   color: chartreuse;
+}
+#coverflow{
+  margin-left: 100px;
 }
 
 

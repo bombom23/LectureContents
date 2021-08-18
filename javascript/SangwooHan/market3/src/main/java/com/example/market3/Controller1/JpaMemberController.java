@@ -137,4 +137,11 @@ public class JpaMemberController {
 
         return new ResponseEntity<Boolean>(mustFalse, HttpStatus.OK);
     }
+    @DeleteMapping("{memberNo}")
+    public ResponseEntity<Void> remove(@PathVariable Long memberNo) throws Exception{
+
+        service.remove(memberNo);
+
+        return new ResponseEntity<Void>( HttpStatus.OK);
+    }
 }

@@ -28,6 +28,8 @@
     </v-toolbar-items>
     </v-toolbar>
     </v-container>
+   
+    
 <!--로그인일때-->
     <v-navigation-drawer v-if="this.$store.state.isLogin == false" app v-model="nav_drawer" temporary >
         <v-list nav dense>
@@ -58,6 +60,21 @@
             </v-list-item-group>
         </v-list>
     </v-navigation-drawer>
+    <!--관리자일때-->
+    <v-navigation-drawer v-if="this.$store.state.isLogin == true && this.$store.state.loginUser == '관리자'" app v-model="nav_drawer" temporary >
+        <v-list nav dense>
+            <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+            <v-list-item v-for="link  in ManageLinks" :key="link.name" router :to="link.route">
+            <v-list-item-action>
+                <v-icon left>{{ link.icon}}</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+                <v-list-item-title>{{ link.text }}</v-list-item-title>
+            </v-list-item-content>
+            </v-list-item>
+            </v-list-item-group>
+        </v-list>
+    </v-navigation-drawer>
         </div>
 </template>
 
@@ -74,12 +91,6 @@ export default {
                     text: 'Home',
                     name: 'Home',
                     route: '/',
-                },
-                 {
-                     icon: 'mdi-check',
-                    text: '커뮤글쓰기',  
-                    name: '커뮤니티글올리기(수정예정)',
-                    route: '/communityregisterpage',
                 },
                  {
                      
@@ -107,24 +118,24 @@ export default {
                     name: 'Home',
                     route: '/',
                 },
-                 {
-                     icon: 'mdi-check',
-                    text: '커뮤니티',  
-                    name: '커뮤니티글올리기(수정예정)',
-                    route: '/communityregisterpage',
-                },
                    {
                      
                     text: '곤충갤러리',  
-                    name: '커뮤니티글올리기(수정예정)',
+                    name: '곤충갤러리',
                     route: '/Test/:Id',
                 },
                 {
                      
                     text: '곤충박물관',  
-                    name: '커뮤니티글올리기(수정예정)',
+                    name: '곤충박물관',
                     route: '/insectmuseumpage',
-                }
+                },
+                 {
+                     
+                    text: '커뮤니티게시판',  
+                    name: '커뮤니티글올리기(수정예정)',
+                    route: '/communityListpage',
+                },
             ],
             LogInlinks2: [
                 {
@@ -145,12 +156,6 @@ export default {
                     name: '회원가입',
                     route: '/signuppage',
                 },
-                 {
-                     icon: 'mdi-format-list-bulleted-type',
-                    text: '회원리스트',
-                    name: '회원리스트',
-                    route: '/memberlist',
-                },
                 {
                      icon: 'mdi-newspaper',
                     text: '다음뉴스',
@@ -165,12 +170,7 @@ export default {
                     name: 'Home',
                     route: '/',
                 },
-                 {
-                     icon: 'mdi-format-list-bulleted-type',
-                    text: '회원리스트',
-                    name: '회원리스트',
-                    route: '/memberlist',
-                },
+                 
                 {
                      icon: 'mdi-newspaper',
                     text: '다음뉴스',
@@ -178,6 +178,39 @@ export default {
                     route: '/daumNewsCrawler',
                 }
             ],
+            ManageLinks: [
+                {
+                    icon: 'home',
+                    text: 'Home',
+                    name: 'Home',
+                    route: '/',
+                },
+                   {
+                     
+                    text: '곤충갤러리',  
+                    name: '곤충갤러리(수정예정)',
+                    route: '/Test/:Id',
+                },
+                {
+                     
+                    text: '곤충박물관',  
+                    name: '곤충박물관(수정예정)',
+                    route: '/insectmuseumpage',
+                },
+                 {
+                     
+                    text: '커뮤니티게시판',  
+                    name: '커뮤니티글올리기(수정예정)',
+                    route: '/communityListpage',
+                },
+                {
+                     icon: 'mdi-format-list-bulleted-type',
+                    text: '회원리스트',
+                    name: '회원리스트',
+                    route: '/memberlist',
+                },
+            ]
+            
 
         }
     },

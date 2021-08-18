@@ -1,6 +1,7 @@
 <template>
     <div>
         <h3 align="center">게시물 목록</h3>
+        <body>
         <v-container>
         <table border="2">
             <tr >
@@ -42,6 +43,7 @@
             </tr>
         </table>
         </v-container>
+        </body>
     </div>
 </template>
 
@@ -57,7 +59,5 @@ export default {
 </script>
 
 <style scoped>
-h3{
-    background-color: black;
-}
+
 </style>

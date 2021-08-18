@@ -1,13 +1,15 @@
 <template>
     <div align="center">
 
-        <signup-register-form @submit="onSubmit"/>
+        <signup-register-form @submit="onSubmit" :members="members"/>
+       
     </div>
+    
 </template>
 
 <script>
 import SignupRegisterForm from '../components/Signup/SignpupRegisterForm.vue'
-
+import {mapActions, mapState} from 'vuex'
 import axios from 'axios'
 export default {
     name: 'SignupPage',
@@ -28,8 +30,18 @@ export default {
                     alert(res.response.data.message)
                 })
                 
-        }
-    }
+                
+        },
+        ...mapActions(['fetchMemberList']),
+        
+    },
+    computed: {
+        ...mapState(['members'])
+    },
+    mounted() {
+        this.fetchMemberList()
+    },
+
 }
 </script>
 

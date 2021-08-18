@@ -21,6 +21,9 @@ export default {
     loginUser: null,
     //게시판
     boards: [],
+    board: null,
+    //댓글들
+    commentsList: [],
 
     
    

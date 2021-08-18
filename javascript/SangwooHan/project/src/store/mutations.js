@@ -3,6 +3,8 @@ import {
     FETCH_MEMBER,
     DAUM_NEWS,
     FETCH_BOARD_LIST,
+    FETCH_BOARD,
+    FETCH_COMMENTS_LIST,
 
     
 } from './mutation-types'
@@ -20,6 +22,12 @@ export default {
     [FETCH_MEMBER] (state, member){
         state.member = member 
         console.log(member)
+    },
+    [FETCH_BOARD] (state, board ) {
+        state.board = board
+    },
+    [FETCH_COMMENTS_LIST] (state, commentsList) {
+        state.commentsList = commentsList
     }
    
 

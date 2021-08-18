@@ -22,6 +22,7 @@ import InsectMuseumPage from '../views/InsectMuseum/InsectMuseumPage.vue'
 //커뮤니티
 import CommunityListPage from '../views/Community/CommunityListPage'
 import CommunityReadPage from '../views/Community/CommunityReadPage.vue'
+import CommunityModifyPage from '../views/Community/CommunityModifyPage.vue'
 
 //멤버리스트읽기페이지
 import MemberListReadPage from '../views/Manage/MemberListReadPage.vue'
@@ -88,7 +89,7 @@ const routes = [
     }
   },
   {
-    path: '/communityListpage',
+    path: '/communityListreadpage',
     name: 'CommunityReadPage',
     components: {
       default: CommunityReadPage
@@ -112,6 +113,16 @@ const routes = [
     name: 'MemberModifyPage',
     components: {
       default: MemberModifyPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/communitymodifyPage/',
+    name: 'CommunityModifyPage',
+    components: {
+      default: CommunityModifyPage
     },
     props: {
       default: true

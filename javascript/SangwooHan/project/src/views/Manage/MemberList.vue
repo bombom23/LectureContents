@@ -1,19 +1,21 @@
 <template>
     <div id="board">
-        <manage-nav-bar/>
-        <member-list-form :members="members"/> 
+       
+       <member-list-form v-if="this.$store.state.loginUser =='관리자'" :members="members"/> 
+      <!-- <member-list-form v-if="members" :members="members"/>  -->
+        <p v-else >권한이 없습니다.</p>
     </div>
 </template>
 
 <script>
 import MemberListForm from '../../components/Management/MemberListForm.vue'
 import { mapState, mapActions } from 'vuex'
-import ManageNavBar from '../NavigationVar/ManageNavBar.vue'
+
 export default {
     name: 'MemberList',
   components: { 
-      MemberListForm,
-    ManageNavBar 
+      MemberListForm
+ 
       },
       computed: {
           ...mapState(['members'])

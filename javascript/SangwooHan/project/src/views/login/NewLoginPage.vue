@@ -1,11 +1,12 @@
 <template>
-    <div>
+    <div id="dark">
      
         <div align="center">
            
         </div>
         <new-login-page-form @submit="onSubmit" :members="members"/>
         <v-spacer></v-spacer>
+        <!--
           <v-btn tile color="teal" @click="showSession">
             <v-icon left>
                 ads_click
@@ -18,7 +19,8 @@
                 ads_click
             </v-icon>
             세션 끊기
-        </v-btn>
+        </v-btn>-->
+      
     </div>
     
 </template>
@@ -95,7 +97,8 @@ export default {
                     .then(res => {
                         this.$store.state.isLogin = res.data
                     })
-        }
+        },
+       
 
 
 
@@ -110,5 +113,7 @@ export default {
 </script>
 
 <style scoped>
-
+#dark {
+    background-color: rgb(32, 32, 32);
+}
 </style>

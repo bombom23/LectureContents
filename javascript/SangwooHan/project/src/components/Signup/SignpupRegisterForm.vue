@@ -36,8 +36,9 @@
             </v-text-field>
              <v-btn class="blue" type="submit">회원가입</v-btn>
            <v-btn class="red" route :to="{ name: 'Home' }">취소</v-btn>
-        
+
         </div>
+         
         </v-container>
     
     </form>
@@ -49,6 +50,14 @@
 import {mapState} from 'vuex'
 export default {
     name: 'SignupRegisterForm',
+
+    props: {
+        members: {
+            type: Array
+        }
+
+    },
+
     data () {
         return {
             userid: '',
@@ -66,15 +75,31 @@ export default {
             ],
         }
     },
+
     methods: {
         onSubmit (){
+                let coin = null;
+                for(var i = 0 ; i < this.members.length ; i ++){
+
+                      if(this.members[i].userid === this.userid){
+                    alert('등록된 아이디가있습니다.')
+                    return coin = 1;
+                                                                 }
+                
+                                                                }
+                if(coin === null){
             const { userid, password, name, email, birthday, gender, address, phoneNo, radioGroup} = this
             const auth = radioGroup == 0 ? 'individual' : 'businessman'
             this.$emit('submit', {userid, password, name, email, birthday, gender, address, phoneNo, auth})
+                }
+
+                  }
         },
+
         Cancellation(){
             alert('취소합니다.')
         },
+
         btn_click($event){
             if($event.target.innerHTML == " 확인 "){
                 alert('어서오십쇼~')
@@ -84,17 +109,14 @@ export default {
                 this.dialog = false;
             }
         },
-       
-    },
+    
+
     computed: {
          ...mapState([
              'emailRules',
             'passwordRules',
             'nameRules',
             'loadingState',
-            
-            
-            
          ])
     }
 }

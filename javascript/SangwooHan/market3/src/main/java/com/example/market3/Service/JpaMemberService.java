@@ -19,4 +19,6 @@ public interface JpaMemberService {
 
     public void modify(JpaMember jpaMember) throws  Exception;
 
+    public void remove (Long memberNo) throws  Exception;
+
 }
