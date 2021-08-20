@@ -28,6 +28,11 @@ import CommunityModifyPage from '../views/Community/CommunityModifyPage.vue'
 import MemberListReadPage from '../views/Manage/MemberListReadPage.vue'
 //멤버리스트 수정하기
 import MemberModifyPage from '../views/Manage/MemberModifyPage.vue'
+
+//공지판
+import NoticeRegisterPage from '../views/Notice/NoticeRegisterPage.vue'
+import NoticeListPage from '../views/Notice/NoticeListPage.vue'
+import NoticeReadPage from '../views/Notice/NoticeReadPage.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -123,6 +128,30 @@ const routes = [
     name: 'CommunityModifyPage',
     components: {
       default: CommunityModifyPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/noticeRegisterPage',
+    name: 'NoticeRegisterPage',
+    components: {
+      default: NoticeRegisterPage
+    }
+  },
+  {
+    path: '/noticeListPage',
+    name: 'NoticeListPage',
+    components: {
+      default: NoticeListPage
+    }
+  },
+  {
+    path: '/noticeReadPage/',
+    name: 'NoticeReadPage',
+    components: {
+      default: NoticeReadPage
     },
     props: {
       default: true

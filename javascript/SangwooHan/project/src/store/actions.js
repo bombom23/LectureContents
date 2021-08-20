@@ -9,7 +9,10 @@ FETCH_BOARD,
 FETCH_BOARD_LIST,
 //댓글
 FETCH_COMMENTS_LIST,
-
+//공지글
+FETCH_NOTICE_LIST,
+FETCH_NOTICE,
+FETCH_NOTICE_COMMENT_LIST
 
 
 } from './mutation-types'
@@ -60,6 +63,29 @@ export default {
         .then((res) => { console.log("Spring에서 넘어온 comments정보 =" +res.data )
                 commit(FETCH_COMMENTS_LIST, res.data)
         }).catch(err => {
+            alert(err.response.data.message)
+        })
+    },
+    fetchNoticeList({ commit }) {
+        return axios.get('http://localhost:9999/jpaNotice/noticelist')
+        .then((res) => {
+            commit(FETCH_NOTICE_LIST, res.data)
+        })
+    },
+    fetchNotice({ commit }, boardNo) {
+        return axios.get(`http://localhost:9999/jpaNotice/${boardNo}`)
+        .then((res) => {
+            commit( FETCH_NOTICE, res.data)
+        }).catch(err => {
+                alert(err.response.data.message)
+        })
+    },
+    fetchNoticeCommentList({ commit }, boardNo ) {
+        return axios.get(`http://localhost:9999/jpaNotice/NoticeCommentList/${boardNo}`)
+        .then((res) => {
+            commit(FETCH_NOTICE_COMMENT_LIST, res.data)
+        })
+        .catch(err => {
             alert(err.response.data.message)
         })
     }

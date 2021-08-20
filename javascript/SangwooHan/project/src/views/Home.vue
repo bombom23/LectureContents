@@ -1,43 +1,31 @@
 <template>
 
   <div id="main">
-
-    
-
-   <v-container>
-     
-<section align="left" >
-  <div>
-  <article >
-    
-    
-   <coverflow :coverList="coverList" :coverWidth="260" :index="2" id="coverflow" @click="handleClick"></coverflow>
+<swiper-slide/>
+   <!--<coverflow :coverList="coverList" :coverWidth="260" :index="2" id="coverflow" @click="handleClick"></coverflow> -->
    
-  </article>
+   <div class="footer">
+   <v-btn v-if="this.$store.state.isLogin == true " @click="removeSession" width="20" align="left" >logout</v-btn>
+  <p>&copy; 곤충박사위원회</p>
+   </div>
   </div>
-</section>
-   </v-container>
-
-  
-
-
-   
-  </div>
-     
+ 
 </template>
 
 <script>
-import coverflow from 'vue-coverflow'
+//import coverflow from 'vue-coverflow'
 import axios from 'axios'
 import { mapState } from 'vuex'
+import SwiperSlide from '../components/SwiperSlide/SwiperSlide.vue'
 
 
   export default {
     name: 'Home',
 
     components: {
-     coverflow
+   //  coverflow
    
+        SwiperSlide
     },
     data(){
         return{
@@ -103,18 +91,7 @@ import { mapState } from 'vuex'
 </script>
 
 <style scoped>
-#main{
-  background-color: rgb(32, 32, 32);
-}
-section{
-  background-color: rgb(32, 32, 32);
-}
-footer{
-  background-color: rgb(32, 32, 32);
-}
-p{
-  color: chartreuse;
-}
+
 #coverflow{
   margin-left: 100px;
 }

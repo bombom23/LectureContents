@@ -17,5 +17,6 @@ public class BoardRequest {
         private String ui;
         private String comments;
         private LocalDateTime createDate;
+        private Integer vuecount;
 
 }

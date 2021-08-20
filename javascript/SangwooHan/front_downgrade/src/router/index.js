@@ -88,6 +88,9 @@ import VuetifyMemberLoinPage from '@/views/VuetifyMemberLoinPage.vue'
 // test
 import TestSignupPage from '@/views/TestSignupPage.vue'
 
+//파일업로드 
+import FileUploadPage from '@/views/FileUploadPage.vue'
+
 Vue.use(VueRouter)
 
 
@@ -381,7 +384,13 @@ const routes = [
       default: TestSignupPage
     }
   },
- 
+  { 
+    path: '/testsignuppage',
+    name: 'FileUploadPage',
+    components: {
+      default: FileUploadPage
+    }
+  },
  
  
  

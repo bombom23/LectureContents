@@ -91,6 +91,13 @@ public class JpaBoardController {
 
         return new ResponseEntity<Void>( HttpStatus.OK);
     }
+    @PostMapping({"/vuecount/{boardNo}"})
+    public ResponseEntity<Void> vuecountupdate(@PathVariable("boardNo") Long boardNo) throws  Exception{
+
+        service.vuecountupdate(boardNo);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 
 
 

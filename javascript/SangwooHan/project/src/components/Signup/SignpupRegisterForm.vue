@@ -1,7 +1,8 @@
 <template>
     <form @submit.prevent="onSubmit">
-        <h3> 회원가입</h3>
-        <v-container style="max-width:350px">
+        
+        <v-container id="SignupForm" style="max-width:350px">
+            <h3> 회원가입</h3>
     <div>
             <div class="row">
                 <v-radio-group v-model="radioGroup" row>
@@ -22,21 +23,23 @@
             label="회원이름" type="text" prepend-icon="mdi-account" flat solo>
             </v-text-field>
             <v-text-field class="pl-3 pr-3"  required v-model="birthday"
-            label="생년월일" type="text" prepend-icon="mdi-cake" flat solo>
+            label="주민번호앞자리" type="text" prepend-icon="mdi-cake" flat solo>
             </v-text-field>
-            <v-text-field class="pl-3 pr-3"  required v-model="gender"
-            label="성별" type="text" prepend-icon="mdi-human-female-female" flat solo>
-            </v-text-field>
-            
+           
+
              <v-text-field class="pl-3 pr-3"   required v-model="phoneNo"
             label="휴대전화" type="text" prepend-icon="mdi-phone" flat solo>
             </v-text-field>
              <v-text-field class="pl-3 pr-3"  required v-model="address"
             label="주소" type="text" prepend-icon="mdi-home-map-marker" flat solo>
             </v-text-field>
+            <v-radio-group v-model="gender" row>
+                    <v-radio label="남자" value="남자"></v-radio>
+                    <v-radio label="여자" value="여자"></v-radio>
+                </v-radio-group>   
              <v-btn class="blue" type="submit">회원가입</v-btn>
            <v-btn class="red" route :to="{ name: 'Home' }">취소</v-btn>
-
+               
         </div>
          
         </v-container>
@@ -125,5 +128,8 @@ export default {
 <style scoped>
 h3 {
     font-size: 30px;
+}
+#SignupForm{
+    margin-left: 35%;
 }
 </style>

@@ -13,12 +13,12 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "jpa_board_comment")
-public class JpaBoardComment {
+@Table(name = "jpa_notice_comment")
+public class JpaNoticeComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long boardCommentNo;
+    private Long noticeCommentNo;
 
     @Column(name = "board_no")
     private Long boardNo;
@@ -35,12 +35,9 @@ public class JpaBoardComment {
     @UpdateTimestamp
     private Date upDate;
 
-    public JpaBoardComment(Long boardNo, String ui, String comments) {
+    public JpaNoticeComment(Long boardNo, String ui, String comments) {
         this.ui = ui;
         this.comments = comments;
         this.boardNo = boardNo;
     }
 }
-
-
-

@@ -1,33 +1,38 @@
 <template>
 <div>
     <!--로그아웃일때-->
-    <v-container>
-    <v-toolbar dense dark v-if="this.$store.state.isLogin == false" >
+ 
+    <v-toolbar  flat  v-if="this.$store.state.isLogin == false" >
     <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
     </v-app-bar-nav-icon>
     <v-toolbar-title>
-        <span class="font-weight-light"></span>
+    
     </v-toolbar-title>
-    <v-toolbar-items>
+    <v-spacer></v-spacer>
+    <v-toolbar-items >
         <v-btn text v-for="link in LogOutlinks" :key="link.icon" :to="link.route">
             {{ link.text }}
         </v-btn>
+        <v-btn text>ㅎㅇ</v-btn>
     </v-toolbar-items>
+    <v-spacer></v-spacer>
     </v-toolbar>
     <!--로그인일때-->
-    <v-toolbar dense dark v-if="this.$store.state.isLogin == true" >
+    <v-toolbar  flat  v-if="this.$store.state.isLogin == true" >
     <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
     </v-app-bar-nav-icon>
     <v-toolbar-title>
         <span class="font-weight-light"></span>
     </v-toolbar-title>
+     <v-spacer></v-spacer>
     <v-toolbar-items>
         <v-btn text v-for="link in LogInlinks" :key="link.icon" :to="link.route">
             {{ link.text }}
         </v-btn>
     </v-toolbar-items>
+      <v-spacer></v-spacer>
     </v-toolbar>
-    </v-container>
+   
    
     
 <!--로그인일때-->
@@ -86,53 +91,43 @@ export default {
             group: false,
 
             LogOutlinks: [
-                {
-                    icon: 'home',
-                    text: 'Home',
-                    name: 'Home',
-                    route: '/',
-                },
+               
                  {
                      
-                    text: '커뮤니티게시판',  
+                    text: 'ㅣ커뮤니티ㅣ',  
                     name: '커뮤니티글올리기(수정예정)',
                     route: '/communityListpage',
                 },
                    {
                      
-                    text: '곤충갤러리',  
+                    text: 'ㅣ곤충갤러리ㅣ',  
                     name: '커뮤니티글올리기(수정예정)',
                     route: '/Test/:Id',
                 },
                 {
                      
-                    text: '곤충박물관',  
+                    text: 'ㅣ곤충박물관ㅣ',  
                     name: '커뮤니티글올리기(수정예정)',
                     route: '/insectmuseumpage',
                 }
             ],
              LogInlinks: [
-                {
-                    icon: 'home',
-                    text: 'Home',
-                    name: 'Home',
-                    route: '/',
-                },
+               
                    {
                      
-                    text: '곤충갤러리',  
-                    name: '곤충갤러리',
+                    text: 'ㅣ곤충갤러리ㅣ',  
+                    name: 'ㅣ곤충갤러리ㅣ',
                     route: '/Test/:Id',
                 },
                 {
                      
-                    text: '곤충박물관',  
+                    text: 'ㅣ곤충박물관ㅣ',  
                     name: '곤충박물관',
                     route: '/insectmuseumpage',
                 },
                  {
                      
-                    text: '커뮤니티게시판',  
+                    text: 'ㅣ커뮤니티게시판ㅣ',  
                     name: '커뮤니티글올리기(수정예정)',
                     route: '/communityListpage',
                 },
@@ -208,6 +203,12 @@ export default {
                     text: '회원리스트',
                     name: '회원리스트',
                     route: '/memberlist',
+                },
+                {
+                     
+                    text: '공지게시',
+                    name: '공지게시',
+                    route: '/noticeRegisterPage',
                 },
             ]
             

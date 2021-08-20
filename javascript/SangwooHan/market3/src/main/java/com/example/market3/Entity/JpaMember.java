@@ -46,6 +46,13 @@ public class JpaMember {
     @OneToMany(cascade =  CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "member_no")
     private List<JpaMemberAuth> authList = new ArrayList<JpaMemberAuth>();
+    /*
+    @OneToMany
+    @JoinColumn(name = "member_no")
+    private List<JpaBoard> memberList = new ArrayList<JpaBoard>();
+
+     */
+
 
        public JpaMember(String userid , String password ,String name,String email,
                         int birthday, String  gender, String address, int phoneNo) {

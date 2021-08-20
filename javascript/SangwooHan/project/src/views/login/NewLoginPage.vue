@@ -20,7 +20,7 @@
             </v-icon>
             세션 끊기
         </v-btn>-->
-      
+      <p id="LoginPicture"><img  src="@/assets/상우/로그인사진.png"/></p>
     </div>
     
 </template>
@@ -113,7 +113,7 @@ export default {
 </script>
 
 <style scoped>
-#dark {
-    background-color: rgb(32, 32, 32);
+#LoginPicture{
+    margin-left: 900px;
 }
 </style>

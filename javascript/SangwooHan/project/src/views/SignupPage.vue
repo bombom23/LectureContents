@@ -2,7 +2,7 @@
     <div align="center">
 
         <signup-register-form @submit="onSubmit" :members="members"/>
-       
+       <p><img src="@/assets/상우/회원가입사진.png"/></p>
     </div>
     
 </template>

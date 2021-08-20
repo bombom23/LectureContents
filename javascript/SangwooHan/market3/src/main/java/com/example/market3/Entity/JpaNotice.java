@@ -11,12 +11,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Data
 @NoArgsConstructor
 @Entity
 @ToString
-public class JpaBoard {
-
+public class JpaNotice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long boardNo;
@@ -28,6 +28,8 @@ public class JpaBoard {
     private String id;
     @Column(length = 2000, nullable = false)
     private String text;
+    @Column(length = 20, nullable = false)
+    private String type1;
 
     @Column(length = 2000, nullable = false)
     private Integer vuecount =0;
@@ -39,28 +41,5 @@ public class JpaBoard {
 
     @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name= "board_no")
-    private List<JpaBoardComment> authList = new ArrayList<JpaBoardComment>();
-
-    public  JpaBoard(Long boardNo, String title, String id, String text, LocalDateTime createDate ,Integer vuecount) {
-        this.title = title;
-        this.id = id;
-        this.text = text;
-        this.boardNo = boardNo;
-        this.createDate = createDate;
-        this.vuecount = vuecount;
-
-    }
-
-
-
-
-    public void addui(JpaBoardComment ui ){authList.add(ui);}
-    public void addComments(JpaBoardComment comments ){authList.add(comments);}
-
-
-    public void clearAuthList() {authList.clear();}
-
-
-
+    private List<JpaNoticeComment> authList = new ArrayList<JpaNoticeComment>();
 }
-

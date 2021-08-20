@@ -40,7 +40,7 @@ public class JpaBoardServiceimpl implements JpaBoardService{
     public void commanents(BoardRequest boardRequest) throws Exception {
 
         JpaBoardComment jpaBoardAuthEntity = new JpaBoardComment(boardRequest.getBoardNo(),boardRequest.getUi(), boardRequest.getComments());
-        JpaBoard jpaBoardEntity = new JpaBoard(boardRequest.getBoardNo(),boardRequest.getTitle(), boardRequest.getId(), boardRequest.getText(),boardRequest.getCreateDate());
+        JpaBoard jpaBoardEntity = new JpaBoard(boardRequest.getBoardNo(),boardRequest.getTitle(), boardRequest.getId(), boardRequest.getText(),boardRequest.getCreateDate(), boardRequest.getVuecount());
 
 
     /*
@@ -67,12 +67,20 @@ public class JpaBoardServiceimpl implements JpaBoardService{
     @Override
     public void CommunityModify(BoardRequest boardRequest) throws Exception {
 
-        JpaBoard jpaBoard = new JpaBoard(boardRequest.getBoardNo(),boardRequest.getTitle(), boardRequest.getId(), boardRequest.getText(),boardRequest.getCreateDate());
+        JpaBoard jpaBoard = new JpaBoard(boardRequest.getBoardNo(),boardRequest.getTitle(), boardRequest.getId(), boardRequest.getText(),boardRequest.getCreateDate(), boardRequest.getVuecount());
         repository.save(jpaBoard);
     }
 
     @Override
     public void remove(Long boardNo) throws Exception {
         repository.deleteById(boardNo);
+    }
+
+    @Override
+    public void vuecountupdate(Long boardNo) throws Exception {
+
+        repository.updatevuecount(boardNo);
+
+
     }
 }

@@ -21,4 +21,7 @@ public interface JpaBoardService {
     public void CommunityModify (BoardRequest boardRequest) throws  Exception;
 
     public void remove (Long boardNo) throws  Exception;
+
+    public  void vuecountupdate (Long boardNo) throws  Exception;
+
 }

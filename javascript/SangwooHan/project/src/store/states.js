@@ -13,6 +13,9 @@ export default {
     passwordRules: [
         v => !! v || '비밀번호를 작성해주세요.'
     ],
+    barithdayRules: [
+         v => !! 1<= v <=6 || '6자리 이하입니다 6자리이상으로해주세요'   
+    ],
     // 매니지먼트 회원리스트
     members: [],
     member: null,
@@ -24,6 +27,10 @@ export default {
     board: null,
     //댓글들
     commentsList: [],
+    //공지글들
+    notices: [],
+    notice: null,
+    NoticeCommentList: [],
 
     
    
