@@ -8,6 +8,12 @@ import {
     FETCH_NOTICE_LIST,
     FETCH_NOTICE,
     FETCH_NOTICE_COMMENT_LIST,
+    FECTH_STAGBEETLES_LIST,
+    FECTH_STAGBEETLES,
+    FECTH_STAGBEETLES_COMMENT_LIST,
+    FETCH_BEETLE_LIST,
+    FETCH_BEETLE,
+    FETCH_BEETLE_COMMENT_LIST,
     
 
     
@@ -41,6 +47,24 @@ export default {
     },
     [FETCH_NOTICE_COMMENT_LIST] (state,NoticeCommentList) {
         state.NoticeCommentList = NoticeCommentList
+    },
+    [FECTH_STAGBEETLES_LIST] (state,StagbeetleList) {
+        state.StagbeetleList = StagbeetleList
+    },
+    [FECTH_STAGBEETLES] (state,Stagbeetle) {
+        state.Stagbeetle = Stagbeetle 
+    },
+    [FECTH_STAGBEETLES_COMMENT_LIST] (state, StagbeetleCommentList) {
+        state.StagbeetleCommentList = StagbeetleCommentList 
+    },
+    [FETCH_BEETLE_LIST] (state, BeetleList) {
+        state.BeetleList = BeetleList 
+    },
+    [FETCH_BEETLE] (state, Beetle) {
+        state.Beetle = Beetle
+    },
+    [FETCH_BEETLE_COMMENT_LIST] (state,BeetleCommentList) {
+        state.BeetleCommentList = BeetleCommentList
     }
    
 

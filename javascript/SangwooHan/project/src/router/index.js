@@ -33,6 +33,16 @@ import MemberModifyPage from '../views/Manage/MemberModifyPage.vue'
 import NoticeRegisterPage from '../views/Notice/NoticeRegisterPage.vue'
 import NoticeListPage from '../views/Notice/NoticeListPage.vue'
 import NoticeReadPage from '../views/Notice/NoticeReadPage.vue'
+
+//곤충박물관
+import InsectMuseumStagbeetle from '../views/InsectMuseum/InsectMuseumStagbeetle.vue'
+import InsectMuseumbeetle from '../views/InsectMuseum/InsectMuseumbeetle.vue'
+import InsectMuseumDragonfly from '../views/InsectMuseum/InsectMuseumDragonfly'
+import StagbeetleRegister from '../views/InsectMuseum/StagbeetleRegister'
+import BeetleRegister from '../views/InsectMuseum/BeetleRegister'
+import DragonflyRegister from '../views/InsectMuseum/DragonflyRegister'
+import StagbeetleReadPage from '../views/InsectMuseum/StagbeetleReadPage'
+import BeetleReadPage from '../views/InsectMuseum/BeetleReadPage'
 Vue.use(VueRouter)
 
 const routes = [
@@ -157,7 +167,68 @@ const routes = [
       default: true
     }
   },
- 
+  {
+    path: '/insectMuseumStagbeetle',
+    name: 'InsectMuseumStagbeetle',
+    components: {
+      default: InsectMuseumStagbeetle
+    }
+  },
+  {
+    path: '/insectMuseumbeetle',
+    name: 'InsectMuseumbeetle',
+    components: {
+      default: InsectMuseumbeetle
+    }
+  },
+  {
+    path: '/insectMuseumDragonfly',
+    name: 'InsectMuseumDragonfly',
+    components: {
+      default: InsectMuseumDragonfly
+    }
+  },
+  {
+    path: '/dragonflyRegister',
+    name: 'DragonflyRegister',
+    components: {
+      default: DragonflyRegister
+    }
+  },
+  {
+    path: '/beetleRegister',
+    name: 'BeetleRegister',
+    components: {
+      default: BeetleRegister
+    }
+  },
+  {
+    path: '/stagbeetleRegister',
+    name: 'StagbeetleRegister',
+    components: {
+      default: StagbeetleRegister
+    }
+  },
+  {
+    path: '/stagbeetleReadPage/',
+    name: 'StagbeetleReadPage',
+    components: {
+      default: StagbeetleReadPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/beetleReadPage/',
+    name: 'BeetleReadPage',
+    components: {
+      default: BeetleReadPage
+    },
+    props: {
+      default: true
+    }
+  },
   
 ]
 

@@ -105,7 +105,7 @@ footer{
 */
 section{
     width: 2200px;
-    height: 1400px;
+    height: 2000px;
    
     
     

@@ -2,7 +2,7 @@
 <div>
     <!--로그아웃일때-->
  
-    <v-toolbar  flat  v-if="this.$store.state.isLogin == false" >
+    <v-toolbar  dark  flat  v-if="this.$store.state.isLogin == false" >
     <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
     </v-app-bar-nav-icon>
     <v-toolbar-title>
@@ -13,7 +13,7 @@
         <v-btn text v-for="link in LogOutlinks" :key="link.icon" :to="link.route">
             {{ link.text }}
         </v-btn>
-        <v-btn text>ㅎㅇ</v-btn>
+      
     </v-toolbar-items>
     <v-spacer></v-spacer>
     </v-toolbar>
@@ -180,23 +180,11 @@ export default {
                     name: 'Home',
                     route: '/',
                 },
-                   {
-                     
-                    text: '곤충갤러리',  
-                    name: '곤충갤러리(수정예정)',
-                    route: '/Test/:Id',
-                },
-                {
-                     
-                    text: '곤충박물관',  
-                    name: '곤충박물관(수정예정)',
-                    route: '/insectmuseumpage',
-                },
                  {
                      
-                    text: '커뮤니티게시판',  
-                    name: '커뮤니티글올리기(수정예정)',
-                    route: '/communityListpage',
+                    text: '박물관게시물작성',
+                    name: '박물관게시물작성',
+                    route: '/stagbeetleRegister',
                 },
                 {
                      icon: 'mdi-format-list-bulleted-type',
@@ -210,6 +198,7 @@ export default {
                     name: '공지게시',
                     route: '/noticeRegisterPage',
                 },
+               
             ]
             
 

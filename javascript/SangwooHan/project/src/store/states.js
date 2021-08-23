@@ -31,6 +31,15 @@ export default {
     notices: [],
     notice: null,
     NoticeCommentList: [],
+    //곤충박물관
+    StagbeetleList: [],
+    Stagbeetle: null,
+    StagbeetleCommentList: [],
+    BeetleList: [],
+    Beetle: null,
+    BeetleCommentList: [],
+    
+    
 
     
    

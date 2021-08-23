@@ -12,7 +12,14 @@ FETCH_COMMENTS_LIST,
 //공지글
 FETCH_NOTICE_LIST,
 FETCH_NOTICE,
-FETCH_NOTICE_COMMENT_LIST
+FETCH_NOTICE_COMMENT_LIST,
+//곤충박물관
+FECTH_STAGBEETLES_LIST,
+FECTH_STAGBEETLES,
+FECTH_STAGBEETLES_COMMENT_LIST,
+FETCH_BEETLE_LIST,
+FETCH_BEETLE,
+FETCH_BEETLE_COMMENT_LIST
 
 
 } from './mutation-types'
@@ -88,7 +95,56 @@ export default {
         .catch(err => {
             alert(err.response.data.message)
         })
+    },
+    fetchStagbeetleList({ commit } ) {
+        return axios.get('http://localhost:9999/stagbeetle/stagbeetleList')
+        .then((res) => {
+            commit(FECTH_STAGBEETLES_LIST, res.data)
+        })
+    },
+    fetchStagbeetle( { commit },boardNo ) {
+        return axios.get(`http://localhost:9999/stagbeetle/stagbeetle/${boardNo}`)
+        .then((res) => {
+            commit(FECTH_STAGBEETLES, res.data)
+        })
+        .catch(err => { err.response.data.message})
+    },
+    fetchStagbeetleCommentList( {commit}, boardNo) {
+
+        return axios.get(`http://localhost:9999/stagbeetle/stagbeetleComment/${boardNo}`)
+        .then((res) => {
+            commit(FECTH_STAGBEETLES_COMMENT_LIST, res.data) 
+        }).catch(err => {alert(err.response.data.message)})
+
+    },
+    fetchBeetleList({ commit }) {
+
+        return axios.get('http://localhost:9999/beetle/beetlelist')
+        .then((res) => {
+            commit(FETCH_BEETLE_LIST, res.data)
+        })
+        .catch(err =>{
+            alert(err.response.data.message)
+        })
+    },
+    fetchBeetle({ commit }, boardNo ) {
+        return axios.get(`http://localhost:9999/beetle/beetle/${boardNo}`)
+        .then((res) => {
+            commit(FETCH_BEETLE, res.data)
+        }).catch(err => {
+            alert(err.response.data.message)
+        })
+    },
+    fetchBeetleCommentList({ commit }, boardNo) {
+
+        return axios.get(`http://localhost:9999/beetle/beetleCommentList/${boardNo}`)
+        .then((res)=> {
+            commit(FETCH_BEETLE_COMMENT_LIST, res.data)
+        }).catch(err => {
+            alert(err.response.data.message)
+        })
     }
+
 
     
   

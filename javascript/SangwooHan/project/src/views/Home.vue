@@ -1,6 +1,6 @@
 <template>
-
   <div id="main">
+  
 <swiper-slide/>
    <!--<coverflow :coverList="coverList" :coverWidth="260" :index="2" id="coverflow" @click="handleClick"></coverflow> -->
    
