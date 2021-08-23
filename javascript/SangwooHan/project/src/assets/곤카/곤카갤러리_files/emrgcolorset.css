@@ -1,0 +1,105 @@
+@charset "utf-8";
+/* xe_sunooEmRg layout for Xpress Engine. Layout Design by Sunoo (http://www.goodpr.me/) */
+
+/* colorset default */
+.default { background: url(../images/default/skybg.jpg) repeat-x left top; }
+.default #mainMenu_line .tMenu td.mntd1 { background: url(../images/default/bgMenuTd1.png) no-repeat left top; }
+.default #mainMenu_line .tMenu td.mntd2 { background: url(../images/default/bgMenuTd2.png) repeat-x left top; }
+.default #mainMenu_line .tMenu td.mntd3 { background: url(../images/default/bgMenuTd3.png) no-repeat left top; }
+.default #mainMenu_line .tMenu td.mntd4 { background: url(../images/default/bgMenuTd4.png) no-repeat left top; }
+.default #mainMenu .mMenu a:hover { color:#fbf200; background: url(../images/default/bgMenuHover.png) repeat-x left top; }
+.default #mainMenu .mMenu li.on { background: url(../images/default/bgMenuOn.png) repeat-x; } 
+.default #mainMenu .mMenu li.on a { color:#fbf805; } 
+.default #mainMenu .mMenu li.on td.sm a { color:#444444; } 
+.default #mainMenu .mMenu table.tms td.sm { border:1px solid #b9cddf; background:#f4f8fb; }
+.default #mainMenu .mMenu table.tms td.sm a { color:#444444; border-top:1px solid #fff; border-bottom:1px solid #b9cddf;}
+.default #mainMenu .mMenu table.tms td.sm a:hover { color:#456d90; border-bottom:1px solid #bec4c7; background:#ffffff;}
+.default #sideSubm .submTitle { background:url(../images/default/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.default #sideWidgetCal {background:#fff url(../images/default/calendarbgLine.png) repeat-x 0px 0px;}
+.default #calendar table {background:#fff url(../images/bgbtnicon/calendarbgLinew.gif) repeat-x 0px 0px;}
+.default #sideWidgetA .sideWidgetTop{ color:#555; background:url(../images/default/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.default #sideWidgetB .sideWidgetTop{ color:#555; background:url(../images/default/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.default #footer .bottomMenu { background: url(../images/default/bottomMenuBg.png) repeat-x 0px 0px; }
+
+/* colorset spring */
+.spring { background: url(../images/spring/bgBody.png) repeat-x left top; }
+.spring #mainMenu_line .tMenu td.mntd1 { background: url(../images/spring/bgMenuTd1.png) no-repeat left top; }
+.spring #mainMenu_line .tMenu td.mntd2 { background: url(../images/spring/bgMenuTd2.png) repeat-x left top; }
+.spring #mainMenu_line .tMenu td.mntd3 { background: url(../images/spring/bgMenuTd3.png) no-repeat left top; }
+.spring #mainMenu_line .tMenu td.mntd4 { background: url(../images/spring/bgMenuTd4.png) no-repeat left top; }
+.spring #mainMenu .mMenu a:hover { color:#fbf200; background: url(../images/spring/bgMenuHover.png) repeat-x left top; }
+.spring #mainMenu .mMenu li.on { background: url(../images/spring/bgMenuOn.png) repeat-x; } 
+.spring #mainMenu .mMenu li.on a { color:#fbf805; } 
+.spring #mainMenu .mMenu li.on td.sm a { color:#444444; } 
+.spring #mainMenu .mMenu table.tms td.sm { border:1px solid #d3e5cf; background:#f6fbf5; }
+.spring #mainMenu .mMenu table.tms td.sm a { color:#444444; border-top:1px solid #fff; border-bottom:1px solid #cddfc9;}
+.spring #mainMenu .mMenu table.tms td.sm a:hover { color:#117d03; border-bottom:1px solid #cddfc9; background:#ffffff;}
+.spring #sideSubm .submTitle { background:url(../images/spring/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.spring #sideWidgetCal {background:#fff url(../images/spring/calendarbgLine.png) repeat-x 0px 0px;}
+.spring #calendar table {background:#fff url(../images/bgbtnicon/calendarbgLinew.gif) repeat-x 0px 0px;}
+.spring #sideWidgetA .sideWidgetTop{ color:#555; background:url(../images/spring/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.spring #sideWidgetB .sideWidgetTop{ color:#555; background:url(../images/spring/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.spring #footer .bottomMenu { background: url(../images/spring/bottomMenuBg.png) repeat-x 0px 0px; }
+
+/* colorset summer */
+.summer { background: url(../images/summer/bgBody.png) repeat-x left top; }
+.summer #mainMenu_line .tMenu td.mntd1 { background: url(../images/summer/bgMenuTd1.png) no-repeat left top; }
+.summer #mainMenu_line .tMenu td.mntd2 { background: url(../images/summer/bgMenuTd2.png) repeat-x left top; }
+.summer #mainMenu_line .tMenu td.mntd3 { background: url(../images/summer/bgMenuTd3.png) no-repeat left top; }
+.summer #mainMenu_line .tMenu td.mntd4 { background: url(../images/summer/bgMenuTd4.png) no-repeat left top; }
+.summer #mainMenu .mMenu a:hover { color:#fbf200; background: url(../images/summer/bgMenuHover.png) repeat-x left top; }
+.summer #mainMenu .mMenu li.on { background: url(../images/summer/bgMenuOn.png) repeat-x; } 
+.summer #mainMenu .mMenu li.on a { color:#fbf805; } 
+.summer #mainMenu .mMenu li.on td.sm a { color:#444444; } 
+.summer #mainMenu .mMenu table.tms td.sm { border:1px solid #dadbef; background:#f7f7fd; }
+.summer #mainMenu .mMenu table.tms td.sm a { color:#444444; border-top:1px solid #fff; border-bottom:1px solid #dadbef;}
+.summer #mainMenu .mMenu table.tms td.sm a:hover { color:#6363d2; border-bottom:1px solid #cfd0e5; background:#ffffff;}
+.summer #sideSubm .submTitle { background:url(../images/summer/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.summer #sideWidgetCal {background:#fff url(../images/summer/calendarbgLine.png) repeat-x 0px 0px;}
+.summer #calendar table {background:#fff url(../images/bgbtnicon/calendarbgLinew.gif) repeat-x 0px 0px;}
+.summer #sideWidgetA .sideWidgetTop{ color:#555; background:url(../images/summer/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.summer #sideWidgetB .sideWidgetTop{ color:#555; background:url(../images/summer/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.summer #footer .bottomMenu { background: url(../images/summer/bottomMenuBg.png) repeat-x 0px 0px; }
+
+/* colorset autumn */
+.autumn { background: url(../images/autumn/bgBody.png) repeat-x left top; }
+.autumn #mainMenu_line .tMenu td.mntd1 { background: url(../images/autumn/bgMenuTd1.png) no-repeat left top; }
+.autumn #mainMenu_line .tMenu td.mntd2 { background: url(../images/autumn/bgMenuTd2.png) repeat-x left top; }
+.autumn #mainMenu_line .tMenu td.mntd3 { background: url(../images/autumn/bgMenuTd3.png) no-repeat left top; }
+.autumn #mainMenu_line .tMenu td.mntd4 { background: url(../images/autumn/bgMenuTd4.png) no-repeat left top; }
+.autumn #mainMenu .mMenu a:hover { color:#fbf200; background: url(../images/autumn/bgMenuHover.png) repeat-x left top; }
+.autumn #mainMenu .mMenu li.on { background: url(../images/autumn/bgMenuOn.png) repeat-x; } 
+.autumn #mainMenu .mMenu li.on a { color:#fbf805; } 
+.autumn #mainMenu .mMenu li.on td.sm a { color:#444444; } 
+.autumn #mainMenu .mMenu table.tms td.sm { border:1px solid #e3d8c9; background:#fcf9f5; }
+.autumn #mainMenu .mMenu table.tms td.sm a { color:#444444; border-top:1px solid #fff; border-bottom:1px solid #e3d8c9;}
+.autumn #mainMenu .mMenu table.tms td.sm a:hover { color:#a96504; border-bottom:1px solid #d7ccbc; background:#ffffff;}
+.autumn #sideSubm .submTitle { background:url(../images/autumn/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.autumn #sideWidgetCal {background:#fff url(../images/autumn/calendarbgLine.png) repeat-x 0px 0px;}
+.autumn #calendar table {background:#fff url(../images/bgbtnicon/calendarbgLinew.gif) repeat-x 0px 0px;}
+.autumn #sideWidgetA .sideWidgetTop{ color:#555; background:url(../images/autumn/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.autumn #sideWidgetB .sideWidgetTop{ color:#555; background:url(../images/autumn/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.autumn #footer .bottomMenu { background: url(../images/autumn/bottomMenuBg.png) repeat-x 0px 0px; }
+
+/* colorset winter */
+.winter { background: url(../images/winter/bgBody.png) repeat-x left top; }
+.winter #mainMenu_line .tMenu td.mntd1 { background: url(../images/winter/bgMenuTd1.png) no-repeat left top; }
+.winter #mainMenu_line .tMenu td.mntd2 { background: url(../images/winter/bgMenuTd2.png) repeat-x left top; }
+.winter #mainMenu_line .tMenu td.mntd3 { background: url(../images/winter/bgMenuTd3.png) no-repeat left top; }
+.winter #mainMenu_line .tMenu td.mntd4 { background: url(../images/winter/bgMenuTd4.png) no-repeat left top; }
+.winter #mainMenu .mMenu a:hover { color:#fbf200; background: url(../images/winter/bgMenuHover.png) repeat-x left top; }
+.winter #mainMenu .mMenu li.on { background: url(../images/winter/bgMenuOn.png) repeat-x; } 
+.winter #mainMenu .mMenu li.on a { color:#fbf805; } 
+.winter #mainMenu .mMenu li.on td.sm a { color:#444444; } 
+.winter #mainMenu .mMenu table.tms td.sm { border:1px solid #e2dedd; background:#fcf9f7; }
+.winter #mainMenu .mMenu table.tms td.sm a { color:#444444; border-top:1px solid #fff; border-bottom:1px solid #e7e3e2;}
+.winter #mainMenu .mMenu table.tms td.sm a:hover { color:#797a9f; border-bottom:1px solid #dbd8d6; background:#ffffff;}
+.winter #sideSubm .submTitle { background:url(../images/winter/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.winter #sideWidgetCal {background:#fff url(../images/winter/calendarbgLine.png) repeat-x 0px 0px;}
+.winter #calendar table {background:#fff url(../images/bgbtnicon/calendarbgLinew.gif) repeat-x 0px 0px;}
+.winter #sideWidgetA .sideWidgetTop{ color:#555; background:url(../images/winter/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.winter #sideWidgetB .sideWidgetTop{ color:#555; background:url(../images/winter/sideWidgetBgTitle.png) repeat-x 0px 0px; }
+.winter #footer .bottomMenu { background: url(../images/winter/bottomMenuBg.png) repeat-x 0px 0px; }
+
+/* end emrgcolorset */
+
