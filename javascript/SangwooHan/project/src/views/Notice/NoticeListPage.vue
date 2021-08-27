@@ -1,18 +1,19 @@
 <template>
-    <notice-list-form :notices="notices"/>
+    <div>
+        <notice-list-form :notices="notices"/>
+    </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
 import NoticeListForm from '../../components/Notice/NoticeListForm.vue'
 export default {
-    name: 'NoticeListPage',
   components: { NoticeListForm },
-    methods:{
-        ...mapActions(['fetchNoticeList'])
-    },
     computed: {
         ...mapState(['notices'])
+    },
+    methods: {
+        ...mapActions(['fetchNoticeList'])
     },
     mounted() {
         this.fetchNoticeList()

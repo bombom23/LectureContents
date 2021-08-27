@@ -2,7 +2,7 @@
 <div>
     <!--로그아웃일때-->
  
-    <v-toolbar  dark  flat  v-if="this.$store.state.isLogin == false" >
+    <v-toolbar  dark   v-if="this.$store.state.session == null"  >
     <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
     </v-app-bar-nav-icon>
     <v-toolbar-title>
@@ -18,7 +18,7 @@
     <v-spacer></v-spacer>
     </v-toolbar>
     <!--로그인일때-->
-    <v-toolbar  flat  v-if="this.$store.state.isLogin == true" >
+    <v-toolbar dark flat   v-if="this.$store.state.session != null"  >
     <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
     </v-app-bar-nav-icon>
     <v-toolbar-title>
@@ -36,7 +36,7 @@
    
     
 <!--로그인일때-->
-    <v-navigation-drawer v-if="this.$store.state.isLogin == false" app v-model="nav_drawer" temporary >
+    <v-navigation-drawer    v-if="this.$store.state.session != null" app v-model="nav_drawer" temporary >
         <v-list nav dense>
             <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
             <v-list-item v-for="link  in LogInlinks2" :key="link.name" router :to="link.route">
@@ -51,7 +51,7 @@
         </v-list>
     </v-navigation-drawer>
 <!--로그아웃일때-->
-     <v-navigation-drawer v-if="this.$store.state.isLogin == true" app v-model="nav_drawer" temporary >
+     <v-navigation-drawer  v-if="this.$store.state.session == null" app v-model="nav_drawer" temporary >
         <v-list nav dense>
             <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
             <v-list-item v-for="link  in LogOutlinks2" :key="link.name" router :to="link.route">
@@ -66,7 +66,7 @@
         </v-list>
     </v-navigation-drawer>
     <!--관리자일때-->
-    <v-navigation-drawer v-if="this.$store.state.isLogin == true && this.$store.state.loginUser == '관리자'" app v-model="nav_drawer" temporary >
+    <v-navigation-drawer dark v-if="this.$store.state.session == null||this.$store.state.loginUser == '관리자'" app v-model="nav_drawer" temporary >
         <v-list nav dense>
             <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
             <v-list-item v-for="link  in ManageLinks" :key="link.name" router :to="link.route">

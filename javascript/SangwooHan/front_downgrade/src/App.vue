@@ -2,6 +2,7 @@
 <v-app>
   <v-main>
     <nav-bar-component/>
+    <v-btn @click="check">세션확인</v-btn>
 <router-view/>
   </v-main>
 </v-app>
@@ -16,7 +17,12 @@ export default {
     components: {
         NavBarComponent
      
-    }
+    },
+    methods: {
+      check(){
+        console.log(this.$store.state.session)
+      }
+    },
 }
 </script>
 <style>

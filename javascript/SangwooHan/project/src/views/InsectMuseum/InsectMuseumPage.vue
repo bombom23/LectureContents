@@ -1,16 +1,13 @@
 <template>
-    <div>
-     <insect-menu/>
-  
-        
-     
-     <img width="1500px" src="@/assets/상우/박물관메인홈1.png"/>
-     
-    </div>
+  <div>
+     <insect-museum-bar/>
+
+  </div>
 </template>
 
 <script>
-import InsectMenu from '../../components/MuseumMenu/InsectMenu.vue'
+
+import InsectMuseumBar from '../NavigationVar/InsectMuseumBar.vue'
 
 
 
@@ -19,7 +16,8 @@ export default {
     name: 'InsectMuseumPage',
     components: {
         
-        InsectMenu
+        
+        InsectMuseumBar
     
         
         

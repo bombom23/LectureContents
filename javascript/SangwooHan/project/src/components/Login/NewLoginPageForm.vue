@@ -2,8 +2,8 @@
      <div>
          
          <form @submit.prevent="onSubmit">
-           <v-container id="LoginField" style="max-width:600px"> 
-               <h2>로그인페이지</h2>
+           <v-container id="LoginField" style="max-width:300px"> 
+               <p>로그인</p>
                <v-text-field type="text" label="아이디" v-model="id">
                </v-text-field>
                <v-text-field type="password" label="비밀번호" v-model="pw">
@@ -65,6 +65,6 @@ export default {
 
 <style scoped>
 #LoginField{
-    margin-right: 40%;
+    margin-left: 0px;
 }
 </style>

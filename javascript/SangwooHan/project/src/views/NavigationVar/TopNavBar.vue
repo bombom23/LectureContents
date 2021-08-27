@@ -2,7 +2,7 @@
 <div>
     <!--로그아웃일때-->
    
-    <v-toolbar  flat  v-if="this.$store.state.isLogin == false"  >
+    <v-toolbar  flat  v-if="this.$store.state.session == null">
     <v-toolbar-title>
      
     </v-toolbar-title>
@@ -14,7 +14,7 @@
     </v-toolbar-items>
     </v-toolbar>
     <!--로그인일때-->
-    <v-toolbar  flat  v-if="this.$store.state.isLogin == true" >
+    <v-toolbar  flat  v-if="this.$store.state.session != null" >
     <v-toolbar-title>
      
     </v-toolbar-title>
@@ -30,7 +30,11 @@
 </template>
 
 <script>
+
 export default {
+    computed: {
+
+    },
     data () {
         return {
             nav_drawer: false,
@@ -54,11 +58,13 @@ export default {
                 },
             ],
              LogInlinks: [
+               
                   {
                     text: 'ㅣ공지판ㅣ',
                     name: '공지판',
                     route: '/noticeListPage',
                 },
+               
             ],
             LogInlinks2: [
                 {

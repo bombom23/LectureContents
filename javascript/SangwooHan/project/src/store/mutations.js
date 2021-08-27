@@ -14,6 +14,15 @@ import {
     FETCH_BEETLE_LIST,
     FETCH_BEETLE,
     FETCH_BEETLE_COMMENT_LIST,
+    FETCH_DRAGONFLY_LIST,
+    FETCH_DRAGONFLY,
+    FETCH_DRAGONFLY_COMMENT_LIST,
+    //하늘소
+    FETCH_SKYCOW_LIST,
+    FETCH_SKYCOW,
+    //나비/나방
+    FETCH_BUTTERFLY_LIST,
+    FETCH_BUTTERFLY,
     
 
     
@@ -65,8 +74,30 @@ export default {
     },
     [FETCH_BEETLE_COMMENT_LIST] (state,BeetleCommentList) {
         state.BeetleCommentList = BeetleCommentList
+    },
+    [FETCH_DRAGONFLY_LIST] (state, DragonflyList) {
+        state.DragonflyList = DragonflyList
+    },
+    [FETCH_DRAGONFLY] (state, Dragonfly) {
+        state.Dragonfly = Dragonfly
+    },
+    [FETCH_DRAGONFLY_COMMENT_LIST] (state, DragonflyComments){
+        state.DragonflyComments =DragonflyComments 
+    },
+    [FETCH_SKYCOW_LIST] (state, SkycowList){
+        state.SkycowList = SkycowList
+    },
+    [FETCH_SKYCOW] (state, Skycow){
+            state.Skycow = Skycow 
+    },
+//나비/나방
+    [FETCH_BUTTERFLY_LIST] (state, ButterflyList){
+        state.ButterflyList = ButterflyList
+    },
+    [FETCH_BUTTERFLY] (state,Butterfly) {
+        state.Butterfly = Butterfly
     }
-   
 
+    
 }
 

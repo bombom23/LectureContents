@@ -12,11 +12,11 @@
             세션 보기
         </v-btn>
         <v-spacer></v-spacer>
-        <v-btn tile color="teal" @click="removeSession">
+        <v-btn tile color="teal" @click="logout">
             <v-icon left>
                 ads_click
             </v-icon>
-            세션 끊기
+            로그아웃버튼
         </v-btn>
     </div>
 </template>
@@ -24,6 +24,12 @@
 <script>
 import VuetifyMemberLoginForm from '@/components/member/VuetifyMemberLoginForm.vue'
 import axios from 'axios'
+import { mapState } from 'vuex'
+import Vue from 'vue'
+import cookies from 'vue-cookies'
+
+Vue.use(cookies)
+
 export default {
     name: 'VuetifyMemberLoginPage',
     components: {
@@ -34,14 +40,29 @@ export default {
                 isLogin: false
             }
     },
+    mounted () {
+        this.$store.state.session = this.$cookies.get("user")
+
+        if( this.$store.state.session !=null) {
+            this.isLogin = true
+        }
+        
+
+    },
+   computed:{
+       ...mapState('session')
+   },
     methods: {
         onSubmit (payload) {
+            if(this.$store.state.session ==null){
             const { id, pw } = payload
             axios.post('http://localhost:9999/jpamember/login', { userId: id, password: pw, auth: null })
                     .then(res => {
                         if (res.data != "") {
                             alert('로그인 성공! - ' + res.data)
                             this.isLogin =true;
+                            this.$store.state.session = res.data
+                            this.$cookies.set("user", res.data, '1h')
                         } else {
                             alert('로그인 실패! - ' + res.data)
                         }
@@ -55,6 +76,9 @@ export default {
                     .catch(res => {
                         alert(res.response.data.message)
                     })
+            } else {
+                alert('이미 로그인 되어있습니다.:' + this.$store.state.session.userId)
+            }
         },
         showSession () {
             if (this.isLogin == true) {
@@ -84,6 +108,13 @@ export default {
                     .then(res => {
                         this.isLogin = res.data
                     })
+        }
+        ,
+        logout() {
+            this.$cookies.remove('user')
+            this.isLogin = false
+            this.$store.state.session =null
+
         }
     
     }

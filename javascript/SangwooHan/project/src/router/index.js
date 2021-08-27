@@ -6,7 +6,7 @@ import SignupPage from '../views/SignupPage.vue'
 import MemberList from '../views/Manage/MemberList.vue'
 //로그인
 //import LoginPage from '../views/login/LoginPage.vue'
-import NewLoginPage from '../views/login/NewLoginPage.vue'
+
 //  커뮤니티 페이지
 import CommunityRegisterPage from '../views/Community/CommunityRegisterPage.vue'
 
@@ -35,14 +35,30 @@ import NoticeListPage from '../views/Notice/NoticeListPage.vue'
 import NoticeReadPage from '../views/Notice/NoticeReadPage.vue'
 
 //곤충박물관
-import InsectMuseumStagbeetle from '../views/InsectMuseum/InsectMuseumStagbeetle.vue'
-import InsectMuseumbeetle from '../views/InsectMuseum/InsectMuseumbeetle.vue'
-import InsectMuseumDragonfly from '../views/InsectMuseum/InsectMuseumDragonfly'
-import StagbeetleRegister from '../views/InsectMuseum/StagbeetleRegister'
-import BeetleRegister from '../views/InsectMuseum/BeetleRegister'
-import DragonflyRegister from '../views/InsectMuseum/DragonflyRegister'
-import StagbeetleReadPage from '../views/InsectMuseum/StagbeetleReadPage'
-import BeetleReadPage from '../views/InsectMuseum/BeetleReadPage'
+//사슴벌레
+import InsectMuseumStagbeetle from '../views/InsectMuseum/Stagbeetle/InsectMuseumStagbeetle.vue'
+import StagbeetleRegister from '../views/InsectMuseum/Stagbeetle/StagbeetleRegister'
+import StagbeetleReadPage from '../views/InsectMuseum/Stagbeetle/StagbeetleReadPage'
+//장수풍뎅이
+import InsectMuseumbeetle from '../views/InsectMuseum/Beetle/InsectMuseumBeetle.vue'
+import BeetleRegister from '../views/InsectMuseum/Beetle/BeetleRegister'
+import BeetleReadPage from '../views/InsectMuseum/Beetle/BeetleReadPage'
+//잠자리
+import InsectMuseumDragonfly from '../views/InsectMuseum/Dragonfly/InsectMuseumDragonfly'
+import DragonflyRegister from '../views/InsectMuseum/Dragonfly/DragonflyRegister'
+import DragonflyReadPage from '../views/InsectMuseum/Dragonfly/DragonflyReadPage'
+//하늘소
+import InsectMuseumSkycow from '../views/InsectMuseum/Skycow/InsectMuseumSkycow'
+import SkycowRegister from '../views/InsectMuseum/Skycow/SkycowRegister'
+import SkycowReadPage from '../views/InsectMuseum/Skycow/SkycowReadPage'
+
+//나비/나방
+import ButterflyRegister from '../views/InsectMuseum/Butterfly/ButterflyRegister'
+import InsectMuseumButterfly from '../views/InsectMuseum/Butterfly/InsectMuseumButterfly'
+import ButterflyReadPage from '../views/InsectMuseum/Butterfly/ButterflyReadPage'
+//페이지 리스팅
+
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -66,11 +82,7 @@ const routes = [
     name: 'MemberList',
     component: MemberList
   },
-  {
-    path: '/loginpage',
-    name: 'NewLoginPage',
-    component: NewLoginPage
-  },
+  
 
   {
     path: '/communityregisterpage',
@@ -104,7 +116,7 @@ const routes = [
     }
   },
   {
-    path: '/communityListreadpage',
+    path: '/communityReadPage:boardNo',
     name: 'CommunityReadPage',
     components: {
       default: CommunityReadPage
@@ -113,6 +125,7 @@ const routes = [
       default: true
     }
   },
+  
   {
     path: '/memberListRead:memberNo',
     name: 'MemberListReadPage',
@@ -158,7 +171,7 @@ const routes = [
     }
   },
   {
-    path: '/noticeReadPage/',
+    path: '/noticeReadPage/:boardNo',
     name: 'NoticeReadPage',
     components: {
       default: NoticeReadPage
@@ -210,7 +223,7 @@ const routes = [
     }
   },
   {
-    path: '/stagbeetleReadPage/',
+    path: '/stagbeetleReadPage/:boardNo/',
     name: 'StagbeetleReadPage',
     components: {
       default: StagbeetleReadPage
@@ -220,7 +233,7 @@ const routes = [
     }
   },
   {
-    path: '/beetleReadPage/',
+    path: '/beetleReadPage/:boardNo/',
     name: 'BeetleReadPage',
     components: {
       default: BeetleReadPage
@@ -229,6 +242,67 @@ const routes = [
       default: true
     }
   },
+  {
+    path: '/dragonflyReadPage/:boardNo/',
+    name: 'DragonflyReadPage',
+    components: {
+      default: DragonflyReadPage
+    },
+    props: {
+      default: true
+    }
+  },
+  //하늘소----------------------------------------
+  {
+    path: '/insectMuseumSkycow',
+    name: 'InsectMuseumSkycow',
+    components: {
+      default: InsectMuseumSkycow
+    }
+  },
+  {
+    path: '/skycowRegister',
+    name: 'SkycowRegister',
+    components: {
+      default: SkycowRegister
+    }
+  },
+  {
+    path: '/skycowReadPage/:boardNo/',
+    name: 'SkycowReadPage',
+    components: {
+      default: SkycowReadPage
+    },
+    props: {
+      default: true
+    }
+  },
+  //나비나방=====================================
+  {
+    path: '/butterflyRegister',
+    name: 'ButterflyRegister',
+    components: {
+      default: ButterflyRegister
+    }
+  },
+  {
+    path: '/insectMuseumButterfly',
+    name: 'InsectMuseumButterfly',
+    components: {
+      default: InsectMuseumButterfly
+    }
+  },
+  {
+    path: '/butterflyReadPage/:boardNo/',
+    name: 'ButterflyReadPage',
+    components: {
+      default: ButterflyReadPage
+    },
+    props: {
+      default: true
+    }
+  },
+  
   
 ]
 

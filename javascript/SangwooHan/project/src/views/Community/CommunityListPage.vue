@@ -1,34 +1,24 @@
 <template>
     <div>
-        
-        <v-container>
-         <v-btn v-if="this.$store.state.isLogin == true" route :to="{name: 'CommunityRegisterPage'}">글쓰기</v-btn>
-        </v-container>
-       <community-list-form v-if="boards" :boards="boards"/>
-       <p v-else > 로딩중</p>
-     
+        <community-list-form :boards="boards"/>
     </div>
 </template>
 
 <script>
+import { mapActions ,mapState} from 'vuex'
 import CommunityListForm from '../../components/Community/CommunityListForm.vue'
-import { mapState, mapActions } from 'vuex'
-
 export default {
-    name: 'CommunityLissPage',
-
-    components: {
-        CommunityListForm,
-        
+    name: 'CommunityListPage',
+  components: { CommunityListForm },
+    computed:{
+        ...mapState(['boards'])
     },
-    computed: {
-          ...mapState(['boards'])
-      },
-      mounted () {
-          this.fetchBoardList()
-      },
-      methods: {
-          ...mapActions(['fetchBoardList'])
-      }
+    methods: {
+        ...mapActions(['fetchBoardList'])
+    },
+    mounted() {
+        this.fetchBoardList()
+    },
+    
 }
 </script>

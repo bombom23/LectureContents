@@ -1,7 +1,7 @@
 <template>
 <div>
     <!--로그아웃일떄-->
-    <v-toolbar v-if="this.$store.state.isLogin == false" dense dark >
+    <v-toolbar  dense dark >
     <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
     </v-app-bar-nav-icon>
     <v-toolbar-title>
@@ -14,7 +14,7 @@
     </v-toolbar-items>
     </v-toolbar>
  <!--로그인일때 -->
- <v-toolbar v-if="this.$store.state.isLogin == true" dense dark >
+ <v-toolbar  dense dark >
     <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
     </v-app-bar-nav-icon>
     <v-toolbar-title>

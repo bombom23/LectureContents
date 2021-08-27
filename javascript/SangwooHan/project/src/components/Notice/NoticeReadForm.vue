@@ -1,46 +1,50 @@
 <template>
     <div>
+        <v-container>
+        <v-btn @click="check">체크</v-btn>
         
-         <v-container >
-             <form @submit.prevent="OnSubmit">
-           <v-text-field label="id" v-model="id"  readonly type="text" append-icon="mid-account">
-           </v-text-field>
-           <v-text-field label="분류" v-model="type1"  readonly type="text" append-icon="mid-account">
-           </v-text-field>
-            
-            <v-text-field label="title" v-model="title" readonly type="text" append-icon="mid-account">
-           </v-text-field>
-           <p>내용</p>
-          <textarea name="contentText" id="contentText"  v-model="text" readonly></textarea>
-           
-              
-                 <table v-if="this.$store.state.isLogin == true" id="commentsTable">
-                    <tr>
-                    <td>회원이름</td>
-                    <td><input type="text" v-model="ui" readonly/></td>
-                    </tr>
-                    <tr>
-                        <td>댓글 내용</td>
-                        <textarea id="Comments" cols="30" rows="10" v-model="comments"/>
-                    </tr>
-                    <v-btn  type="submit">댓글달기</v-btn>
-                 </table>
-               </form>
+        <table>
+            <tr>
+                <th align="center">제목[{{notice.title}}]</th>
+            </tr>
+            <tr>
+                <th aligen="center">작성자:{{notice.id}}</th>
+            </tr>
+            <tr>
+                <th aligen="center">분류:{{notice.type1}}</th>
+            </tr>
+        </table>
+       
+        <h4>{{notice.text}}</h4>
+        <form @submit.prevent="OnSubmit" v-if="this.$store.state.isLogin == true">
+         <table >
+             <tr>
+                 <th>작성자</th>
+                 <input v-model="ui" readonly/>
+             </tr>
+            <tr><th>댓글</th>
+                <textarea v-model="comments"/>
+                <button type="submit">등록</button>
+            </tr>
+        </table>
+        </form>
+         <table >
 
-            <v-data-table :headers="headerTitle"
-                    :items="(NoticeCommentList)" :key="NoticeCommentList.id"
-                    :items-per-page="10"
-                    class="elevation-1" @click:row="handleClick">
-         </v-data-table>
-         </v-container>
-            </div>
-      
+              <tr v-for="(item, index) in notice.authList" :key="notice.authList[index].id">
+                  
+                  <th width="150px">{{ item.ui}}</th>
+                  
+                  <td>{{item.comments}}</td>
+              </tr>
+              
+           
+          </table>
+        </v-container>
+    </div>
 </template>
 
 <script>
 import axios from 'axios'
-import { mapActions, mapState } from 'vuex'
-
 export default {
     name: 'NoticeReadForm',
     props: {
@@ -48,54 +52,34 @@ export default {
             type: Object
         }
     },
-    data() {
-            return {
-                id: this.notice.id,
-                type1: this.notice.type1,
-                title: this.notice.title,
-                text: this.notice.text,
-                ui: this.notice.id,
-                comments: '',
-                boardNo: this.notice.boardNo,
-
-                headerTitle: [
-                    {text:'작성자' , value: 'ui', width: '50px' },
-                     {text:'댓글' , value: 'comments', width: '200px' }
-                ]
-            }
-    },
-    methods: {
-        OnSubmit() {
-                    const {ui , comments } =this
-                axios.put(`http://localhost:9999/jpaNotice/noticeComments/${this.boardNo}` , {ui , comments})
-                .then(res => {
-                    alert('등록성공' + res)
-                }).catch(err => {alert(err.response.data.message)})
+    methods:{
+        check(){
+            console.log(this.notice)
         },
-        ...mapActions(['fetchNoticeCommentList'])
+        OnSubmit() {
+             
+             const {ui ,comments} =this
+             axios.post(`http://localhost:9999/jpaNotice/noticeComments/${this.notice.boardNo}`, {ui , comments})
+             .then( res => {
+                 alert('등록성공' + res)
+             }).catch( err => {
+                 alert('에러' +  err.response.data.message)
+             })
+        }
     },
-    computed: {
-        ...mapState(['NoticeCommentList'])
-    },
-    created() {
-        this.fetchNoticeCommentList(this.boardNo)
-    },
+    data() {
+
+        return{
+             ui: this.$store.state.loginUser,
+             comments: '',
+             
+        }
+    }
 }
 </script>
 
-
-
-
-
-
-
-
-
 <style scoped>
-#contentText{width:1000px; height:500px; border: 1px;
-border-style:solid;
-/*   resize:none; */
-/*   resize: horizontal; */
- resize: vertical;
+h4{
+    height: 1000px;
 }
 </style>

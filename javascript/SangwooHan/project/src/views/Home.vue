@@ -1,22 +1,16 @@
 <template>
-  <div id="main">
-  
-<swiper-slide/>
+<div>
+<!--<swiper-slide/> -->
    <!--<coverflow :coverList="coverList" :coverWidth="260" :index="2" id="coverflow" @click="handleClick"></coverflow> -->
-   
-   <div class="footer">
-   <v-btn v-if="this.$store.state.isLogin == true " @click="removeSession" width="20" align="left" >logout</v-btn>
-  <p>&copy; 곤충박사위원회</p>
-   </div>
-  </div>
- 
+</div>
 </template>
 
 <script>
 //import coverflow from 'vue-coverflow'
+
 import axios from 'axios'
 import { mapState } from 'vuex'
-import SwiperSlide from '../components/SwiperSlide/SwiperSlide.vue'
+//import SwiperSlide from '../components/SwiperSlide/SwiperSlide.vue'
 
 
   export default {
@@ -24,8 +18,8 @@ import SwiperSlide from '../components/SwiperSlide/SwiperSlide.vue'
 
     components: {
    //  coverflow
-   
-        SwiperSlide
+    
+       // SwiperSlide
     },
     data(){
         return{
@@ -62,7 +56,8 @@ import SwiperSlide from '../components/SwiperSlide/SwiperSlide.vue'
                     title: '하늘소',
                     
                 },
-            ]
+            ],
+        
         }
     },
     methods: {

@@ -20,8 +20,8 @@ export default {
     members: [],
     member: null,
     list: [],
-    isLogin: false,
     loginUser: null,
+    User: null,
     //게시판
     boards: [],
     board: null,
@@ -38,6 +38,17 @@ export default {
     BeetleList: [],
     Beetle: null,
     BeetleCommentList: [],
+    DragonflyList: [],
+    Dragonfly: null,
+    DragonflyComments: [],
+    SkycowList: [],
+    Skycow: null,
+    //나방/나비
+    ButterflyList:[],
+    Butterfly: null,
+    //세션
+    session: [],
+    isLogin: false
     
     
 

@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 
+import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
+
+
 import 'materialize-css/dist/css/materialize.min.css'
 import 'material-design-icons/iconfont/material-icons.css'
 
@@ -15,3 +18,4 @@ new Vue({
   vuetify,
   render: h => h(App)
 }).$mount('#app')
+

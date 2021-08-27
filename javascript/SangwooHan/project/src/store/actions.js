@@ -19,7 +19,16 @@ FECTH_STAGBEETLES,
 FECTH_STAGBEETLES_COMMENT_LIST,
 FETCH_BEETLE_LIST,
 FETCH_BEETLE,
-FETCH_BEETLE_COMMENT_LIST
+FETCH_BEETLE_COMMENT_LIST,
+FETCH_DRAGONFLY_LIST,
+FETCH_DRAGONFLY,
+FETCH_DRAGONFLY_COMMENT_LIST,
+//하늘소
+FETCH_SKYCOW_LIST,
+FETCH_SKYCOW,
+//나비/나방
+FETCH_BUTTERFLY_LIST,
+FETCH_BUTTERFLY
 
 
 } from './mutation-types'
@@ -65,9 +74,9 @@ export default {
     } ,
 
     fetchCommentsList( { commit }, boardNo ){
-                    console.log('action의 작동 그리고 boardNo =' + boardNo )
+                  //  console.log('action의 작동 그리고 boardNo =' + boardNo )
         return axios.get(`http://localhost:9999/jpaBoard/Commentslist/${boardNo}`)
-        .then((res) => { console.log("Spring에서 넘어온 comments정보 =" +res.data )
+        .then((res) => { /*console.log("Spring에서 넘어온 comments정보 =" +res.data )*/
                 commit(FETCH_COMMENTS_LIST, res.data)
         }).catch(err => {
             alert(err.response.data.message)
@@ -95,6 +104,7 @@ export default {
         .catch(err => {
             alert(err.response.data.message)
         })
+        //사슴벌레
     },
     fetchStagbeetleList({ commit } ) {
         return axios.get('http://localhost:9999/stagbeetle/stagbeetleList')
@@ -117,6 +127,7 @@ export default {
         }).catch(err => {alert(err.response.data.message)})
 
     },
+    //장수풍뎅이
     fetchBeetleList({ commit }) {
 
         return axios.get('http://localhost:9999/beetle/beetlelist')
@@ -141,6 +152,55 @@ export default {
         .then((res)=> {
             commit(FETCH_BEETLE_COMMENT_LIST, res.data)
         }).catch(err => {
+            alert(err.response.data.message)
+        })
+    },
+    fetchDragonflyList({ commit }) {
+        
+        return axios.get('http://localhost:9999/dragonfly/dragonflyList')
+        .then((res) => {
+            commit(FETCH_DRAGONFLY_LIST,res.data) 
+        }).catch(err=> {alert(err.response.data.message)})
+    },
+    fetchDragonfly({ commit }, boardNo) {
+        return axios.get(`http://localhost:9999/dragonfly/dragonfly/${boardNo}`)
+        .then( (res) => {
+            commit(FETCH_DRAGONFLY, res.data)
+        }).catch(err=>{alert(err.response.data.message)})
+    },
+    fetchDragonflyCommentList({ commit }, boardNo) {
+        return axios.get(`http://localhost:9999/dragonfly/commentList/${boardNo}`)
+        .then ((res) => {
+            commit(FETCH_DRAGONFLY_COMMENT_LIST, res.data) 
+        }).catch(err=> {alert(err.response.data.message)})
+    },
+    //하늘소
+    fetchSkycowList({commit}) {
+
+        return axios.get('http://localhost:9999/skycow/SkycowList')
+        .then((res) => {
+            commit(FETCH_SKYCOW_LIST, res.data)
+        }).catch(err=>{alert(err.response.data.message)})
+    },
+    fethchSkycow({commit}, boardNo) {
+
+        return axios.get(`http://localhost:9999/skycow/skycow/${boardNo}`)
+        .then( (res) => {
+            commit(FETCH_SKYCOW, res.data)
+        }).catch(err=>{alert(err.response.data.message)})
+    },
+    fetchButterflyList({commit}) {
+            return axios.get('http://localhost:9999/butterfly/butterflyList')
+            .then((res) => { 
+                commit(FETCH_BUTTERFLY_LIST, res.data)
+            }).catch(err=>{alert(err.response.data.message)})
+    },
+    fetchButterfly({commit}, boardNo){
+
+        return axios.get(`http://localhost:9999/butterfly/butterfly/${boardNo}`)
+        .then((res) => {
+            commit(FETCH_BUTTERFLY,res.data)
+        }).catch(err=>{
             alert(err.response.data.message)
         })
     }

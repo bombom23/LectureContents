@@ -1,23 +1,27 @@
 <template>
-    
+<div>
+        <v-btn @click="check">
+            작성자체크
+        </v-btn>
+        <section>
         <form @submit.prevent="OnSubmit">
-            <div>
-               
                 <v-container >
-                    <h3>게시물작성</h3>
-           <v-text-field label="id" v-model="id"  readonly type="text" append-icon="mid-account">
-           </v-text-field>
+                    
+            <p>제목</p>
+            <textarea name="contentTitle" id="contentTitle" cols="30" rows="10" v-model="title"></textarea>
+            <p>내용</p>
+              <textarea name="contentText" id="contentText" cols="30" rows="10" v-model="text"></textarea>
            
-            <v-text-field label="title" v-model="title" type="text" append-icon="mid-account">
-           </v-text-field>
-           <p>내용</p>
-          <textarea name="contentText" id="contentText" cols="30" rows="10" v-model="text"></textarea>
-     
+           <v-btn id="btn" class="green" type="submit">등록</v-btn>
                 </v-container>
-            </div>
-              
-            <v-btn class="blue" type="submit">등록</v-btn>
+            
         </form>
+        </section>
+          <aside>
+              <h3>광고</h3>
+          </aside>
+</div>
+        
     
 </template>
 
@@ -26,14 +30,12 @@ import {mapState } from 'vuex'
 export default {
         name: 'CommunityRegisterForm',
         props: {
-                members: {
-                    type: Array
-                }
+            
         },
 
         data () {
             return {
-                id: this.$store.state.loginUser,
+                id: this.$store.state.User,
                
                 title: '',
                 text: '',
@@ -47,18 +49,48 @@ export default {
             },
             ...mapState[('loginUser')],
            
-            
+            check() {
+            console.log(this.$store.state.User)
         }
+        },
+        
         
     
 }
 </script>
 
 <style scoped>
-textarea{width:1000px; height:500px; border: 1px;
+#contentText{width:1000px; height:500px; border: 1px;
 border-style:solid;
 /*   resize:none; */
 /*   resize: horizontal; */
- resize: vertical;
+padding: 10px;
+			box-sizing: border-box;
+			border: solid 2px green;
+			border-radius: 5px;
+			font-size: 16px;
+			resize: both;
+
+}
+#contentTitle{width:1000px; height:50px; border: 1px;
+border-style:solid;
+/*   resize:none; */
+/*   resize: horizontal; */
+ padding: 10px;
+			box-sizing: border-box;
+			border: solid 2px green;
+			border-radius: 5px;
+			font-size: 16px;
+			resize: both;
+           
+}
+#btn{
+    margin-left: 74.5%;
+}
+p{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    font-size: 3em;
 }
 </style>
+

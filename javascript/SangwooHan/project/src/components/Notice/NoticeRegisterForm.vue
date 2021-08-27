@@ -28,7 +28,7 @@ export default {
     name: 'NoticeRegisterForm',
     data() {
         return{
-            id: this.$store.state.loginUser,
+            id: this.$store.state.User,
             title: '',
             text: '',
             type1: '',
