@@ -17,4 +17,9 @@ public interface SkycowService {
     public  void comments(SkycowCommentRequest skycowCommentRequest) throws  Exception;
 
     public  void vuecount( Long boardNo) throws  Exception;
+
+    public  void ModifyComments(SkycowCommentRequest skycowCommentRequest) throws  Exception;
+
+    public  void deleteComment(Long skycowCommentsNo);
+
 }

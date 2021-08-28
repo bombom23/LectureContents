@@ -20,4 +20,9 @@ public interface StagbeetleService {
     public List<JpaStagbeetleComment> finyByCommentList( Long boardNo) throws  Exception;
 
     public void addvueCount(Long boardNo) throws Exception;
+
+    public  void ModifyComments(StagbeetleCommentRuquest stagbeetleCommentRuquest);
+
+    public  void deleteComment(Long StagbeetleCommentNo) throws  Exception;
+
 }

@@ -34,10 +34,12 @@ public class JpaButterflyComment {
     @UpdateTimestamp
     private Date upDate;
 
-    public JpaButterflyComment(Long boardNo, String ui, String comments) {
+    public JpaButterflyComment(Long ButterflyCommentNo,Long boardNo, String ui, String comments, Date regDate) {
         this.ui = ui;
         this.comments = comments;
         this.boardNo = boardNo;
+        this.ButterflyCommentNo =ButterflyCommentNo;
+        this.regDate = regDate;
     }
 
 }

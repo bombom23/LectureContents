@@ -38,24 +38,9 @@ public class JpaBoardServiceimpl implements JpaBoardService{
 
     @Override
     public void commanents(BoardRequest boardRequest) throws Exception {
+        JpaBoardComment jpaBoardComment = new JpaBoardComment(boardRequest.getBoardCommentNo(), boardRequest.getBoardNo(), boardRequest.getUi(), boardRequest.getComments(),boardRequest.getRegDate());
 
-        JpaBoardComment jpaBoardAuthEntity = new JpaBoardComment(boardRequest.getBoardNo(),boardRequest.getUi(), boardRequest.getComments());
-        JpaBoard jpaBoardEntity = new JpaBoard(boardRequest.getBoardNo(),boardRequest.getTitle(), boardRequest.getId(), boardRequest.getText(),boardRequest.getCreateDate(), boardRequest.getVuecount());
-
-
-    /*
-        jpaBoardEntity.addui(jpaBoardAuthEntity);
-        jpaBoardEntity.addComments(jpaBoardAuthEntity);
-
-        repository.save(jpaBoardEntity);
-
-
-
-
-     */
-
-        boardAuthRepository.save(jpaBoardAuthEntity);
-
+        boardAuthRepository.save(jpaBoardComment);
     }
 
     @Override
@@ -81,6 +66,18 @@ public class JpaBoardServiceimpl implements JpaBoardService{
 
         repository.updatevuecount(boardNo);
 
+    }
 
+    @Override
+    public void commentModify(BoardRequest boardRequest) throws Exception {
+
+        JpaBoardComment jpaBoardComment = new JpaBoardComment(boardRequest.getBoardCommentNo(), boardRequest.getBoardNo(), boardRequest.getUi(), boardRequest.getComments(),boardRequest.getRegDate());
+        boardAuthRepository.save(jpaBoardComment);
+    }
+
+    @Override
+    public void removeComment(Long boardCommentNo) throws Exception {
+
+        boardAuthRepository.deleteById(boardCommentNo);
     }
 }

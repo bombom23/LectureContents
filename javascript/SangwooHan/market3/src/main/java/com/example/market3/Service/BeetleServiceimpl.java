@@ -36,7 +36,7 @@ public class BeetleServiceimpl implements BeetleService {
     @Override
     public void addComment(BeetleCommentRequest beetleCommentRequest) throws  Exception {
 
-        JpaBeetleComment jpaBeetleComment = new JpaBeetleComment(beetleCommentRequest.getBoardNo(), beetleCommentRequest.getUi(), beetleCommentRequest.getComments());
+        JpaBeetleComment jpaBeetleComment = new JpaBeetleComment(beetleCommentRequest.getBeetleCommentNo(),beetleCommentRequest.getBoardNo(), beetleCommentRequest.getUi(), beetleCommentRequest.getComments(),beetleCommentRequest.getRegDate());
 
         beetleCommentsRepository.save(jpaBeetleComment);
     }
@@ -49,5 +49,18 @@ public class BeetleServiceimpl implements BeetleService {
     @Override
     public void addvueCount(Long boardNo) throws Exception {
         beetleRepository.addvueCount(boardNo);
+    }
+
+    @Override
+    public void ModifyComment(BeetleCommentRequest beetleCommentRequest) throws Exception {
+        JpaBeetleComment jpaBeetleComment = new JpaBeetleComment(beetleCommentRequest.getBeetleCommentNo(),beetleCommentRequest.getBoardNo(), beetleCommentRequest.getUi(), beetleCommentRequest.getComments(),beetleCommentRequest.getRegDate());
+        beetleCommentsRepository.save(jpaBeetleComment);
+
+    }
+
+    @Override
+    public void DeleteComment(Long beetleCommentNo) throws Exception {
+
+        beetleCommentsRepository.deleteById(beetleCommentNo);
     }
 }

@@ -37,7 +37,7 @@ public class StagbeetleServiceimpl implements StagbeetleService{
     @Override
     public void addComment(StagbeetleCommentRuquest stagbeetleCommentRuquest) throws Exception {
 
-        JpaStagbeetleComment jpaStagbeetleComment = new JpaStagbeetleComment(stagbeetleCommentRuquest.getBoardNo(), stagbeetleCommentRuquest.getUi(), stagbeetleCommentRuquest.getComments());
+        JpaStagbeetleComment jpaStagbeetleComment = new JpaStagbeetleComment(stagbeetleCommentRuquest.getStagbeetleCommentNo(),stagbeetleCommentRuquest.getBoardNo(), stagbeetleCommentRuquest.getUi(), stagbeetleCommentRuquest.getComments(),stagbeetleCommentRuquest.getRegDate());
 
         stagbeetleCommentRepository.save(jpaStagbeetleComment);
     }
@@ -52,5 +52,18 @@ public class StagbeetleServiceimpl implements StagbeetleService{
 
         stagbeetleRepository.addvueCount(boardNo);
 
+    }
+
+    @Override
+    public void ModifyComments(StagbeetleCommentRuquest stagbeetleCommentRuquest) {
+        JpaStagbeetleComment jpaStagbeetleComment = new JpaStagbeetleComment(stagbeetleCommentRuquest.getStagbeetleCommentNo(),stagbeetleCommentRuquest.getBoardNo(), stagbeetleCommentRuquest.getUi(), stagbeetleCommentRuquest.getComments(),stagbeetleCommentRuquest.getRegDate());
+
+        stagbeetleCommentRepository.save(jpaStagbeetleComment);
+    }
+
+    @Override
+    public void deleteComment(Long StagbeetleCommentNo) throws Exception {
+
+        stagbeetleCommentRepository.deleteById(StagbeetleCommentNo);
     }
 }

@@ -34,10 +34,12 @@ public class JpaStagbeetleComment {
     @UpdateTimestamp
     private Date upDate;
 
-    public JpaStagbeetleComment(Long boardNo, String ui, String comments) {
+    public JpaStagbeetleComment(Long StagbeetleCommentNo,Long boardNo, String ui, String comments,Date regDate) {
         this.ui = ui;
         this.comments = comments;
         this.boardNo = boardNo;
+        this.StagbeetleCommentNo =StagbeetleCommentNo;
+        this.regDate = regDate;
     }
 
 }

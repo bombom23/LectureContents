@@ -37,7 +37,7 @@ public class DragonflyServiceimpl  implements  DragonflyService{
     @Override
     public void addcomments(DragonflyCommentRequest dragonflyCommentRequest) throws Exception {
 
-        JpaDragonflyComment jpaDragonflyComment = new JpaDragonflyComment(dragonflyCommentRequest.getBoardNo(), dragonflyCommentRequest.getUi(), dragonflyCommentRequest.getComments());
+        JpaDragonflyComment jpaDragonflyComment = new JpaDragonflyComment(dragonflyCommentRequest.getDragonflyCommentNo(),dragonflyCommentRequest.getBoardNo(), dragonflyCommentRequest.getUi(), dragonflyCommentRequest.getComments(),dragonflyCommentRequest.getRegDate());
         dragonflyCommentRepository.save(jpaDragonflyComment);
     }
 
@@ -49,5 +49,17 @@ public class DragonflyServiceimpl  implements  DragonflyService{
     @Override
     public void addvuecount(Long boardNo) throws Exception {
         dragonflyRepository.addvuecount(boardNo);
+    }
+
+    @Override
+    public void ModifyComments(DragonflyCommentRequest dragonflyCommentRequest) throws Exception {
+
+        JpaDragonflyComment jpaDragonflyComment = new JpaDragonflyComment(dragonflyCommentRequest.getDragonflyCommentNo(),dragonflyCommentRequest.getBoardNo(), dragonflyCommentRequest.getUi(), dragonflyCommentRequest.getComments(),dragonflyCommentRequest.getRegDate());
+        dragonflyCommentRepository.save(jpaDragonflyComment);
+    }
+
+    @Override
+    public void deleteComment(Long dragonflyCommentNo) throws Exception {
+        dragonflyCommentRepository.deleteById(dragonflyCommentNo);
     }
 }

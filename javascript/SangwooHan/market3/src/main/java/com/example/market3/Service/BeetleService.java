@@ -21,5 +21,9 @@ public interface BeetleService {
 
     public  void addvueCount(Long boardNo) throws  Exception;
 
+    public  void ModifyComment (BeetleCommentRequest beetleCommentRequest)throws  Exception;
+
+    public  void DeleteComment(Long beetleCommentNo)throws  Exception;
+
 
 }

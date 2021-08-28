@@ -39,7 +39,7 @@ public class SkycowServiceimpl implements  SkycowService {
     @Override
     public void comments(SkycowCommentRequest skycowCommentRequest) throws Exception {
 
-        JpaSkycowComment jpaSkycowComment = new JpaSkycowComment(skycowCommentRequest.getBoardNo(),skycowCommentRequest.getUi(), skycowCommentRequest.getComments());
+        JpaSkycowComment jpaSkycowComment = new JpaSkycowComment(skycowCommentRequest.getSkycowCommentsNo(),skycowCommentRequest.getBoardNo(),skycowCommentRequest.getUi(), skycowCommentRequest.getComments(),skycowCommentRequest.getRegDate());
 
         skycowCommentRepository.save(jpaSkycowComment);
 
@@ -48,5 +48,19 @@ public class SkycowServiceimpl implements  SkycowService {
     @Override
     public void vuecount(Long boardNo) throws Exception {
         skycowRepository.vuecount(boardNo);
+    }
+
+    @Override
+    public void ModifyComments(SkycowCommentRequest skycowCommentRequest) throws Exception {
+        JpaSkycowComment jpaSkycowComment = new JpaSkycowComment(skycowCommentRequest.getSkycowCommentsNo(),skycowCommentRequest.getBoardNo(),skycowCommentRequest.getUi(), skycowCommentRequest.getComments(),skycowCommentRequest.getRegDate());
+
+
+        skycowCommentRepository.save(jpaSkycowComment);
+
+    }
+
+    @Override
+    public void deleteComment(Long skycowCommentsNo) {
+        skycowCommentRepository.deleteById(skycowCommentsNo);
     }
 }

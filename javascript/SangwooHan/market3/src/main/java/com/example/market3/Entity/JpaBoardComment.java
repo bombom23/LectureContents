@@ -35,12 +35,14 @@ public class JpaBoardComment {
     @UpdateTimestamp
     private Date upDate;
 
-    public JpaBoardComment(Long boardNo, String ui, String comments) {
+    public JpaBoardComment(Long boardCommentNo,Long boardNo, String ui, String comments, Date regDate) {
         this.ui = ui;
         this.comments = comments;
         this.boardNo = boardNo;
+        this.boardCommentNo = boardCommentNo;
+        this.regDate =regDate;
     }
-}
 
+}
 
 

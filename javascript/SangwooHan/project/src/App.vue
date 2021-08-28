@@ -78,9 +78,9 @@ onSubmit (payload) {
                             
                             this.$store.state.isLogin = true;
                             this.$store.state.session = res.data;
-                          
+                            this.$store.state.User = res.data.userid;
                             this.$cookies.set("user", res.data, '1h')
-                            
+                            this.$router.go()
                      
                             
                         } else {
@@ -104,6 +104,7 @@ logout() {
   this.$cookies.remove('user')
             this.$store.state.isLogin = false
             this.$store.state.session =null
+            this.$router.go()
 }
 
     },

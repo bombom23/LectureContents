@@ -12,7 +12,7 @@
         </table>
        
         <h4>{{board.text}}</h4>
-        <form @submit.prevent="OnSubmit">
+        <form v-if="commentBox ==1 && this.$store.state.User !=null" @submit.prevent="OnSubmit">
          <table >
              <tr>
                  <th>작성자</th>
@@ -32,43 +32,24 @@
                   
                   <td>{{item.comments}}</td>
                   <td>{{item.boardCommentNo}}</td>
-                 <v-dialog v-model="Modify" persistent max-width="500">
-              <template v-slot:activator="{ on }">
-               <v-btn color="primary" dark v-on="on">수정</v-btn>
-               </template>
-               <v-card>
-               <v-card-title>
-                  <span class="headline">
-                      수정
-                  </span>
-               </v-card-title>
-               <v-card-text>
-               <v-container grid-list-md>
-                   <v-layout wrap>
-                       <v-flex xs12>
-                           <v-text-field label="Comment" v-model="comments" required>
-                           </v-text-field>
-                       </v-flex>
-                   </v-layout>
-               </v-container>
-               </v-card-text>
-               <v-card-actions>
-                   <v-spacer></v-spacer>
-                   <v-btn color="teal darken-1" text @click.native="btnModifyCancleClick()">
-                       취소
-                   </v-btn>
-                    <v-btn color="teal darken-1" text @click.native="CommemtsModify(item)">
-                     확인
-                   </v-btn>
-               </v-card-actions>
-               </v-card>
-        </v-dialog>
-        <v-btn @click="deleteComment(item.boardCommentNo)">
-             삭제
+                <td v-if="Modify == item.boardCommentNo">
+                    <textarea  v-model="comments" cols="1" rows="1"/><v-btn depressed @click="CommemtsModify(item)">수정완료</v-btn><v-btn depressed @click="ModifyOFF">취소</v-btn>
+                </td>
+        <td>
+        <v-btn width="10px" depressed v-if="item.ui == User"  @click="deleteComment(item.boardCommentNo)">
+            <v-icon>mdi-alpha-x-box-outline</v-icon>
         </v-btn>
+        <v-btn depressed v-if="item.ui == User"   @click="ModifyOn(item.boardCommentNo)">
+             <v-icon>mdi-eraser</v-icon>
+        </v-btn>
+        </td>
+        <!--
+        <td>
          <v-btn @click="checkingman(item.boardCommentNo)">
              체크
         </v-btn>
+        </td>
+        -->
               </tr>
               
            
@@ -79,6 +60,7 @@
 
 <script>
 import axios from 'axios'
+import { mapState } from 'vuex'
 export default {
     name: 'CommunityReadForm',
     props:{
@@ -86,55 +68,82 @@ export default {
             type: Object
         }
     },
+    computed:{
+       ...mapState(['User'])
+    },
     methods: {
         check() {
             console.log(this.board)
-        },
+           },
+
+        ModifyOn(boardCommentNo){
+
+                this.commentBox = 0
+                this.Modify = boardCommentNo
+
+                                },
+
+        ModifyOFF(){
+
+                this.commentBox = 1
+                this.Modify = null
+
+                   },
+
         OnSubmit() {
+
                 const {ui , comments } = this
                 axios.post(`http://localhost:9999/jpaBoard/comment/${this.board.boardNo}`, {ui, comments})
                 .then( res => {
                     alert('등록성공' +res) 
+                    this.$router.go()
                 }).catch(err => {
                     alert(err.response.data.message)
                 })
-        },
+
+                  },
+
         CommemtsModify(item){
-            const {boardCommentNo, ui} = item
+
+            console.log(item)
+            const {boardCommentNo, ui, regDate} = item
                 const {comments} =this
-            axios.post(`http://localhost:9999/jpaBoard/ModifyComments/${this.board.boardNo}`,{ui,boardCommentNo,comments})
+            axios.post(`http://localhost:9999/jpaBoard/ModifyComments/${this.board.boardNo}`,{ui,boardCommentNo,comments,regDate})
             .then(res =>{
                 alert('수정성공'+ res) 
-                this.Modify =false
+                this.$router.go()
+                this.commentBox = 1
             }).catch(err=>{alert(err.response.data.message)})
-        },
-        btnModifyCancleClick(){
+            
 
-            this.Modify =false
-        },
+                            },
+        
         deleteComment(boardCommentNo){
+            
                console.log(boardCommentNo)
             axios.delete(`http://localhost:9999/jpaBoard/deleteComment/${boardCommentNo}`)
             .then( res => {
                 alert('삭제성공'+ res)
-            }).catch(err=>{alert(err.response.data.message)})
-            
+                this.$router.go()
+                         }).catch(err=>{alert(err.response.data.message)})
 
-        },
+                                     },
+
         checkingman(value) {
                 console.log(value)
-        }
+                          }
     },
     data() {
 
         return {
+
             comments: '',
             ui: this.$store.state.User,
-            Modify: false,
-            email: '',
-            password: ''
-        }
-    },
+            Modify: '',
+            commentBox: 1
+
+               }
+           },
 
     
   
@@ -144,6 +153,6 @@ export default {
 <style scoped>
 h4{
     width: 1000px;
-    height: 1000px;
+    height: 700px;
 }
 </style>

@@ -46,7 +46,20 @@ public class ButterflyServiceimpl implements  ButterflyService {
     public void comments(ButterflyCommentRequest butterflyCommentRequest) throws Exception {
 
 
-        JpaButterflyComment jpaButterflyComment = new JpaButterflyComment(butterflyCommentRequest.getBoardNo(),butterflyCommentRequest.getUi(),butterflyCommentRequest.getComments());
+        JpaButterflyComment jpaButterflyComment = new JpaButterflyComment(butterflyCommentRequest.getButterflyCommentNo(),butterflyCommentRequest.getBoardNo(),butterflyCommentRequest.getUi(),butterflyCommentRequest.getComments(),butterflyCommentRequest.getRegDate());
         butterflyCommentRepository.save(jpaButterflyComment);
+    }
+
+    @Override
+    public void ModifyComments(ButterflyCommentRequest butterflyCommentRequest) throws Exception {
+        JpaButterflyComment jpaButterflyComment = new JpaButterflyComment(butterflyCommentRequest.getButterflyCommentNo(),butterflyCommentRequest.getBoardNo(),butterflyCommentRequest.getUi(),butterflyCommentRequest.getComments(),butterflyCommentRequest.getRegDate());
+
+        butterflyCommentRepository.save(jpaButterflyComment);
+
+    }
+
+    @Override
+    public void deleteComment(Long butterflyCommentNo) throws Exception {
+        butterflyCommentRepository.deleteById(butterflyCommentNo);
     }
 }

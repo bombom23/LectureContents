@@ -74,4 +74,20 @@ public class StagbeetleController {
 
         return new ResponseEntity<Void>( HttpStatus.OK);
     }
+
+    @PostMapping("/ModifyComments/{boardNo}")
+    public ResponseEntity<Void> ModifyComments(@PathVariable("boardNo")Long boardNo, @Validated @RequestBody StagbeetleCommentRuquest stagbeetleCommentRuquest) throws  Exception {
+
+        stagbeetleCommentRuquest.setBoardNo(boardNo);
+        service.ModifyComments(stagbeetleCommentRuquest);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteComment/{StagbeetleCommentNo}")
+    public ResponseEntity<Void> deleteComment(@PathVariable("StagbeetleCommentNo")Long StagbeetleCommentNo) throws  Exception{
+
+        service.deleteComment(StagbeetleCommentNo);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 }

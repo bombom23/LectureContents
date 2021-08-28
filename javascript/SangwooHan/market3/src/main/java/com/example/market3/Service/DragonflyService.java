@@ -18,5 +18,12 @@ public interface DragonflyService {
     public void addcomments(DragonflyCommentRequest dragonflyCommentRequest) throws  Exception;
 
     public List<JpaDragonflyComment> getcomment(Long boardNo)throws  Exception;
+
     public  void addvuecount(Long boardNo) throws Exception;
+
+    public  void ModifyComments(DragonflyCommentRequest dragonflyCommentRequest)throws  Exception;
+
+    public void deleteComment(Long dragonflyCommentNo) throws Exception;
+
+
 }

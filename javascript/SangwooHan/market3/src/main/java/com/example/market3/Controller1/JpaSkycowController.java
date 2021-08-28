@@ -64,4 +64,18 @@ public class JpaSkycowController {
 
         return new ResponseEntity<Void>( HttpStatus.OK);
     }
+
+    @PostMapping("/ModifyComments/{boardNo}")
+    public ResponseEntity<Void> ModifyComments(@PathVariable("boardNo")Long boardNo ,@Validated @RequestBody SkycowCommentRequest skycowCommentRequest) throws  Exception {
+        skycowCommentRequest.setBoardNo(boardNo);
+        skycowService.ModifyComments(skycowCommentRequest);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteComment/{skycowCommentsNo}")
+    public  ResponseEntity<Void> deleteComment (@PathVariable("skycowCommentsNo") Long skycowCommentsNo) throws  Exception {
+
+        skycowService.deleteComment(skycowCommentsNo);
+        return new ResponseEntity<Void>(HttpStatus.OK );
+    }
 }

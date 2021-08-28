@@ -48,7 +48,7 @@ public class JpaNoticeController {
         return new ResponseEntity<JpaNotice>(jpaNotice1, HttpStatus.OK);
     }
 
-    @PutMapping("/noticeComments/{boardNo}")
+    @PostMapping("/noticeComments/{boardNo}")
     public ResponseEntity<Void> Noticecommanents(@PathVariable("boardNo") Long boardNo, @Validated @RequestBody NoticeCommentRequest noticeCommentRequest) throws Exception {
 
         noticeCommentRequest.setBoardNo(boardNo);
@@ -74,6 +74,25 @@ public class JpaNoticeController {
     public ResponseEntity<Void> Noticevuecount (@PathVariable("boardNo") Long boardNo) throws  Exception {
 
         service.NoticeaddVueCount(boardNo);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @PostMapping("/ModifyComments/{boardNo}")
+    public ResponseEntity<Void> ModifyComment(@PathVariable("boardNo")Long boardNo, @Validated @RequestBody NoticeCommentRequest noticeCommentRequest) throws  Exception {
+
+        noticeCommentRequest.setBoardNo(boardNo);
+
+
+        service.ModifyComment(noticeCommentRequest);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteComment/{noticeCommentNo}")
+    public ResponseEntity<Void> deleteComment (@PathVariable("noticeCommentNo") Long noticeCommentNo) throws  Exception{
+
+        service.deleteComment(noticeCommentNo);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }

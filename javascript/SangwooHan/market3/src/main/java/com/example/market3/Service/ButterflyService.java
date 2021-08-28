@@ -17,4 +17,8 @@ public interface ButterflyService {
     public  void vuecount(Long boardNo) throws  Exception ;
 
     public  void comments(ButterflyCommentRequest butterflyCommentRequest) throws  Exception;
+
+    public  void ModifyComments(ButterflyCommentRequest butterflyCommentRequest)throws  Exception;
+
+    public void deleteComment(Long butterflyCommentNo ) throws  Exception;
 }

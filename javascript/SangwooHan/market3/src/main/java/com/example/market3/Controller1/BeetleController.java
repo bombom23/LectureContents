@@ -72,4 +72,27 @@ public class BeetleController {
 
         return new ResponseEntity<Void>( HttpStatus.OK);
     }
+
+    @PostMapping("/ModifyComments/{boardNo}")
+        public ResponseEntity<Void> ModifyComment(@PathVariable("boardNo") Long boardNo, @Validated @RequestBody BeetleCommentRequest beetleCommentRequest ) throws  Exception{
+
+            beetleCommentRequest.setBoardNo(boardNo);
+
+            service.ModifyComment(beetleCommentRequest);
+
+
+            return  new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteComment/{beetleCommentNo}")
+    public  ResponseEntity<Void> DeleteComment (@PathVariable("beetleCommentNo")Long beetleCommentNo)throws  Exception{
+
+        service.DeleteComment(beetleCommentNo);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+
+
+
 }

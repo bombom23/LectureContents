@@ -18,7 +18,7 @@ public class JpaDragonflyComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long StagbeetleCommentNo;
+    private Long DragonflyCommentNo;
 
     @Column(name = "board_no")
     private Long boardNo;
@@ -35,10 +35,12 @@ public class JpaDragonflyComment {
     @UpdateTimestamp
     private Date upDate;
 
-    public JpaDragonflyComment(Long boardNo, String ui, String comments) {
+    public JpaDragonflyComment(Long DragonflyCommentNo,Long boardNo, String ui, String comments, Date regDate) {
         this.ui = ui;
         this.comments = comments;
         this.boardNo = boardNo;
+        this.DragonflyCommentNo = DragonflyCommentNo;
+        this.regDate = regDate;
     }
 
 }

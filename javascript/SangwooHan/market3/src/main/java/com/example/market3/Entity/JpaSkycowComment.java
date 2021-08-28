@@ -34,9 +34,11 @@ public class JpaSkycowComment {
     @UpdateTimestamp
     private Date upDate;
 
-    public JpaSkycowComment(Long boardNo, String ui, String comments) {
+    public JpaSkycowComment(Long SkycowCommentsNo ,Long boardNo, String ui, String comments, Date regDate) {
         this.ui = ui;
         this.comments = comments;
         this.boardNo = boardNo;
+        this.SkycowCommentsNo = SkycowCommentsNo;
+        this.regDate = regDate;
     }
 }

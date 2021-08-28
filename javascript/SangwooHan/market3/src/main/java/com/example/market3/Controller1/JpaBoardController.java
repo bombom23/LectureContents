@@ -47,13 +47,12 @@ public class JpaBoardController {
         return new ResponseEntity<JpaBoard>(jpaBoard1, HttpStatus.OK);
     }
 
-    @PutMapping("/{boardNo}")
+    @PostMapping("/comment/{boardNo}")
     public ResponseEntity<Void> commanents(@PathVariable("boardNo") Long boardNo,
                                                   @Validated @RequestBody BoardRequest boardRequest) throws Exception {
 
-        boardRequest.setBoardNo(boardNo);
+            boardRequest.setBoardNo(boardNo);
 
-            log.info("boardRequest(): " +boardRequest.getBoardNo());
         service.commanents(boardRequest);
 
         return new ResponseEntity<Void>( HttpStatus.OK);
@@ -95,6 +94,27 @@ public class JpaBoardController {
     public ResponseEntity<Void> vuecountupdate(@PathVariable("boardNo") Long boardNo) throws  Exception{
 
         service.vuecountupdate(boardNo);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+    @PostMapping("/ModifyComments/{boardNo}")
+    public ResponseEntity<Void> commentModify(@PathVariable("boardNo")Long boardNo,@Validated @RequestBody BoardRequest boardRequest ) throws  Exception{
+
+        boardRequest.setBoardNo(boardNo);
+        System.out.println(boardRequest.getBoardNo());
+        System.out.println(boardRequest.getUi());
+        System.out.println(boardRequest.getComments());
+        System.out.println(boardRequest.getBoardCommentNo());
+        service.commentModify(boardRequest);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+
+    }
+
+    @DeleteMapping("/deleteComment/{boardCommentNo}")
+    public ResponseEntity<Void> removeComment (@PathVariable Long boardCommentNo) throws  Exception{
+
+       service.removeComment(boardCommentNo);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }

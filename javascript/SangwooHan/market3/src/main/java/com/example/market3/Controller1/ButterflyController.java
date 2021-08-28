@@ -63,4 +63,18 @@ public class ButterflyController {
         butterflyService.comments(butterflyCommentRequest);
             return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
+    @PostMapping("/ModifyComments/{boardNo}")
+    public ResponseEntity<Void> ModifyComments(@PathVariable("boardNo")Long boardNo ,@Validated @RequestBody ButterflyCommentRequest butterflyCommentRequest ) throws  Exception {
+        butterflyCommentRequest.setBoardNo(boardNo);
+        butterflyService.ModifyComments(butterflyCommentRequest);
+            return new ResponseEntity<Void>( HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteComment/{butterflyCommentNo}")
+    public  ResponseEntity<Void> deleteComment(@PathVariable("butterflyCommentNo") Long butterflyCommentNo) throws  Exception {
+
+        butterflyService.deleteComment(butterflyCommentNo);
+            return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 }

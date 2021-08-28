@@ -39,7 +39,7 @@ public class JpaNoticeServiceimpl  implements JpaNoticeService{
     @Override
     public void Noticecommanents(NoticeCommentRequest noticeCommentRequest) throws Exception {
 
-        JpaNoticeComment jpaNoticeComment = new JpaNoticeComment(noticeCommentRequest.getBoardNo(),noticeCommentRequest.getUi(), noticeCommentRequest.getComments());
+        JpaNoticeComment jpaNoticeComment = new JpaNoticeComment(noticeCommentRequest.getNoticeCommentNo(),noticeCommentRequest.getBoardNo(),noticeCommentRequest.getUi(), noticeCommentRequest.getComments(),noticeCommentRequest.getRegDate());
 
         noticeCommentRepository.save(jpaNoticeComment);
     }
@@ -52,5 +52,18 @@ public class JpaNoticeServiceimpl  implements JpaNoticeService{
     @Override
     public void NoticeaddVueCount(Long boardNo) throws Exception {
         jpaNoticeRepository.NoticeaddVueCount(boardNo);
+    }
+
+    @Override
+    public void ModifyComment(NoticeCommentRequest noticeCommentRequest) throws Exception {
+        JpaNoticeComment jpaNoticeComment = new JpaNoticeComment(noticeCommentRequest.getNoticeCommentNo(),noticeCommentRequest.getBoardNo(),noticeCommentRequest.getUi(), noticeCommentRequest.getComments(),noticeCommentRequest.getRegDate());
+
+        noticeCommentRepository.save(jpaNoticeComment);
+    }
+
+    @Override
+    public void deleteComment(Long noticeCommentNo) throws Exception {
+
+        noticeCommentRepository.deleteById(noticeCommentNo);
     }
 }

@@ -21,4 +21,8 @@ public interface JpaNoticeService {
     public List<JpaNoticeComment> finByNoticeComments (Long boardNo) throws  Exception;
 
     public  void NoticeaddVueCount (Long boardNo) throws  Exception;
+
+    public  void ModifyComment (NoticeCommentRequest noticeCommentRequest) throws  Exception;
+
+    public  void deleteComment (Long noticeCommentNo) throws  Exception;
 }

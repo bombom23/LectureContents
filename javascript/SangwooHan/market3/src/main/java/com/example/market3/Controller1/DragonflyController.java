@@ -79,4 +79,19 @@ public class DragonflyController {
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
+    @PostMapping("/ModifyComments/{boardNo}")
+    public  ResponseEntity<Void> ModifyComments(@PathVariable("boardNo") Long boardNo, @Validated @RequestBody DragonflyCommentRequest dragonflyCommentRequest) throws  Exception{
+        dragonflyCommentRequest.setBoardNo(boardNo);
+        service.ModifyComments(dragonflyCommentRequest);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+
+    }
+
+    @DeleteMapping("/deleteComment/{dragonflyCommentNo}")
+    public ResponseEntity<Void> deleteComment (@PathVariable("dragonflyCommentNo") Long dragonflyCommentNo) throws  Exception {
+
+        service.deleteComment(dragonflyCommentNo);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 }

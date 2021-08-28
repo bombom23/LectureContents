@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Slf4j
@@ -20,5 +21,7 @@ public class SkycowCommentRequest {
     private String comments;
     private LocalDateTime createDate;
     private Integer vuecount;
+    private Long skycowCommentsNo;
+    private Date regDate;
 
 }

@@ -35,9 +35,12 @@ public class JpaNoticeComment {
     @UpdateTimestamp
     private Date upDate;
 
-    public JpaNoticeComment(Long boardNo, String ui, String comments) {
+    public JpaNoticeComment(Long noticeCommentNo,Long boardNo, String ui, String comments, Date regDate) {
         this.ui = ui;
         this.comments = comments;
         this.boardNo = boardNo;
+        this.noticeCommentNo = noticeCommentNo;
+        this.regDate = regDate;
+
     }
 }
