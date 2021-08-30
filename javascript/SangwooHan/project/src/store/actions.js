@@ -33,6 +33,8 @@ FETCH_BUTTERFLY,
 FETCH_PRODUCT_LIST,
 FETCH_PRODUCT,
 FETCH_BASKET_LIST,
+//주문정보
+FETCH_ORDER_LIST,
 
 
 
@@ -229,6 +231,14 @@ export default {
 
             commit(FETCH_BASKET_LIST,res.data)
         }).catch(err=>{alert(err.response.data)})
+    },
+    //주문정보
+    fetchOrderList({ commit }) {
+
+        return axios.get('http://localhost:9999/jpaOrder/getOrderList')
+        .then((res) =>{
+            commit(FETCH_ORDER_LIST, res.data)
+        }).catch(err=>{alert(err.response.data.message)})
     }
 
 

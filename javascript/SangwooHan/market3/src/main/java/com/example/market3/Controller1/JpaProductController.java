@@ -1,5 +1,6 @@
 package com.example.market3.Controller1;
 
+import com.example.market3.Controller1.MemberRequset.ProductCommentRequest;
 import com.example.market3.Entity.JpaBoard;
 import com.example.market3.Entity.JpaProduct;
 import com.example.market3.Service.ProductService;
@@ -42,5 +43,28 @@ public class JpaProductController {
         Optional<JpaProduct> jpaProduct = productService.getProduct(boardNo);
         JpaProduct jpaProduct1  = jpaProduct.get();
         return new ResponseEntity<>(jpaProduct1,HttpStatus.OK);
+    }
+
+    @PostMapping("/comment/{boardNo}")
+    public  ResponseEntity<Void> comment(@PathVariable("boardNo")Long boardNo, @Validated @RequestBody ProductCommentRequest productCommentRequest)throws Exception{
+        productCommentRequest.setBoardNo(boardNo);
+        productService.comment(productCommentRequest);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @PostMapping("/ModifyComments/{boardNo}")
+    public ResponseEntity<Void> ModifyComments(@PathVariable("boardNo")Long boardNo, @Validated @RequestBody ProductCommentRequest productCommentRequest) throws  Exception {
+
+        productCommentRequest.setBoardNo(boardNo);
+        productService.ModifyComments(productCommentRequest);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteComment/{productCommentNo}")
+    public ResponseEntity<Void> deleteComment(@PathVariable("productCommentNo")Long productCommentNo) throws  Exception{
+
+        productService.deleteComment(productCommentNo);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }

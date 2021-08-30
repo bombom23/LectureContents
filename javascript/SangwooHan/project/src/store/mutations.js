@@ -26,7 +26,9 @@ import {
     //쇼핑몰
     FETCH_PRODUCT_LIST,
     FETCH_PRODUCT,
-    FETCH_BASKET_LIST
+    FETCH_BASKET_LIST,
+    //주문정보
+    FETCH_ORDER_LIST
     
 
     
@@ -111,6 +113,10 @@ export default {
     },
     [FETCH_BASKET_LIST] (state,BasketList) {
         state.BasketList = BasketList
+    },
+    //주문정보
+    [FETCH_ORDER_LIST] (state, OrderList) {
+        state.OrderList = OrderList
     }
     
 }

@@ -54,7 +54,9 @@ export default {
     ProductList: [],
     Product: null,
     BasketList: [],
-    
+    //주문정보
+    OrderList: [],
+
     
 
     

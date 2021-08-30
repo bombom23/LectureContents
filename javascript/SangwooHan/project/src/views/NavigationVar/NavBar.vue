@@ -211,6 +211,12 @@ export default {
                     name: '상품등록',
                     route: '/productRegister',
                 },
+                {
+                     
+                    text: '주문현황',
+                    name: '주문현황',
+                    route: '/orderListPage',
+                },
                
             ]
             

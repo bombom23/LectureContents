@@ -20,8 +20,11 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-        <v-btn text v-for="link in LogInlinks" :key="link.icon" :to="link.route">
-            {{ link.text }}
+        <v-btn depressed route :to="{name: 'BasketReadPage', params:{memberNo: this.$store.state.loginMemberNo}}" >
+            장바구니
+        </v-btn>
+        <v-btn depressed route :to="{name: 'NoticeListPage'}" >
+            공지판
         </v-btn>
     </v-toolbar-items>
     </v-toolbar>
@@ -30,10 +33,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 
 export default {
     computed: {
-
+        ...mapState(['loginMemberNo'])
     },
     data () {
         return {
@@ -58,7 +62,11 @@ export default {
                 },
             ],
              LogInlinks: [
-               
+               {
+                    text: 'ㅣ장바구니ㅣ',
+                    name: '장바구니',
+                    route: '/basketReadPage',params:{memberNo: 1}
+                },
                   {
                     text: 'ㅣ공지판ㅣ',
                     name: '공지판',

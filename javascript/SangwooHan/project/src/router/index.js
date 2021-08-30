@@ -62,6 +62,7 @@ import ProductRegister from '../views/ShoppingMall/ProductRegister'
 import ShoppingMallpage from '../views/ShoppingMall/ShoppingMallpage'
 import ProductReadPage from '../views/ShoppingMall/ProductReadPage'
 import BasketReadPage from '../views/ShoppingMall/BasketReadPage'
+import OrderListPage from '../views/ShoppingMall/OrderListPage'
 
 Vue.use(VueRouter)
 
@@ -340,6 +341,13 @@ const routes = [
     props: {
       default: true
     }
+  },
+  {
+    path: '/orderListPage',
+    name: 'OrderListPage',
+    components: {
+      default: OrderListPage
+    },
   },
   
 ]

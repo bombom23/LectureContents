@@ -9,7 +9,8 @@
                 <p>제품명:{{product.productName}}</p>
                 <p>제품가격:{{product.productPrice}}원</p>
                 <v-btn @click="Buy(product.boardNo)"> 구매</v-btn>
-                <v-btn @click="Basket(product)">장바구니</v-btn>
+                <v-btn v-if="User !=null" @click="Basket(product)">장바구니</v-btn>
+                <v-btn v-if="User ==null" @click="plzlogin">장바구니</v-btn>
             </li>
         </ul>
         
@@ -37,6 +38,7 @@ export default {
             }
     },
     methods: {
+        plzlogin(){alert('로그인후에 이용해주세요!')},
         ...mapActions(['fetchBasketList','fetchMember']),
         
         Buy(boardNo){
