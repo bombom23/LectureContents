@@ -19,8 +19,8 @@ export default {
     },
     methods: {
         onSubmit(payload){
-                const {userid, password, name, email, birthday, gender, address, phoneNo, auth} = payload
-                axios.post('http://localhost:9999/jpamemberManage/register', {userid, password, name, email, birthday, gender, address, phoneNo, auth})
+                const {userid, password, name, email, birthday, gender, address, phoneNo} = payload
+                axios.post('http://localhost:9999/jpamemberManage/register', {userid, password, name, email, birthday, gender, address, phoneNo})
                 .then(res =>{
                     alert('회원가입 성공' + res)
                     this.$router.push({

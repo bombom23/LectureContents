@@ -46,7 +46,7 @@ export default {
     NewLoginPageForm
     },
     computed: {
-      ...mapState(['members'])
+      ...mapState(['members','loginMemberNo'])
     },
    
                 
@@ -63,9 +63,10 @@ export default {
       }
 },
 check(){
-  console.log(this.$store.state.session)
+  console.log(this.$cookies.get('user'))
    console.log('로그인유무정보'+this.$store.state.isLogin)
    console.log(this.$store.state.User)
+   console.log(this.$store.state.loginMemberNo)
 },
 onSubmit (payload) {
            if(this.$store.state.session ==null){
@@ -73,14 +74,23 @@ onSubmit (payload) {
             axios.post('http://localhost:9999/jpamemberManage/login', { userid: id, password: pw, auth: null })
                     .then(res => {
                         if (res.data != "") {
-                            
+                             console.log(res.data)
                             alert('로그인 성공! - ' + res.data)
-                            
+
+                            for(var i = 0 ; i <this.members.length ; i++){
+                              
+                               if(this.members[i].userid == id ){
+                                 this.$store.state.loginMemberNo = this.members[i].memberNo
+                               }
+                                                                          }
+                            this.$cookies.set("memberNo",this.$store.state.loginMemberNo,'1h')
+
                             this.$store.state.isLogin = true;
                             this.$store.state.session = res.data;
                             this.$store.state.User = res.data.userid;
                             this.$cookies.set("user", res.data, '1h')
-                            this.$router.go()
+                            
+                          this.$router.go()
                      
                             
                         } else {
@@ -102,8 +112,10 @@ onSubmit (payload) {
 },
 logout() {
   this.$cookies.remove('user')
+  this.$cookies.remove('memberNo')
             this.$store.state.isLogin = false
             this.$store.state.session =null
+            this.$store.state.loginMemberNo =null
             this.$router.go()
 }
 
@@ -111,11 +123,14 @@ logout() {
     mounted () {
           this.$store.state.session = this.$cookies.get('user')
           this.$store.state.loginUser = this.$cookies.get('user')
+          this.$store.state.loginMemberNo =this.$cookies.get('memberNo')
+          
           if( this.$store.state.session != null) {
               this.$store.state.isLogin =true
           }
           if(this.$store.state.loginUser != null){
             this.$store.state.User = this.$store.state.loginUser.userid
+         
           }
           this.fetchMemberList()
       },

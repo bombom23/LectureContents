@@ -50,10 +50,12 @@ public class JpaBoardServiceimpl implements JpaBoardService{
     }
 
     @Override
-    public void CommunityModify(BoardRequest boardRequest) throws Exception {
+    public void CommunityModify(Long boardNo, String text) throws Exception {
 
-        JpaBoard jpaBoard = new JpaBoard(boardRequest.getBoardNo(),boardRequest.getTitle(), boardRequest.getId(), boardRequest.getText(),boardRequest.getCreateDate(), boardRequest.getVuecount());
-        repository.save(jpaBoard);
+      //  JpaBoard jpaBoard = new JpaBoard(boardRequest.getBoardNo(),boardRequest.getTitle(), boardRequest.getId(), boardRequest.getText(),boardRequest.getCreateDate(), boardRequest.getVuecount());
+    //    repository.save(jpaBoard);
+
+        repository.CommunityModify(boardNo, text);
     }
 
     @Override

@@ -1,6 +1,6 @@
 <template>
     <div>
-        
+        <img src="@/assets/상우/한국장수풍뎅이.jpg"/>
             <v-data-table
             :headers="headerTitles"
             :items="BeetleList"

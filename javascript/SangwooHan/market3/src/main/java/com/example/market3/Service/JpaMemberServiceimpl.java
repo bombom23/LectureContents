@@ -1,10 +1,11 @@
 package com.example.market3.Service;
 
 import com.example.market3.Controller1.MemberRequset.MemberRequest;
+import com.example.market3.Controller1.MemberRequset.ProductBasketRequest;
 import com.example.market3.Entity.JpaMember;
-import com.example.market3.Entity.JpaMemberAuth;
+import com.example.market3.Entity.JpaMemberBasket;
 import com.example.market3.Rapository.JPAMemberRepository;
-import com.example.market3.Rapository.MemberAuthRepository;
+import com.example.market3.Rapository.JpaProductBasketRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,7 +22,7 @@ public class JpaMemberServiceimpl implements JpaMemberService {
     private JPAMemberRepository memberRepository;
 
     @Autowired
-    MemberAuthRepository memberAuthRepository;
+    private JpaProductBasketRepository jpaProductBasketRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -36,10 +37,10 @@ public class JpaMemberServiceimpl implements JpaMemberService {
 
         // 엔티티에다가 리퀘스트멤버안에있는 Vue에서 받은 값들을 넣어주고있는 과정들이고
         // 조인컬럼에도 auth값을 넣어주고있다 .
-        JpaMemberAuth jpaauthEntity = new JpaMemberAuth(memberRequest.getAuth());
+
         JpaMember jpaMemberEntity = new JpaMember(memberRequest.getUserid(), memberRequest.getPassword(), memberRequest.getName(), memberRequest.getEmail(), memberRequest.getBirthday(), memberRequest.getGender(),
                 memberRequest.getAddress(), memberRequest.getPhoneNo());
-        jpaMemberEntity.addAuth(jpaauthEntity);
+
 
         memberRepository.save(jpaMemberEntity);
     }
@@ -100,5 +101,29 @@ public class JpaMemberServiceimpl implements JpaMemberService {
     @Override
     public void remove(Long memberNo) throws Exception {
         memberRepository.deleteById(memberNo);
+    }
+
+    @Override
+    public void addBasket(ProductBasketRequest productBasketRequest) throws Exception {
+        JpaMemberBasket jpaMemberBasket = new JpaMemberBasket(productBasketRequest.getMemberBasketNo(), productBasketRequest.getMemberNo(), productBasketRequest.getProductName(), productBasketRequest.getProductPrice(), productBasketRequest.getProductNum(),productBasketRequest.getRegDate());
+
+        jpaProductBasketRepository.save(jpaMemberBasket);
+    }
+
+    @Override
+    public List<JpaMemberBasket> getBasketList(Long memberNo) throws Exception {
+        return jpaProductBasketRepository.findBasketList(memberNo);
+    }
+
+    @Override
+    public void ModifyProductNum(ProductBasketRequest productBasketRequest) {
+
+        JpaMemberBasket jpaMemberBasket = new JpaMemberBasket(productBasketRequest.getMemberBasketNo(), productBasketRequest.getMemberNo(), productBasketRequest.getProductName(), productBasketRequest.getProductPrice(), productBasketRequest.getProductNum(),productBasketRequest.getRegDate());
+        jpaProductBasketRepository.save(jpaMemberBasket);
+    }
+
+    @Override
+    public void deleteProduct(Long memberBasketNo) throws Exception {
+        jpaProductBasketRepository.deleteById(memberBasketNo);
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <insect-museum-register-bar/>
+       
       <stagbeetle-read-form v-if="Stagbeetle" :Stagbeetle="Stagbeetle"/>
     </div>
 </template>
@@ -8,10 +8,10 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import StagbeetleReadForm from '../../../components/InsectMuseum/Stagbeelte/StagbeetleReadForm.vue'
-import InsectMuseumRegisterBar from '../../NavigationVar/InsectMuseumRegisterBar.vue'
+
 
 export default {
-  components: {StagbeetleReadForm, InsectMuseumRegisterBar  },
+  components: {StagbeetleReadForm },
     name: 'StagbeetleReadPage',
     props: {
         boardNo: {

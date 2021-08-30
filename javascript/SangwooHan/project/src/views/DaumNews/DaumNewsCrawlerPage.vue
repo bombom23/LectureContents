@@ -7,7 +7,12 @@
         <template #content>
             <v-simple-table>
                 <template v-slot:default>
+                    
                     <thead>
+                        <tr>
+                            <p>검색</p>
+                            <input v-model="search"/>
+                        </tr>
                         <tr>
                             <th class="text-left">No.</th>
                             <th class="text-left">제목</th>
@@ -15,9 +20,9 @@
                     </thead>
                     <tbody>
                         <tr v-for="list of lists" :key="list.title">
-                            <td style="color: gray">{{ list.newsNo }}</td>
+                            <td  v-if="list.title.includes(search)" style="color: gray">{{ list.newsNo }}</td>
                             <!-- <td><a @click="clickNews(list.newsNo)">{{ list.title }}</a></td> -->
-                            <td>{{ list.title }}</td>
+                            <td  v-if="list.title.includes(search)" >{{ list.title }}</td>
                         </tr>
                     </tbody>
                 </template>
@@ -32,6 +37,11 @@ import { mapState } from 'vuex'
 export default {
     components: {
         Layout
+    },
+    data(){
+        return{
+                search: ''
+        }
     },
     computed: {
         ...mapState ({

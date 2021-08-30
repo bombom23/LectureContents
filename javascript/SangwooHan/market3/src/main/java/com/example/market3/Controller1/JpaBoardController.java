@@ -70,14 +70,14 @@ public class JpaBoardController {
 
     }
 
-    @PutMapping("/Modify/{boardNo}")
+    @PostMapping("/Modify/{boardNo}")
     public ResponseEntity<Void> CommunityModify(@PathVariable("boardNo") Long boardNo,
-                                           @Validated @RequestBody BoardRequest boardRequest) throws Exception {
-
-        boardRequest.setBoardNo(boardNo);
+                                           @Validated @RequestBody JpaBoard jpaBoard) throws Exception {
 
 
-        service.CommunityModify(boardRequest);
+        String text = jpaBoard.getText();
+
+        service.CommunityModify(boardNo,text);
 
         return new ResponseEntity<Void>( HttpStatus.OK);
 

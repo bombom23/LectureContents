@@ -2,7 +2,7 @@
 <div>
     <!--로그아웃일때-->
  
-    <v-toolbar  dark   v-if="this.$store.state.session == null"  >
+    <v-toolbar  dark   v-if="this.$store.state.User == null"  >
     <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
     </v-app-bar-nav-icon>
     <v-toolbar-title>
@@ -18,7 +18,7 @@
     <v-spacer></v-spacer>
     </v-toolbar>
     <!--로그인일때-->
-    <v-toolbar dark flat   v-if="this.$store.state.session != null"  >
+    <v-toolbar dark flat   v-if="this.$store.state.User != null"  >
     <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
     </v-app-bar-nav-icon>
     <v-toolbar-title>
@@ -36,7 +36,7 @@
    
     
 <!--로그인일때-->
-    <v-navigation-drawer    v-if="this.$store.state.session != null" app v-model="nav_drawer" temporary >
+    <v-navigation-drawer    v-if="this.$store.state.User == null" app v-model="nav_drawer" temporary >
         <v-list nav dense>
             <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
             <v-list-item v-for="link  in LogInlinks2" :key="link.name" router :to="link.route">
@@ -51,7 +51,7 @@
         </v-list>
     </v-navigation-drawer>
 <!--로그아웃일때-->
-     <v-navigation-drawer  v-if="this.$store.state.session == null" app v-model="nav_drawer" temporary >
+     <v-navigation-drawer  v-if="this.$store.state.User != null" app v-model="nav_drawer" temporary >
         <v-list nav dense>
             <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
             <v-list-item v-for="link  in LogOutlinks2" :key="link.name" router :to="link.route">
@@ -66,7 +66,7 @@
         </v-list>
     </v-navigation-drawer>
     <!--관리자일때-->
-    <v-navigation-drawer dark v-if="this.$store.state.session == null||this.$store.state.loginUser == '관리자'" app v-model="nav_drawer" temporary >
+    <v-navigation-drawer dark v-if="this.$store.state.User == '관리자'" app v-model="nav_drawer" temporary >
         <v-list nav dense>
             <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
             <v-list-item v-for="link  in ManageLinks" :key="link.name" router :to="link.route">
@@ -84,7 +84,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
+    computed:{
+        ...mapState(['User'])
+    },
     data () {
         return {
             nav_drawer: false,
@@ -98,39 +102,42 @@ export default {
                     name: '커뮤니티글올리기(수정예정)',
                     route: '/communityListpage',
                 },
-                   {
-                     
-                    text: 'ㅣ곤충갤러리ㅣ',  
-                    name: '커뮤니티글올리기(수정예정)',
-                    route: '/Test/:Id',
-                },
-                {
+                 {
                      
                     text: 'ㅣ곤충박물관ㅣ',  
                     name: '커뮤니티글올리기(수정예정)',
                     route: '/insectmuseumpage',
-                }
+                },
+                   {
+                     
+                    text: '쇼핑몰',  
+                    name: '커뮤니티글올리기(수정예정)',
+                    route: '/shoppingMallPage',
+                },
+               
             ],
              LogInlinks: [
                
-                   {
-                     
-                    text: 'ㅣ곤충갤러리ㅣ',  
-                    name: 'ㅣ곤충갤러리ㅣ',
-                    route: '/Test/:Id',
-                },
                 {
+                     
+                    text: 'ㅣ커뮤니티ㅣ',  
+                    name: '커뮤니티글올리기(수정예정)',
+                    route: '/communityListpage',
+                },
+                  {
                      
                     text: 'ㅣ곤충박물관ㅣ',  
                     name: '곤충박물관',
                     route: '/insectmuseumpage',
                 },
-                 {
+                   {
                      
-                    text: 'ㅣ커뮤니티게시판ㅣ',  
-                    name: '커뮤니티글올리기(수정예정)',
-                    route: '/communityListpage',
+                    text: '쇼핑몰',  
+                    name: 'ㅣ곤충갤러리ㅣ',
+                    route: '/shoppingMallPage',
                 },
+               
+                
             ],
             LogInlinks2: [
                 {
@@ -197,6 +204,12 @@ export default {
                     text: '공지게시',
                     name: '공지게시',
                     route: '/noticeRegisterPage',
+                },
+                {
+                     
+                    text: '상품등록하기',
+                    name: '상품등록',
+                    route: '/productRegister',
                 },
                
             ]

@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-container>
-        <v-btn @click="check">체크</v-btn>
+        <v-btn @click="check">체크</v-btn><v-btn v-if="board.id == User" @click="Modifyfing">수정</v-btn>
         <table>
             <tr>
                 <th align="center">제목[{{board.title}}]</th>
@@ -31,7 +31,7 @@
                   <th width="150px">{{ item.ui}}</th>
                   
                   <td>{{item.comments}}</td>
-                  <td>{{item.boardCommentNo}}</td>
+                 
                 <td v-if="Modify == item.boardCommentNo">
                     <textarea  v-model="comments" cols="1" rows="1"/><v-btn depressed @click="CommemtsModify(item)">수정완료</v-btn><v-btn depressed @click="ModifyOFF">취소</v-btn>
                 </td>
@@ -131,7 +131,10 @@ export default {
 
         checkingman(value) {
                 console.log(value)
-                          }
+                          },
+        Modifyfing(){
+            this.$router.push({ name: 'CommunityModifyPage', params: {board: this.board}})
+        }
     },
     data() {
 

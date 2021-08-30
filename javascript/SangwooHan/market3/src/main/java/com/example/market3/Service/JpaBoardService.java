@@ -18,7 +18,7 @@ public interface JpaBoardService {
 
     public List<JpaBoardComment> finByComments(Long boardNo) throws Exception;
 
-    public void CommunityModify (BoardRequest boardRequest) throws  Exception;
+    public void CommunityModify (Long boardNo, String text ) throws  Exception;
 
     public void remove (Long boardNo) throws  Exception;
 

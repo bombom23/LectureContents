@@ -18,4 +18,9 @@ public interface JpaBoardRepository extends JpaRepository<JpaBoard,Long> {
     @Modifying
     @Query("UPDATE JpaBoard j set j.vuecount = j.vuecount +1 where j.boardNo = :boardNo")
     void updatevuecount(@Param("boardNo") Long boardNo);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE JpaBoard j set j.text = :text where j.boardNo = :boardNo")
+    void CommunityModify(@Param("boardNo") Long boardNo,@Param("text") String text);
 }

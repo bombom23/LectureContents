@@ -45,7 +45,7 @@
                 
                    class="elevation-10" @click:row="handleClick"> 
          </v-data-table>
-        <v-btn v-if="this.$store.state.isLogin ==true" id="btn" route :to="{name: 'CommunityRegisterPage'}">글쓰기</v-btn>
+        <v-btn v-if="this.$store.state.isLogin ==true" id="btn" route :to="{name: 'CommunityRegisterPage'}"><v-icon>mdi-lead-pencil</v-icon></v-btn>
         </v-container>
         </body>
     </div>
@@ -88,7 +88,5 @@ export default {
 </script>
 
 <style scoped>
-#btn{
-    margin-left: 1180px;
-}
+
 </style>

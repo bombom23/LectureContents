@@ -4,9 +4,8 @@
               
                 <v-container>
                     <h3>사슴벌레 작성란</h3>
-           <v-text-field label="id" v-model="id"  readonly type="text" append-icon="mid-account">
-           </v-text-field>
-            <v-text-field label="title" v-model="title" type="text" append-icon="mid-account">
+           <input v-model="id" readonly/>
+            <v-text-field label="title" v-model="title" type="text" append-icon="mid-account" flat solo>
            </v-text-field>
            <p>내용</p>
           <textarea name="contentText" id="contentText" cols="30" rows="10" v-model="text"></textarea>
@@ -20,15 +19,22 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     name: 'NoticeRegisterForm',
     data() {
         return{
-            id: this.$store.state.User,
+            id: this.User,
             title: '',
             text: '',
             
         }
+    },
+    computed:{
+        ...mapState(['User'])
+    },
+    mounted() {
+        this.id =this.$store.state.User
     },
     methods: {
         OnSubmit() {

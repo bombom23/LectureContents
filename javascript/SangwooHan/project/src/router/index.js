@@ -57,7 +57,11 @@ import ButterflyRegister from '../views/InsectMuseum/Butterfly/ButterflyRegister
 import InsectMuseumButterfly from '../views/InsectMuseum/Butterfly/InsectMuseumButterfly'
 import ButterflyReadPage from '../views/InsectMuseum/Butterfly/ButterflyReadPage'
 //페이지 리스팅
-
+//쇼핑몰
+import ProductRegister from '../views/ShoppingMall/ProductRegister'
+import ShoppingMallpage from '../views/ShoppingMall/ShoppingMallpage'
+import ProductReadPage from '../views/ShoppingMall/ProductReadPage'
+import BasketReadPage from '../views/ShoppingMall/BasketReadPage'
 
 Vue.use(VueRouter)
 
@@ -302,7 +306,41 @@ const routes = [
       default: true
     }
   },
-  
+  //쇼핑몰
+  {
+    path: '/productRegister',
+    name: 'ProductRegister',
+    components: {
+      default: ProductRegister
+    },
+  },
+  {
+    path: '/shoppingMallpage',
+    name: 'ShoppingMallpage',
+    components: {
+      default: ShoppingMallpage
+    },
+  },
+  {
+    path: '/productReadPage/:boardNo',
+    name: 'ProductReadPage',
+    components: {
+      default: ProductReadPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/basketReadPage/:memberNo',
+    name: 'BasketReadPage',
+    components: {
+      default: BasketReadPage
+    },
+    props: {
+      default: true
+    }
+  },
   
 ]
 

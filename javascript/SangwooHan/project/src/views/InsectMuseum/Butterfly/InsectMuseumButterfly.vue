@@ -1,6 +1,7 @@
 <template>
     <div>
       <insect-museum-bar/>
+        <img src="@/assets/상우/박물관[나비도감].jpg"/>
         <butterfly-list-form v-if="ButterflyList" :ButterflyList="ButterflyList"/>
         <p v-else>공사중입니다</p>
     </div>

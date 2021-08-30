@@ -6,7 +6,7 @@
         <section>
         <form @submit.prevent="OnSubmit">
                 <v-container >
-                    
+            <!--<p>작성자{{User}}</p>-->
             <p>제목</p>
             <textarea name="contentTitle" id="contentTitle" cols="30" rows="10" v-model="title"></textarea>
             <p>내용</p>
@@ -31,6 +31,9 @@ export default {
         name: 'CommunityRegisterForm',
         props: {
             
+        },
+        computed:{
+            ...mapState(['User'])
         },
 
         data () {

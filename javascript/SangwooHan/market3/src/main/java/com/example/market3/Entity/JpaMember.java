@@ -45,7 +45,7 @@ public class JpaMember {
 
     @OneToMany(cascade =  CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "member_no")
-    private List<JpaMemberAuth> authList = new ArrayList<JpaMemberAuth>();
+    private List<JpaMemberBasket> authList = new ArrayList<JpaMemberBasket>();
     /*
     @OneToMany
     @JoinColumn(name = "member_no")
@@ -68,7 +68,7 @@ public class JpaMember {
 
 
 
-    public void addAuth(JpaMemberAuth auth) {
+    public void addAuth(JpaMemberBasket auth) {
            authList.add(auth);
        }
        public void  clearAuthList(){

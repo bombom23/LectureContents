@@ -28,7 +28,12 @@ FETCH_SKYCOW_LIST,
 FETCH_SKYCOW,
 //나비/나방
 FETCH_BUTTERFLY_LIST,
-FETCH_BUTTERFLY
+FETCH_BUTTERFLY,
+//쇼핑몰
+FETCH_PRODUCT_LIST,
+FETCH_PRODUCT,
+FETCH_BASKET_LIST,
+
 
 
 } from './mutation-types'
@@ -203,6 +208,27 @@ export default {
         }).catch(err=>{
             alert(err.response.data.message)
         })
+    },
+    //쇼핑몰
+    fetchProductList({ commit} ) {
+        return axios.get('http://localhost:9999/jpaProduct/getProductList')
+        .then( (res) => {
+            commit(FETCH_PRODUCT_LIST, res.data)
+        }).catch(err=>{alert(err.response.data.message)})
+    },
+    fetchProduct({ commit}, boardNo) {
+            console.log(boardNo)
+        return axios.get(`http://localhost:9999/jpaProduct/getProduct/${boardNo}`)
+        .then( (res)=> {
+            commit(FETCH_PRODUCT, res.data)
+        }).catch(err=>{alert(err.response.data.message)})
+    },
+   fetchBasketList({commit}, memberNo){ 
+        return axios.get(`http://localhost:9999/jpamemberManage/getBasketList/${memberNo}`)
+        .then((res) =>{ 
+
+            commit(FETCH_BASKET_LIST,res.data)
+        }).catch(err=>{alert(err.response.data)})
     }
 
 

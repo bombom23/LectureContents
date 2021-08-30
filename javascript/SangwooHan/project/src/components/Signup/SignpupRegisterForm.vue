@@ -5,10 +5,6 @@
             <h3> 회원가입</h3>
     <div>
             <div class="row">
-                <v-radio-group v-model="radioGroup" row>
-                    <v-radio v-for="kinds in kindsOfMember" :key="kinds" :label="`${kinds}`"> 
-                    </v-radio>
-                </v-radio-group>
             </div>
             <v-text-field  class="pl-3 pr-3"  v-model="userid"
             label="아이디" type="text" prepend-icon="mdi-account" flat solo>
@@ -71,11 +67,6 @@ export default {
             gender: '',
             address: '',
             phoneNo: '',
-            radioGroup: 1,
-            kindsOfMember: [
-                '개인',
-                '사업자'
-            ],
         }
     },
 
@@ -91,9 +82,9 @@ export default {
                 
                                                                 }
                 if(coin === null){
-            const { userid, password, name, email, birthday, gender, address, phoneNo, radioGroup} = this
-            const auth = radioGroup == 0 ? 'individual' : 'businessman'
-            this.$emit('submit', {userid, password, name, email, birthday, gender, address, phoneNo, auth})
+            const { userid, password, name, email, birthday, gender, address, phoneNo } = this
+            
+            this.$emit('submit', {userid, password, name, email, birthday, gender, address, phoneNo})
                 }
 
                   }

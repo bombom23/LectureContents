@@ -48,7 +48,12 @@ export default {
     Butterfly: null,
     //세션
     session: [],
-    isLogin: false
+    isLogin: false,
+    loginMemberNo: null,
+    //쇼핑몰
+    ProductList: [],
+    Product: null,
+    BasketList: [],
     
     
 

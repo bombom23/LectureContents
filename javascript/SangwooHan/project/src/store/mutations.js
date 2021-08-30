@@ -23,6 +23,10 @@ import {
     //나비/나방
     FETCH_BUTTERFLY_LIST,
     FETCH_BUTTERFLY,
+    //쇼핑몰
+    FETCH_PRODUCT_LIST,
+    FETCH_PRODUCT,
+    FETCH_BASKET_LIST
     
 
     
@@ -96,8 +100,18 @@ export default {
     },
     [FETCH_BUTTERFLY] (state,Butterfly) {
         state.Butterfly = Butterfly
-    }
+    },
+//쇼핑몰
+    [FETCH_PRODUCT_LIST] (state, ProductList) {
+        state.ProductList = ProductList
 
+    },
+    [FETCH_PRODUCT] (state, Product) {
+        state.Product = Product
+    },
+    [FETCH_BASKET_LIST] (state,BasketList) {
+        state.BasketList = BasketList
+    }
     
 }
 

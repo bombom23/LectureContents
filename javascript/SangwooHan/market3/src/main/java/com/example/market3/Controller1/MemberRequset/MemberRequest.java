@@ -17,5 +17,5 @@ public class MemberRequest {
         private String  gender;
         private String address;
         private int phoneNo;
-        private String auth;
+        private Long memberNo;
 }

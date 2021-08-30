@@ -20,8 +20,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-    name: 'NoticeRegisterForm',
+    name: 'DragonRegisterForm',
     data() {
         return{
             id: this.$store.state.User,
@@ -30,7 +31,11 @@ export default {
             
         }
     },
+    computed:{
+                ...mapState(['User'])
+            },
     methods: {
+            
         OnSubmit() {
             const  {id , title, text } = this
             this.$emit('submit', {id, title, text })

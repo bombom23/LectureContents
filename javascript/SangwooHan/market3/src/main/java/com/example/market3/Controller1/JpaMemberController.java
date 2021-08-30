@@ -1,8 +1,10 @@
 package com.example.market3.Controller1;
 
 import com.example.market3.Controller1.MemberRequset.MemberRequest;
+import com.example.market3.Controller1.MemberRequset.ProductBasketRequest;
 import com.example.market3.Controller1.Session.UserInfo;
 import com.example.market3.Entity.JpaMember;
+import com.example.market3.Entity.JpaMemberBasket;
 import com.example.market3.Service.JpaMemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
@@ -143,5 +145,40 @@ public class JpaMemberController {
         service.remove(memberNo);
 
         return new ResponseEntity<Void>( HttpStatus.OK);
+    }
+
+    @PostMapping("/addBasket/{memberNo}")
+    public  ResponseEntity<Void> addBasket(@PathVariable("memberNo")Long memberNo, @Validated @RequestBody ProductBasketRequest productBasketRequest) throws  Exception {
+        System.out.println(memberNo);
+        productBasketRequest.setMemberNo(memberNo);
+        service.addBasket(productBasketRequest);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @GetMapping("/getBasketList/{memberNo}")
+    public ResponseEntity<List<JpaMemberBasket>> getBasketList(@PathVariable("memberNo") Long memberNo) throws  Exception {
+
+
+        service.getBasketList(memberNo);
+
+        return new ResponseEntity<>(service.getBasketList(memberNo),HttpStatus.OK);
+    }
+
+    @PostMapping("/ModifyProductNum/{memberNo}")
+    public ResponseEntity<Void> ModifyProductNum (@PathVariable("memberNo") Long memberNo, @Validated @RequestBody ProductBasketRequest productBasketRequest) throws  Exception {
+
+        productBasketRequest.setMemberNo(memberNo);
+
+        service.ModifyProductNum(productBasketRequest);
+
+        return  new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @PostMapping("/deleteProduct/{memberBasketNo}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable("memberBasketNo")Long memberBasketNo) throws  Exception {
+
+        service.deleteProduct(memberBasketNo);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 }
