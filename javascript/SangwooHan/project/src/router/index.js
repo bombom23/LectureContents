@@ -63,7 +63,13 @@ import ShoppingMallpage from '../views/ShoppingMall/ShoppingMallpage'
 import ProductReadPage from '../views/ShoppingMall/ProductReadPage'
 import BasketReadPage from '../views/ShoppingMall/BasketReadPage'
 import OrderListPage from '../views/ShoppingMall/OrderListPage'
-
+//쇼핑몰 메뉴에따른 페이지
+import InsectMallEggtree from '../views/ShoppingMall/ShoppingMenu/InsectMallEggtree'
+import InsectMallInsect from '../views/ShoppingMall/ShoppingMenu/InsectMallInsect'
+import InsectMallJelly from '../views/ShoppingMall/ShoppingMenu/InsectMallJelly'
+import InsectMallMushroom from'../views/ShoppingMall/ShoppingMenu/InsectMallMushroom'
+import InsectMallSawdust from '../views/ShoppingMall/ShoppingMenu/InsectMallSawdust'
+import InsectMallSide from '../views/ShoppingMall/ShoppingMenu/InsectMallSide'
 Vue.use(VueRouter)
 
 const routes = [
@@ -349,7 +355,67 @@ const routes = [
       default: OrderListPage
     },
   },
-  
+  //쇼핑몰 매뉴에따른 페이지들
+  {
+    path: '/insectMallEggtree/',
+    name: 'InsectMallEggtree',
+    components: {
+      default: InsectMallEggtree
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/insectMallInsect/',
+    name: 'InsectMallInsect',
+    components: {
+      default: InsectMallInsect
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/insectMallJelly/',
+    name: 'InsectMallJelly',
+    components: {
+      default: InsectMallJelly
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/insectMallSawdust/',
+    name: 'InsectMallSawdust',
+    components: {
+      default: InsectMallSawdust
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/insectMallMushroom/',
+    name: 'InsectMallMushroom',
+    components: {
+      default: InsectMallMushroom
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/insectMallSide/',
+    name: 'InsectMallSide',
+    components: {
+      default: InsectMallSide
+    },
+    props: {
+      default: true
+    }
+  },
 ]
 
 const router = new VueRouter({

@@ -7,6 +7,7 @@
                 <swiper-slide><img src="@/assets/상우/톱사슴벌레.jpg"/></swiper-slide>
                 <swiper-slide><img src="@/assets/상우/자연사진1.jpg"/></swiper-slide>
                 <swiper-slide><img src="@/assets/상우/나비유충1.jpg"/></swiper-slide>
+                <swiper-slide><a @click="goStagbeetle" style="cursor:pointer:"><img src="@/assets/상우/박물관/박물관[왕사슴벌레].jpg"/></a></swiper-slide>
                 
                
                 
@@ -32,8 +33,8 @@ export default {
             swiperOption: {
                 loop: true,
                 
-                grabCursor: true,
-                centeredSlides: true,
+                grabCursor: false,
+                centeredSlides: false,
                 slidesPerView: 'auto',
                 
                 coverflowEffect: {
@@ -53,6 +54,12 @@ export default {
             },
            
         
+        }
+    },
+    methods:{
+        goStagbeetle(){
+            this.$router.replace({ name: 'InsectMuseumStagbeetle'})
+            console.log("왕사슴벌레")
         }
     }
 }

@@ -38,6 +38,7 @@ export default {
                 {text: '산란목', value: '산란목'},
                 {text: '젤리', value: '젤리'},
                 {text: '곤충', value: '곤충'},
+                {text: '기타사육용품', value: '기타사육용품'},
               
             ],
             productName: '',

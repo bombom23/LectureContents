@@ -10,28 +10,7 @@
        <v-btn text v-for="link in LogInlinks" :key="link.icon" :to="link.route">
             {{ link.text }}
         </v-btn>
-        <!--
-        <v-btn width="80" route :to="{name: 'InsectMuseumStagbeetle'}"> 
-            
-           <img src="@/assets/상우/사슴벌레아이콘.jpg" width="75"/>
-        </v-btn>
-         <v-btn width="80" route :to="{name: 'InsectMuseumbeetle'}"> 
-            
-           <img src="@/assets/상우/사슴벌레아이콘.jpg" width="75"/>
-        </v-btn>
-         <v-btn width="80" route :to="{name: 'InsectMuseumDragonfly'}"> 
-            
-           <img src="@/assets/상우/사슴벌레아이콘.jpg" width="75"/>
-        </v-btn>
-         <v-btn width="80" route :to="{name: 'InsectMuseumButterfly'}"> 
-            
-           <img src="@/assets/상우/사슴벌레아이콘.jpg" width="75"/>
-        </v-btn>
-         <v-btn width="80" route :to="{name: 'InsectMuseumSkycow'}"> 
-            
-           <img src="@/assets/상우/사슴벌레아이콘.jpg" width="75"/>
-        </v-btn>
-        -->
+       
     </v-toolbar-items>
       <v-spacer></v-spacer>
     </v-toolbar>
