@@ -70,6 +70,12 @@ import InsectMallJelly from '../views/ShoppingMall/ShoppingMenu/InsectMallJelly'
 import InsectMallMushroom from'../views/ShoppingMall/ShoppingMenu/InsectMallMushroom'
 import InsectMallSawdust from '../views/ShoppingMall/ShoppingMenu/InsectMallSawdust'
 import InsectMallSide from '../views/ShoppingMall/ShoppingMenu/InsectMallSide'
+//파일 업로드
+import Fileupload from '../views/Fileupload'
+//마이페이지
+import MyPage from '../views/MyPage/MyPage'
+import MyInformationDetail from '../views/MyPage/MyInformationDetail'
+import MyProductStatus from '../views/MyPage/MyProductStatus'
 Vue.use(VueRouter)
 
 const routes = [
@@ -415,6 +421,39 @@ const routes = [
     props: {
       default: true
     }
+  },
+  //파일업로드
+  {
+    path: '/fileupload',
+    name: 'Fileupload',
+    components: {
+      default: Fileupload
+    },
+  },
+  //마이페이지
+  {
+    path: '/myPage',
+    name: 'MyPage',
+    components: {
+      default: MyPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/myInformationDetail',
+    name: 'MyInformationDetail',
+    components: {
+      default: MyInformationDetail
+    },
+  },
+  {
+    path: '/myProductStatus',
+    name: 'MyProductStatus',
+    components: {
+      default: MyProductStatus
+    },
   },
 ]
 

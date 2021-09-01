@@ -22,7 +22,7 @@ public class OrderController {
     OrderService orderService;
 
     @PostMapping("/register")
-    public ResponseEntity<Void> register(@Validated @RequestBody JpaOrder jpaOrder) throws  Exception{
+    public ResponseEntity<Void> register(@Validated @RequestBody  JpaOrder jpaOrder) throws  Exception{
 
         orderService.register(jpaOrder);
         return new ResponseEntity<Void>(HttpStatus.OK);

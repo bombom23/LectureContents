@@ -22,6 +22,8 @@ public class JpaOrder {
 
     @Column(length = 20, nullable = false)
     private String  buyUserName;
+    @Column(length = 20, nullable = false)
+    private String  userid;
     @Column(length = 100, nullable = false)
     private String  address;
     @Column(length = 100, nullable = false)
