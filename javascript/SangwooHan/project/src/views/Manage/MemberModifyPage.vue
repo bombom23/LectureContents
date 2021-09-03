@@ -27,8 +27,8 @@ export default {
         ...mapActions(['fetchMember']),
         onSubmit (payload) {
             console.log("payload: " + JSON.stringify(payload)+ 'this.memberNo' +this.memberNo)
-            const {memberNo, userid,password ,name, email , birthday, phoneNo ,gender,address, createDate } = payload
-            axios.put(`http://localhost:9999/jpamemberManage/${this.memberNo}`, {memberNo, userid,password,name, email , birthday, phoneNo ,gender,address, createDate})
+            const {memberNo, userid,password ,name, email , birthday, phoneNo ,gender,address, regDate } = payload
+            axios.put(`http://localhost:9999/jpamemberManage/${this.memberNo}`, {memberNo, userid,password,name, email , birthday, phoneNo ,gender,address, regDate})
             .then(res => {
                 alert('수정성공' + res)
                 this.$router.push({

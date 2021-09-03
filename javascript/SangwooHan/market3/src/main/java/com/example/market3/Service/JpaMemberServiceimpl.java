@@ -126,4 +126,49 @@ public class JpaMemberServiceimpl implements JpaMemberService {
     public void deleteProduct(Long memberBasketNo) throws Exception {
         jpaProductBasketRepository.deleteById(memberBasketNo);
     }
+
+    @Override
+    public void ModfiyEmail(Long memberNo, String email) throws Exception {
+        memberRepository.ModfiyEmail(memberNo,email);
+    }
+
+    @Override
+    public void ModfiyPhoneNo(Long memberNo, int phoneNo) throws Exception {
+        memberRepository.ModfiyPhoneNo(memberNo,phoneNo);
+    }
+
+    @Override
+    public void ModfiyAddress(Long memberNo, String address) throws Exception {
+        memberRepository.ModfiyAddress(memberNo, address);
+    }
+
+    @Override
+    public Boolean checkingPassWord(MemberRequest memberRequest) throws Exception {
+        Optional<JpaMember> maybeMember = memberRepository.findByUserId(memberRequest.getUserid());
+        if (maybeMember == null)
+        {
+            log.info("login(): 그런 사람 없다.");
+            return false;
+        }
+
+        JpaMember loginMember = maybeMember.get();
+
+        if (!passwordEncoder.matches(memberRequest.getPassword(), loginMember.getPassword()))
+        {
+            log.info("login(): 비밀번호 잘못 입력하였습니다.");
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public void ModifyPassword(Long memberNo, String Password) throws Exception {
+      //  String encodedPassword = passwordEncoder.encode(jpaMember.getPassword());
+        //jpaMember.setPassword(encodedPassword);
+       // memberRepository.save(jpaMember);
+
+        memberRepository.ModifyPassword(memberNo,Password);
+
+    }
 }

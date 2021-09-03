@@ -10,4 +10,13 @@ public interface OrderService {
 
     public List<JpaOrder> getOrderList() throws  Exception;
 
+    public  void Shipping(Long orderNo,String Shipping)throws  Exception;
+
+    public  void QuantityChange(Long orderNo, Integer Quantity) throws  Exception;
+
+    public  void deleteOrder(Long orderNo) throws  Exception;
+
+
+
+
 }

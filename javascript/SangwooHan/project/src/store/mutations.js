@@ -28,7 +28,10 @@ import {
     FETCH_PRODUCT,
     FETCH_BASKET_LIST,
     //주문정보
-    FETCH_ORDER_LIST
+    FETCH_ORDER_LIST,
+    //마이페이지
+    FETCH_CUSTOMER_SOUND_LIST,
+    FETCH_CUSTOMER_SOUND
     
 
     
@@ -117,7 +120,13 @@ export default {
     //주문정보
     [FETCH_ORDER_LIST] (state, OrderList) {
         state.OrderList = OrderList
+    },
+    //고객의소리
+    [FETCH_CUSTOMER_SOUND_LIST] (state, CustomerSoundList) {
+        state.CustomerSoundList = CustomerSoundList 
+    },
+    [FETCH_CUSTOMER_SOUND] (state, CustomerSound) {
+        state.CustomerSound = CustomerSound
     }
-    
 }
 

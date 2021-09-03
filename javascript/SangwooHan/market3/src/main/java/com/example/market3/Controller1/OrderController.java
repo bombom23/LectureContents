@@ -1,5 +1,6 @@
 package com.example.market3.Controller1;
 
+import com.example.market3.Controller1.MemberRequset.OrderRequest;
 import com.example.market3.Entity.JpaOrder;
 import com.example.market3.Service.OrderService;
 import lombok.extern.slf4j.Slf4j;
@@ -34,4 +35,28 @@ public class OrderController {
 
         return new ResponseEntity<>(orderService.getOrderList(),HttpStatus.OK);
     }
+    @PostMapping("/Shipping/{orderNo}")
+    public  ResponseEntity<Void> Shipping(@PathVariable("orderNo")Long orderNo , @Validated @RequestBody OrderRequest orderRequest) throws  Exception {
+
+        String Shipping = orderRequest.getShipping();
+        orderService.Shipping(orderNo,Shipping);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+    @PostMapping("/QuantityChange/{orderNo}")
+    public ResponseEntity<Void> QuantityChange (@PathVariable("orderNo")Long orderNo, @Validated @RequestBody OrderRequest orderRequest) throws  Exception {
+
+        Integer Quantity = orderRequest.getQuantity();
+        orderService.QuantityChange(orderNo,Quantity);
+        System.out.println(Quantity);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+    @DeleteMapping("/deleteOrder/{orderNo}")
+    public ResponseEntity<Void> deleteOrder (@PathVariable("orderNo")Long orderNo) throws  Exception {
+
+        orderService.deleteOrder(orderNo);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
 }

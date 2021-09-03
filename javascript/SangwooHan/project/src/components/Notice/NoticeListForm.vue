@@ -1,7 +1,7 @@
 <template>
     <div>
          <v-data-table :headers="headerTitle"  
-                    :items="(notices)" :key="notices.id"
+                    :items="(notices)" item-key="boardNo"
                     :items-per-page="10"
                     
                 

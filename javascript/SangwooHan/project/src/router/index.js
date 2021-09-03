@@ -61,7 +61,6 @@ import ButterflyReadPage from '../views/InsectMuseum/Butterfly/ButterflyReadPage
 import ProductRegister from '../views/ShoppingMall/ProductRegister'
 import ShoppingMallpage from '../views/ShoppingMall/ShoppingMallpage'
 import ProductReadPage from '../views/ShoppingMall/ProductReadPage'
-import BasketReadPage from '../views/ShoppingMall/BasketReadPage'
 import OrderListPage from '../views/ShoppingMall/OrderListPage'
 //쇼핑몰 메뉴에따른 페이지
 import InsectMallEggtree from '../views/ShoppingMall/ShoppingMenu/InsectMallEggtree'
@@ -76,6 +75,11 @@ import Fileupload from '../views/Fileupload'
 import MyPage from '../views/MyPage/MyPage'
 import MyInformationDetail from '../views/MyPage/MyInformationDetail'
 import MyProductStatus from '../views/MyPage/MyProductStatus'
+import BasketReadPage from '../views/MyPage/BasketReadPage'
+import PersonalQuestionRegister from '../views/MyPage/PersonalQuestionRegister'
+import CustomerSoundPage from '../views/MyPage/CustomerSoundPage'
+//마이페이지.고객의소리
+import CustomerSoundReadPage from '../views/MyPage/CustomerSoundReadPage'
 Vue.use(VueRouter)
 
 const routes = [
@@ -345,16 +349,6 @@ const routes = [
     }
   },
   {
-    path: '/basketReadPage/:memberNo',
-    name: 'BasketReadPage',
-    components: {
-      default: BasketReadPage
-    },
-    props: {
-      default: true
-    }
-  },
-  {
     path: '/orderListPage',
     name: 'OrderListPage',
     components: {
@@ -454,6 +448,40 @@ const routes = [
     components: {
       default: MyProductStatus
     },
+  },
+  {
+    path: '/basketReadPage/:memberNo',
+    name: 'BasketReadPage',
+    components: {
+      default: BasketReadPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/personalQuestionRegister',
+    name: 'PersonalQuestionRegister',
+    components: {
+      default: PersonalQuestionRegister
+    },
+  },
+  {
+    path: '/customerSoundPage',
+    name: 'CustomerSoundPage',
+    components: {
+      default: CustomerSoundPage
+    },
+  },
+  {
+    path: '/customerSoundReadPage/:boardNo',
+    name: 'CustomerSoundReadPage',
+    components: {
+      default: CustomerSoundReadPage
+    },
+    props: {
+      default: true
+    }
   },
 ]
 

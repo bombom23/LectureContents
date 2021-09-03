@@ -8,6 +8,8 @@ export default {
     ],
     nameRules: [
         v => !!v || '이름을 작성해주세요',
+        v => !/[~!@#$%^&*()_+{}]/.test(v) || '이름에는 특수문자를 넣을수없습니다.',
+        v => !(v && v.length >= 20) || '이름은 20자를 넘길수없습니다.'
 
     ],
     passwordRules: [
@@ -16,6 +18,7 @@ export default {
     barithdayRules: [
          v => !! 1<= v <=6 || '6자리 이하입니다 6자리이상으로해주세요'   
     ],
+    
     // 매니지먼트 회원리스트
     members: [],
     member: null,
@@ -56,6 +59,9 @@ export default {
     BasketList: [],
     //주문정보
     OrderList: [],
+    //마이페이지.고객의소리
+    CustomerSoundList:[],
+    CustomerSound: null,
 
     
 

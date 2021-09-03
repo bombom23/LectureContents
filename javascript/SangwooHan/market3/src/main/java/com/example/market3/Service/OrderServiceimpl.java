@@ -22,4 +22,19 @@ public class OrderServiceimpl implements OrderService{
     public List<JpaOrder> getOrderList() throws Exception {
         return orderRepository.findAll();
     }
+
+    @Override
+    public void Shipping(Long orderNo,String Shipping) throws Exception {
+        orderRepository.Shipping1(orderNo,Shipping);
+    }
+
+    @Override
+    public void QuantityChange(Long orderNo, Integer Quantity) throws Exception {
+        orderRepository.QuantityChange(orderNo,Quantity);
+    }
+
+    @Override
+    public void deleteOrder(Long orderNo) throws Exception {
+        orderRepository.deleteById(orderNo);
+    }
 }

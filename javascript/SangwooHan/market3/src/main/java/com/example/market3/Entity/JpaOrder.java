@@ -31,9 +31,9 @@ public class JpaOrder {
     @Column(length = 100, nullable = false)
     private String  productName;
     @Column(length = 100, nullable = false)
-    private String  productPrice;
+    private Integer  productPrice;
     @Column(length = 100, nullable = false)
-    private String  productNum;
+    private Integer  productNum;
     @Column(length = 20, nullable = false)
     private String  state ="입금확인중";
     @Column(length = 20, nullable = false)

@@ -27,6 +27,7 @@
         <img v-if="Stagbeetle.title == '큰꼬마사슴벌레'" src="@/assets/상우/박물관/박물관[큰꼬마사슴벌레].jpg"/>
         <img v-if="Stagbeetle.title == '다우리아사슴벌레'" src="@/assets/상우/박물관/박물관[다우리아사슴벌레].jpg"/>
         <p>{{Stagbeetle.text}}</p>
+      
         <form @submit.prevent="OnSubmit" v-if="commentBox ==1 && this.$store.state.User !=null">
          <table >
              <tr>

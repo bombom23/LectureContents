@@ -1,13 +1,7 @@
 <template>
-
+    
     <div>
-        <v-container style="max-width:300px">
-        <table>
-           
-            </table>
-        </v-container>
-       <v-container>
-       <table id="table">
+        <table id="table" >
            <tr>
                <td>제품명:{{Product.productName}}</td>
            </tr>
@@ -46,6 +40,9 @@
                <v-btn v-if="this.$store.state.User !=null"  @click="InitiatingPerchase" width="200" class="red" height="80">구매</v-btn>
                <v-btn v-if="this.$store.state.User ==null"  @click="plzlogin" width="200" class="red" height="80">구매</v-btn>
            </tr>
+           <tr v-if="perchaseBox ==1">
+               <textarea v-model="userid" readonly/>
+           </tr>
            <tr v-if="perchaseBox ==1"><p>주소</p>
                <textarea v-model="address"/>
            </tr>
@@ -60,42 +57,50 @@
                <v-btn @click="prerchasecancle">취소</v-btn>
            </tr>
             </table>
+      
+       
            
             
           
       
-       
+       <table id="imgtable">
+           <tr>
         <img width="600px" v-if="Product.productName =='[사슴벌레용]발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
-                <img width="600px" v-if="Product.productName =='[장수풍뎅이]발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
-                <img width="600px" v-if="Product.productName =='산란목'" src="@/assets/상우/산란목.jpg"/>
-                <img width="600px" v-if="Product.productName =='발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
-                <img width="600px" v-if="Product.productName =='균사'" src="@/assets/상우/균사.jpg"/>
-                <img width="600px" v-if="Product.productName =='곤충젤리100개'" src="@/assets/상우/수액젤리.jpg"/>
-                <img width="600px" v-if="Product.productName =='곤충이끼'" src="@/assets/상우/곤충이끼.jpg"/>
-                <img width="600px" v-if="Product.productName =='오호히라균사'" src="@/assets/상우/균사.jpg"/>
-                <img width="600px" v-if="Product.productName =='레벤지균사'" src="@/assets/상우/균사.jpg"/>
-                <img width="600px" v-if="Product.productName =='놀이목'" src="@/assets/상우/놀이목.jpg"/>
-                <img width="600px" v-if="Product.productName =='광구병'" src="@/assets/상우/광구병.jpg"/>
-                <img width="600px" v-if="Product.productName =='오호히라균사묶음6개'" src="@/assets/상우/균사묶음.jpg"/>
-                <img width="600px" v-if="Product.productName =='균사스푼'" src="@/assets/상우/균사스푼.jpg"/>
-                <img width="600px" v-if="Product.productName =='일반균사묶음6개'" src="@/assets/상우/균사묶음.jpg"/>
-                <img width="600px" v-if="Product.productName =='사육케이스특대'" src="@/assets/상우/사육케이스.jpg"/>
-                <img width="600px" v-if="Product.productName =='사육케이스대'" src="@/assets/상우/사육케이스.jpg"/>
-                <img width="600px" v-if="Product.productName =='사육케이스중'" src="@/assets/상우/사육케이스.jpg"/>
-                <img width="600px" v-if="Product.productName =='사육케이스소'" src="@/assets/상우/사육케이스.jpg"/>
-                <img width="600px" v-if="Product.productName =='먹이접시1구'" src="@/assets/상우/먹이접시1구.jpg"/>
-                <img width="600px" v-if="Product.productName =='먹이접시2구'" src="@/assets/상우/먹이접시2구.jpg"/>
-                <img width="600px" v-if="Product.productName =='[사슴벌레용]발효톱밥5L묶음6개'" src="@/assets/상우/발효톱밥묶음.jpg"/>
-                <img width="600px" v-if="Product.productName =='[장수풍뎅이]발효톱밥5L묶음6개'" src="@/assets/상우/발효톱밥묶음.jpg"/>
-                <img width="600px" v-if="Product.productName =='유산균젤리100개'" src="@/assets/상우/유산균젤리.jpg"/>
-                <img width="600px" v-if="Product.productName =='유충병고급'" src="@/assets/상우/유충병고급.jpg"/>
-                <img width="600px" v-if="Product.productName =='온도계스티커'" src="@/assets/상우/온도계스티커.jpg"/>
-
-                <img width="600px" v-if="Product.productName =='장수풍뎅이세트'" src="@/assets/상우/장수풍뎅이세트.jpg"/>
-                <img width="600px" v-if="Product.productName =='왕사슴벌레세트'" src="@/assets/상우/왕사슴벌레세트.jpg"/>
-        <v-container id="commetTable" style="max-width:500px">
+                <img width="500px" v-if="Product.productName =='[장수풍뎅이]발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
+                <img width="500px" height="560px" v-if="Product.productName =='산란목'" src="@/assets/상우/산란목.jpg"/>
+                <img width="500px" v-if="Product.productName =='발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
+                <img width="500px" v-if="Product.productName =='균사'" src="@/assets/상우/균사.jpg"/>
+                <img width="500px" v-if="Product.productName =='곤충젤리100개'" src="@/assets/상우/수액젤리.jpg"/>
+                <img width="500px" v-if="Product.productName =='곤충이끼'" src="@/assets/상우/곤충이끼.jpg"/>
+                <img width="500px" v-if="Product.productName =='오호히라균사'" src="@/assets/상우/균사.jpg"/>
+                <img width="500px" v-if="Product.productName =='레벤지균사'" src="@/assets/상우/균사.jpg"/>
+                <img width="500px" v-if="Product.productName =='놀이목'" src="@/assets/상우/놀이목.jpg"/>
+                <img width="500px" v-if="Product.productName =='광구병'" src="@/assets/상우/광구병.jpg"/>
+                <img width="500px" v-if="Product.productName =='오호히라균사묶음6개'" src="@/assets/상우/균사묶음.jpg"/>
+                <img width="500px" v-if="Product.productName =='균사스푼'" src="@/assets/상우/균사스푼.jpg"/>
+                <img width="500px" v-if="Product.productName =='일반균사묶음6개'" src="@/assets/상우/균사묶음.jpg"/>
+                <img width="500px" v-if="Product.productName =='사육케이스특대'" src="@/assets/상우/사육케이스.jpg"/>
+                <img width="500px" v-if="Product.productName =='사육케이스대'" src="@/assets/상우/사육케이스.jpg"/>
+                <img width="500px" v-if="Product.productName =='사육케이스중'" src="@/assets/상우/사육케이스.jpg"/>
+                <img width="500px" v-if="Product.productName =='사육케이스소'" src="@/assets/상우/사육케이스.jpg"/>
+                <img width="500px" v-if="Product.productName =='먹이접시1구'" src="@/assets/상우/먹이접시1구.jpg"/>
+                <img width="500px" v-if="Product.productName =='먹이접시2구'" src="@/assets/상우/먹이접시2구.jpg"/>
+                <img width="500px" v-if="Product.productName =='[사슴벌레용]발효톱밥5L묶음6개'" src="@/assets/상우/발효톱밥묶음.jpg"/>
+                <img width="500px" v-if="Product.productName =='[장수풍뎅이]발효톱밥5L묶음6개'" src="@/assets/상우/발효톱밥묶음.jpg"/>
+                <img width="500px" v-if="Product.productName =='유산균젤리100개'" src="@/assets/상우/유산균젤리.jpg"/>
+                <img width="500px" v-if="Product.productName =='유충병고급'" src="@/assets/상우/유충병고급.jpg"/>
+                <img width="500px" v-if="Product.productName =='온도계스티커'" src="@/assets/상우/온도계스티커.jpg"/>
+                <img width="500px" v-if="Product.productName =='장수풍뎅이세트'" src="@/assets/상우/장수풍뎅이세트.jpg"/>
+                <img width="500px" v-if="Product.productName =='왕사슴벌레세트'" src="@/assets/상우/왕사슴벌레세트.jpg"/>
+           </tr>
+       </table>
+       
         <form  @submit.prevent="OnSubmit" v-if="commentBox ==1 && this.$store.state.User !=null">
-         <table >
+         <table id="commetTable" >
+             <tr>
+                 <td>후기</td>
+             </tr>
+              
              <tr>
                  <th>작성자</th>
                  <input v-model="ui" readonly/>
@@ -127,8 +132,8 @@
             </tr>
         </table>
         
-        </v-container>
-        </v-container>
+        
+        
     </div>
 
 </template>
@@ -158,6 +163,7 @@ export default {
             ui: this.$store.state.User,
             comments: '',
             Modify: '',
+            userid:this.$store.state.User
 
              
         }
@@ -208,9 +214,9 @@ export default {
         
         finalBuybtn(Product){
                const {productName,productPrice } =Product
-                const {productNum, buyUserName,address,phoneNo} =this
+                const {productNum, buyUserName,address,phoneNo,userid} =this
 
-                axios.post('http://localhost:9999/jpaOrder/register',{productName,productPrice,productNum,buyUserName,address,phoneNo})
+                axios.post('http://localhost:9999/jpaOrder/register',{productName,productPrice,productNum,buyUserName,address,phoneNo,userid})
                 .then( ()=>{
                     alert('구매감사드립니다. 국민205502-04-5946645(한상우) 로 입금해주세요 입금확인후 배송시작')
                     this.perchaseBox =0
@@ -264,21 +270,19 @@ export default {
 <style scoped>
 
 #table{
-    margin-left: 600px;
-    position: absolute;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 2.5em;
-    border-style: solid;
-    border: 1px
+    margin-left: 500px;
+   width:1000px;
+   float: left;
 }
 #textarea{
     width:970px;
     height: 230px;
 }
-#commetTable{
-    
+#imgtable{
     
     position: absolute;
+    width:300px;
+    height: 500px;
 }
 
 </style>

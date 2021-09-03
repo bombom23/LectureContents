@@ -3,7 +3,7 @@
         <h3 align="center">게시물 목록</h3>
         <body>
      
-        <v-container>
+        
             <!--
         <table border="2">
             <tr >
@@ -39,14 +39,14 @@
         </table>
         -->
              <v-data-table :headers="headerTitle"  
-                    :items="(boards)" :key="boards.id"
+                    :items="boards" 
                     :items-per-page="10"
-                    
+                    item-key="boardNo"
                 
                    class="elevation-10" @click:row="handleClick"> 
          </v-data-table>
         <v-btn v-if="this.$store.state.isLogin ==true" id="btn" route :to="{name: 'CommunityRegisterPage'}"><v-icon>mdi-lead-pencil</v-icon></v-btn>
-        </v-container>
+       
         </body>
     </div>
 </template>

@@ -2,7 +2,7 @@
     <div>
         <img src="@/assets/상우/한국사슴벌레.jpg"/>
   <v-data-table :headers="headerTitle"  
-                    :items="(StagbeetleList)" :key="StagbeetleList.id"
+                    :items="(StagbeetleList)" item-key="boardNo"
                     :items-per-page="10"
                     
                 

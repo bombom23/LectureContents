@@ -31,5 +31,13 @@ public interface JpaMemberService {
 
     public  void deleteProduct(Long memberBasketNo) throws  Exception;
 
+    public void ModfiyEmail(Long memberNo,String email) throws  Exception;
 
+    public  void ModfiyPhoneNo(Long memberNo, int phoneNo) throws  Exception ;
+
+    public  void ModfiyAddress(Long memberNo, String address) throws  Exception ;
+
+    public Boolean checkingPassWord(MemberRequest memberRequest) throws  Exception;
+
+    public  void ModifyPassword(Long memberNo ,String Password ) throws  Exception ;
 }

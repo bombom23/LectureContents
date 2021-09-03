@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-container>
-        <v-btn @click="check">체크</v-btn>
+       <!-- <v-btn @click="check">체크</v-btn> -->
         
         <table>
             <tr>

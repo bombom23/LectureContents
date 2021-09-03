@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -181,4 +183,66 @@ public class JpaMemberController {
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
+    @PostMapping("/ModfiyEmail/{memberNo}")
+    public ResponseEntity<Void> ModfiyEmail (@PathVariable("memberNo") Long memberNo, @Validated @RequestBody MemberRequest memberRequest) throws  Exception {
+
+        String email = memberRequest.getEmail();
+
+        service.ModfiyEmail(memberNo ,email);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+
+    }
+ @PostMapping("/ModfiyPhoneNo/{memberNo}")
+    public  ResponseEntity<Void> ModfiyPhoneNo (@PathVariable("memberNo")Long memberNo, @Validated @RequestBody MemberRequest memberRequest) throws  Exception {
+    int phoneNo  = memberRequest.getPhoneNo();
+
+     System.out.println("memberNo:"+memberNo +",phoneNo:" +phoneNo);
+     service.ModfiyPhoneNo(memberNo,phoneNo);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+ }
+
+ @PostMapping("/ModfiyAddress/{memberNo}")
+    public ResponseEntity<Void> ModfiyAddress (@PathVariable("memberNo") Long memberNo, @Validated @RequestBody MemberRequest memberRequest ) throws  Exception {
+
+        String address = memberRequest.getAddress();
+        service.ModfiyAddress(memberNo, address);
+
+     System.out.println("memberNo:"+memberNo +",address" +address);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+ }
+
+ @PostMapping("/checkingPassword")
+    public ResponseEntity<Boolean> checkingPassWord(@Validated @RequestBody MemberRequest memberRequest) throws  Exception {
+
+
+        Boolean isSuccess  = service.checkingPassWord(memberRequest);
+
+        return  new ResponseEntity<>(isSuccess,HttpStatus.OK);
+ }
+
+ @PostMapping("/ModifyPassword/{memberNo}")
+    public  ResponseEntity<Void> ModifyPassword (@PathVariable("memberNo")Long memberNo , @Validated @RequestBody MemberRequest memberRequest) throws  Exception {
+     /*
+      String userid = jpaMember.getUserid();
+      String password = jpaMember.getPassword();
+      String name = jpaMember.getName();
+      String email = jpaMember.getEmail();
+      int birthday = jpaMember.getBirthday();
+      String  gender = jpaMember.getGender();
+     String address = jpaMember.getAddress();
+      int phoneNo = jpaMember.getPhoneNo();
+
+     System.out.println("userid:" +userid +",password:" +password +",name:" +name +",email:" +email + ",birthday:" +birthday + ",gender" + gender + ",address:" + address
+     + ",phoneNo:" + phoneNo  + ",memberNo" + memberNo);
+
+      */
+     String password = memberRequest.getPassword();
+
+     System.out.println("memberNo:" +memberNo + ",password:" +password) ;
+
+     service.ModifyPassword(memberNo,password);
+        return new ResponseEntity<Void>(HttpStatus.OK);
+ }
 }

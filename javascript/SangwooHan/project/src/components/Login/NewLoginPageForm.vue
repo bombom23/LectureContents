@@ -3,14 +3,16 @@
          
          <form @submit.prevent="onSubmit">
            <v-container id="LoginField" style="max-width:300px"> 
-               <p>로그인</p>
+               
                <v-text-field type="text" label="아이디" v-model="id">
                </v-text-field>
                <v-text-field type="password" label="비밀번호" v-model="pw">
                </v-text-field>
-               <v-btn  class="green" @click="onSubmit">로그인</v-btn>
+               <v-btn  class="green" @click="onSubmit"><v-icon>mdi-login-variant</v-icon>로그인</v-btn>
+               <!--
                <v-btn class="blue"  route :to="{ name: 'SignupPage' }">회원가입</v-btn>
                <v-btn class="red"  route :to="{ name: 'Home' }">취소</v-btn>
+               -->
            </v-container>
            
          </form>

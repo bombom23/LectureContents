@@ -3,6 +3,7 @@
         <v-data-table
         :headers="headerTitle"
         :items="SkycowList"
+        item-key="boardNo"
         :items-per-page="10"
        @click:row="handleClick">
         </v-data-table>

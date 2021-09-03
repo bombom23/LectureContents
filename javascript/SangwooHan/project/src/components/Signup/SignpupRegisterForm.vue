@@ -12,14 +12,17 @@
              <v-text-field  class="pl-3 pr-3"  :rules="passwordRules" required  v-model="password"
             label="비밀번호" type="password" prepend-icon="mdi-lock" flat solo>
             </v-text-field>
+            <v-text-field  class="pl-3 pr-3"  :rules="passwordCheck" required  v-model="passwordChecking"
+            label="비밀번호확인" type="password" prepend-icon="mdi-lock" flat solo>
+            </v-text-field>
               <v-text-field class="pl-3 pr-3" :rules="emailRules" required v-model="email"
             label="이메일" type="text" prepend-icon="mdi-email-multiple" flat solo>
             </v-text-field>
-            <v-text-field class="pl-3 pr-3" :rules="nameRules" required v-model="name"
+            <v-text-field class="pl-3 pr-3" :rules="nameRules"  required v-model="name"
             label="회원이름" type="text" prepend-icon="mdi-account" flat solo>
             </v-text-field>
             <v-text-field class="pl-3 pr-3"  required v-model="birthday"
-            label="주민번호앞자리" type="text" prepend-icon="mdi-cake" flat solo>
+            label="주민번호앞자리" type="Number"  prepend-icon="mdi-cake" flat solo>
             </v-text-field>
            
 
@@ -67,6 +70,10 @@ export default {
             gender: '',
             address: '',
             phoneNo: '',
+            passwordChecking: '',
+            passwordCheck: [
+            v => this.password ===v || '비밀번호가 일치하지않습니다'
+    ],
         }
     },
 
@@ -111,6 +118,7 @@ export default {
             'passwordRules',
             'nameRules',
             'loadingState',
+            
          ])
     }
 }

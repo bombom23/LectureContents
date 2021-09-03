@@ -8,8 +8,12 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-        <v-btn text v-for="link in LogOutlinks" :key="link.icon" :to="link.route">
-            {{ link.text }}
+        <v-btn depressed route :to="{name: 'SignupPage'}">
+            
+            <v-icon>
+                mdi-human-greeting
+            </v-icon>
+            회원가입
         </v-btn>
     </v-toolbar-items>
     </v-toolbar>
@@ -20,12 +24,22 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
+        <!--
         <v-btn depressed route :to="{name: 'BasketReadPage', params:{memberNo: this.$store.state.loginMemberNo}}" >
             장바구니
+        </v-btn>
+        -->
+        <v-btn depressed @click="logOut">
+            <v-icon>mdi-logout</v-icon>
+            로그아웃
+        </v-btn>
+        <v-btn depressed route :to="{name: 'MyPage'}">
+            {{this.User}}님
         </v-btn>
         <v-btn depressed route :to="{name: 'NoticeListPage'}" >
             공지판
         </v-btn>
+       
     </v-toolbar-items>
     </v-toolbar>
   
@@ -33,11 +47,27 @@
 </template>
 
 <script>
+import cookies from 'vue-cookies'
+import Vue from 'vue'
+
+Vue.use(cookies)
 import { mapState } from 'vuex'
 
 export default {
     computed: {
-        ...mapState(['loginMemberNo'])
+        ...mapState(['loginMemberNo','User'])
+    },
+    methods:{
+            logOut(){
+                this.$cookies.remove('user')
+  this.$cookies.remove('memberNo')
+  this.$cookies.remove('setter')
+  this.$cookies.remove('coin')
+            this.$store.state.isLogin = false
+            this.$store.state.session =null
+            this.$store.state.loginMemberNo =null
+            this.$router.go()
+            }
     },
     data () {
         return {
@@ -45,13 +75,8 @@ export default {
             group: false,
 
             LogOutlinks: [
-                {
-                    text: 'ㅣ로그인ㅣ',
-                    name: '로그인',
-                    route: '/loginpage',
-                },
-                {
-                    text: 'ㅣ회원가입ㅣ',
+                {  
+                    text: '회원가입',
                     name: '회원가입',
                     route: '/signuppage',
                 },

@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -36,8 +37,9 @@ public class JpaMember {
     private String address;
     @Column(length = 20, nullable = false)
     private int phoneNo;
+
     @CreationTimestamp
-    private LocalDateTime createDate;
+    private Date regDate;
 
     @UpdateTimestamp
     private LocalDateTime lastModifiedDate;
@@ -46,6 +48,8 @@ public class JpaMember {
     @OneToMany(cascade =  CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "member_no")
     private List<JpaMemberBasket> authList = new ArrayList<JpaMemberBasket>();
+
+
     /*
     @OneToMany
     @JoinColumn(name = "member_no")
@@ -54,7 +58,7 @@ public class JpaMember {
      */
 
 
-       public JpaMember(String userid , String password ,String name,String email,
+       public JpaMember(String userid , String password , String name, String email,
                         int birthday, String  gender, String address, int phoneNo) {
            this.userid = userid;
            this.password = password;
@@ -64,6 +68,7 @@ public class JpaMember {
            this.gender = gender;
            this.address = address;
            this.phoneNo = phoneNo;
+
        }
 
 

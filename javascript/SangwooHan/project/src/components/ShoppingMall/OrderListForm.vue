@@ -2,6 +2,7 @@
     <div>
        <table>
            <tr>
+               <th>주문번호</th>
                <th>주소</th>
                <th>성함</th>
                <th>연락처</th>
@@ -11,8 +12,9 @@
                <th>입금상태</th>
                <th>비고</th>
            </tr>
+           
                 <tr v-for="item in OrderList" :key="item.productName">
-                  
+                  <th>{{item.orderNo}}</th>
                   <th width="150px">{{ item.address}}</th>
                   <td>{{item.buyUserName}}</td>
                   <td>{{item.phoneNo}}</td>
@@ -20,13 +22,14 @@
                   <td>{{item.productNum}}</td>
                   <td>{{item.productPrice}}</td>
                   <td>{{item.state}}</td>
-                <v-btn>입금확인</v-btn>
+                <v-btn @click="Shipping(item.orderNo)">배송</v-btn>
                 </tr>
        </table>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     name: 'OrderListForm',
     props: {
@@ -37,7 +40,17 @@ export default {
     data(){
 
         return{
-            search: ''
+            search: '',
+           
+        }
+    },
+    methods:{
+        Shipping(orderNo){
+                    
+                axios.post(`http://localhost:9999/jpaOrder/Shipping/${orderNo}`,{shipping: '배송시작'})
+                .then(()=>{
+                    this.$router.go()
+                })
         }
     }
 }

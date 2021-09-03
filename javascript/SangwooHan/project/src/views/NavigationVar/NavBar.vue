@@ -87,7 +87,7 @@
 import { mapState } from 'vuex'
 export default {
     computed:{
-        ...mapState(['User'])
+        ...mapState(['User','loginMemberNo'])
     },
     data () {
         return {
@@ -140,12 +140,7 @@ export default {
                 
             ],
             LogInlinks2: [
-                {
-                    icon: 'home',
-                    text: 'Home',
-                    name: 'Home',
-                    route: '/',
-                },
+                
                 {
                      icon: 'mdi-login',
                     text: '로그인',
@@ -172,6 +167,12 @@ export default {
                     name: 'Home',
                     route: '/',
                 },
+                {
+                    icon: 'mdi-account-circle',
+                    text: '마이페이지',
+                    name: '마이페이지',
+                    route: '/myPage',params: {memberNo: this.$store.state.loginMemberNo}
+                },
                  
                 {
                      icon: 'mdi-newspaper',
@@ -182,13 +183,13 @@ export default {
             ],
             ManageLinks: [
                 {
-                    icon: 'home',
-                    text: 'Home',
-                    name: 'Home',
-                    route: '/',
+                    icon: 'mdi-account-circle',
+                    text: '마이페이지',
+                    name: '마이페이지',
+                    route: '/myPage',params: {memberNo: this.$store.state.loginMemberNo}
                 },
                  {
-                     
+                    icon: 'mdi-pencil-remove',
                     text: '박물관게시물작성',
                     name: '박물관게시물작성',
                     route: '/stagbeetleRegister',
@@ -200,19 +201,19 @@ export default {
                     route: '/memberlist',
                 },
                 {
-                     
+                    icon: 'mdi-pencil-outline',
                     text: '공지게시',
                     name: '공지게시',
                     route: '/noticeRegisterPage',
                 },
                 {
-                     
+                    icon: 'mdi-currency-usd',
                     text: '상품등록하기',
                     name: '상품등록',
                     route: '/productRegister',
                 },
                 {
-                     
+                    icon: 'mdi-order-bool-descending-variant',
                     text: '주문현황',
                     name: '주문현황',
                     route: '/orderListPage',

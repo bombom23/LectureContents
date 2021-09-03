@@ -4,13 +4,14 @@
     
     <div class="header">
     <top-nav-bar/>
--  <header align="center" id="header"><img id="homebtn" @click="handleClick" src="@/assets/상우/홈로고.png"/></header> 
+-  <header align="center" id="header"><img id="homebtn" @click="GoHome" src="@/assets/상우/홈로고.png"/></header> 
     </div>
     <nav-bar/>
-    <v-btn width="80px" @click="check">로그인한사람</v-btn>
+   <!-- <v-btn width="80px" @click="check">로그인한사람</v-btn>-->
     
     <new-login-page-form v-if="this.$store.state.session ==null" @submit="onSubmit" :members="members"/>
-    <v-btn v-else @click="logout" width="80px">로그아웃</v-btn>
+     
+   <!-- <v-btn v-else @click="logout" width="80px">로그아웃</v-btn>-->
     
     
 <div class="section">
@@ -61,6 +62,9 @@ export default {
       }else{
         this.$router.push({name: 'Home'})
       }
+},
+GoHome(){
+  this.$router.replace({name: 'Home'})
 },
 check(){
   console.log(this.$cookies.get('user'))
@@ -113,6 +117,8 @@ onSubmit (payload) {
 logout() {
   this.$cookies.remove('user')
   this.$cookies.remove('memberNo')
+  this.$cookies.remove('setter')
+  this.$cookies.remove('coin')
             this.$store.state.isLogin = false
             this.$store.state.session =null
             this.$store.state.loginMemberNo =null
@@ -206,10 +212,14 @@ footer{
 
 	text-align: center;
 
-
-
-	
-
+}
+table {
+  font-weight: bold;
+  background: #eee;
+}
+h4{
+    width: 700px;
+    height: 700px;
 }
 
 

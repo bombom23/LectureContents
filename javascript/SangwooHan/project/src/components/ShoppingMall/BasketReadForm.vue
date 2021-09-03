@@ -2,38 +2,39 @@
     <div >
         <h1 v-if="BasketList.length == 0"> 장바구니가비었습니다.</h1>
         <div v-if="BasketList">
+            <my-information-menu/>
         <v-container >
         <table>
                 
-            <tr v-for="product in BasketList" :key="product.productName">
-                 <img width="300px" v-if="product.productName =='[사슴벌레용]발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
-                <img width="300px" v-if="product.productName =='[장수풍뎅이]발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
-                <img width="300px" v-if="product.productName =='산란목'" src="@/assets/상우/산란목.jpg"/>
-                <img width="300px" v-if="product.productName =='발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
-                <img width="300px" v-if="product.productName =='균사'" src="@/assets/상우/균사.jpg"/>
-                <img width="300px" v-if="product.productName =='곤충젤리100개'" src="@/assets/상우/수액젤리.jpg"/>
-                <img width="300px" v-if="product.productName =='곤충이끼'" src="@/assets/상우/곤충이끼.jpg"/>
-                <img width="300px" v-if="product.productName =='오호히라균사'" src="@/assets/상우/균사.jpg"/>
-                <img width="300px" v-if="product.productName =='레벤지균사'" src="@/assets/상우/균사.jpg"/>
-                <img width="300px" v-if="product.productName =='놀이목'" src="@/assets/상우/놀이목.jpg"/>
-                <img width="300px" v-if="product.productName =='광구병'" src="@/assets/상우/광구병.jpg"/>
-                <img width="300px" v-if="product.productName =='오호히라균사묶음6개'" src="@/assets/상우/균사묶음.jpg"/>
-                <img width="300px" v-if="product.productName =='균사스푼'" src="@/assets/상우/균사스푼.jpg"/>
-                <img width="300px" v-if="product.productName =='일반균사묶음6개'" src="@/assets/상우/균사묶음.jpg"/>
-                <img width="300px" v-if="product.productName =='사육케이스특대'" src="@/assets/상우/사육케이스.jpg"/>
-                <img width="300px" v-if="product.productName =='사육케이스대'" src="@/assets/상우/사육케이스.jpg"/>
-                <img width="300px" v-if="product.productName =='사육케이스중'" src="@/assets/상우/사육케이스.jpg"/>
-                <img width="300px" v-if="product.productName =='사육케이스소'" src="@/assets/상우/사육케이스.jpg"/>
-                <img width="300px" v-if="product.productName =='먹이접시1구'" src="@/assets/상우/먹이접시1구.jpg"/>
-                <img width="300px" v-if="product.productName =='먹이접시2구'" src="@/assets/상우/먹이접시2구.jpg"/>
-                <img width="300px" v-if="product.productName =='[사슴벌레용]발효톱밥5L묶음6개'" src="@/assets/상우/발효톱밥묶음.jpg"/>
-                <img width="300px" v-if="product.productName =='[장수풍뎅이]발효톱밥5L묶음6개'" src="@/assets/상우/발효톱밥묶음.jpg"/>
-                <img width="300px" v-if="product.productName =='유산균젤리100개'" src="@/assets/상우/유산균젤리.jpg"/>
-                <img width="300px" v-if="product.productName =='유충병고급'" src="@/assets/상우/유충병고급.jpg"/>
-                <img width="300px" v-if="product.productName =='온도계스티커'" src="@/assets/상우/온도계스티커.jpg"/>
+            <tr v-for="product in BasketList" :key="product.memberBasketNo">
+                 <img width="150px" v-if="product.productName =='[사슴벌레용]발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
+                <img width="150px" v-if="product.productName =='[장수풍뎅이]발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
+                <img width="150px" v-if="product.productName =='산란목'" src="@/assets/상우/산란목.jpg"/>
+                <img width="150px" v-if="product.productName =='발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
+                <img width="150px" v-if="product.productName =='균사'" src="@/assets/상우/균사.jpg"/>
+                <img width="150px" v-if="product.productName =='곤충젤리100개'" src="@/assets/상우/수액젤리.jpg"/>
+                <img width="150px" v-if="product.productName =='곤충이끼'" src="@/assets/상우/곤충이끼.jpg"/>
+                <img width="150px" v-if="product.productName =='오호히라균사'" src="@/assets/상우/균사.jpg"/>
+                <img width="150px" v-if="product.productName =='레벤지균사'" src="@/assets/상우/균사.jpg"/>
+                <img width="150px" v-if="product.productName =='놀이목'" src="@/assets/상우/놀이목.jpg"/>
+                <img width="150px" v-if="product.productName =='광구병'" src="@/assets/상우/광구병.jpg"/>
+                <img width="150px" v-if="product.productName =='오호히라균사묶음6개'" src="@/assets/상우/균사묶음.jpg"/>
+                <img width="150px" v-if="product.productName =='균사스푼'" src="@/assets/상우/균사스푼.jpg"/>
+                <img width="150px" v-if="product.productName =='일반균사묶음6개'" src="@/assets/상우/균사묶음.jpg"/>
+                <img width="150px" v-if="product.productName =='사육케이스특대'" src="@/assets/상우/사육케이스.jpg"/>
+                <img width="150px" v-if="product.productName =='사육케이스대'" src="@/assets/상우/사육케이스.jpg"/>
+                <img width="150px" v-if="product.productName =='사육케이스중'" src="@/assets/상우/사육케이스.jpg"/>
+                <img width="150px" v-if="product.productName =='사육케이스소'" src="@/assets/상우/사육케이스.jpg"/>
+                <img width="150px" v-if="product.productName =='먹이접시1구'" src="@/assets/상우/먹이접시1구.jpg"/>
+                <img width="150px" v-if="product.productName =='먹이접시2구'" src="@/assets/상우/먹이접시2구.jpg"/>
+                <img width="150px" v-if="product.productName =='[사슴벌레용]발효톱밥5L묶음6개'" src="@/assets/상우/발효톱밥묶음.jpg"/>
+                <img width="150px" v-if="product.productName =='[장수풍뎅이]발효톱밥5L묶음6개'" src="@/assets/상우/발효톱밥묶음.jpg"/>
+                <img width="150px" v-if="product.productName =='유산균젤리100개'" src="@/assets/상우/유산균젤리.jpg"/>
+                <img width="150px" v-if="product.productName =='유충병고급'" src="@/assets/상우/유충병고급.jpg"/>
+                <img width="150px" v-if="product.productName =='온도계스티커'" src="@/assets/상우/온도계스티커.jpg"/>
 
-                <img width="300px" v-if="product.productName =='장수풍뎅이세트'" src="@/assets/상우/장수풍뎅이세트.jpg"/>
-                <img width="300px" v-if="product.productName =='왕사슴벌레세트'" src="@/assets/상우/왕사슴벌레세트.jpg"/>
+                <img width="150px" v-if="product.productName =='장수풍뎅이세트'" src="@/assets/상우/장수풍뎅이세트.jpg"/>
+                <img width="150px" v-if="product.productName =='왕사슴벌레세트'" src="@/assets/상우/왕사슴벌레세트.jpg"/>
                 
                 <td>제품명:{{product.productName}},가격:{{product.productPrice}},수량:{{product.productNum}}</td>
                 <td v-if="Modify == product.memberBasketNo">
@@ -43,7 +44,9 @@
                 <v-btn @click="ModifyOn(product.memberBasketNo)">수량변경</v-btn>
             </tr>
             <v-btn v-if="BasketList.length != 0 " @click="InitiatingPerchase" width="200" class="red" height="80">구매</v-btn>
-             
+            <tr v-if="perchaseBox ==1">
+               <textarea v-model="userid" readonly/>
+           </tr>  
            <tr v-if="perchaseBox ==1"><p>주소</p>
                <textarea v-model="address"/>
            </tr>
@@ -69,14 +72,20 @@
 
 <script>
 import axios from 'axios';
+import MyInformationMenu from '../MyPage/MyInformationMenu.vue';
+import { mapState } from 'vuex';
 
 export default {
+  components: { MyInformationMenu },
     name: 'BasketReadForm',
     props:{
         BasketList: {
             type: Array
         },
         
+        computed:{
+            ...mapState(['User'])
+        },
     
     },
     methods: {check(){console.log(this.BasketList)},
@@ -113,12 +122,12 @@ export default {
             this.perchaseBox =0
         },
         finalBuybtn(BasketList){
-
+          
             for(var z = 0; z< BasketList.length; z++){
                 const {productName,productPrice,productNum} =BasketList[z]
-                const {address,phoneNo,buyUserName} =this
+                const {address,phoneNo,buyUserName,userid} =this
 
-                    axios.post('http://localhost:9999/jpaOrder/register',{productName,productPrice,productNum,address,phoneNo,buyUserName})
+                    axios.post('http://localhost:9999/jpaOrder/register',{productName,productPrice,productNum,address,phoneNo,buyUserName,userid})
                     .then( ()=>{
                         
                     
@@ -128,8 +137,12 @@ export default {
                     alert(err.response.data.message)
                 })
             }
+            
+             
             alert('구매감사드립니다. 국민205502-04-5946645(한상우) 로 입금해주세요 입금확인후 배송시작')
+            
             this.$router.go()
+            
         }
     },
     data(){
@@ -140,7 +153,8 @@ export default {
                 perchaseBox: 0,
                 address: '',
                 phoneNo: 0,
-                buyUserName: ''
+                buyUserName: '',
+                userid: this.$store.state.User
 
             }
     },

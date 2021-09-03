@@ -1,6 +1,7 @@
 <template>
     <div>
-                <table>
+       
+                <table style="max-width: 500px">
             <tr>
                 <td>회원번호</td>
                 <td><input type="number" :value="member.memberNo" readonly></td>
@@ -50,7 +51,7 @@
                 <td><input type="text" :value="member.createDate" readonly></td>
             </tr>
         </table>
-       
+        <h3>하하</h3>
        
     </div>
 </template>
@@ -70,3 +71,10 @@ export default {
     }
 }
 </script>
+<style scoped>
+
+table{
+    margin-right: 500px;
+    float: left;
+}
+</style>

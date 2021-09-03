@@ -35,6 +35,9 @@ FETCH_PRODUCT,
 FETCH_BASKET_LIST,
 //주문정보
 FETCH_ORDER_LIST,
+//마이페이지.고객의소리
+FETCH_CUSTOMER_SOUND_LIST,
+FETCH_CUSTOMER_SOUND
 
 
 
@@ -239,8 +242,23 @@ export default {
         .then((res) =>{
             commit(FETCH_ORDER_LIST, res.data)
         }).catch(err=>{alert(err.response.data.message)})
-    }
+    },
+    //마이페이지
+    //고객소리 
+    fetchCustomerSoundList ({commit }) {
 
+        return axios.get('http://localhost:9999/CustomerSound/getSoundList')
+        .then( (res) => {
+            commit(FETCH_CUSTOMER_SOUND_LIST,res.data)
+        }).catch(err=>{alert(err.response.data.message)})
+    },
+    fetchCustomerSound({ commit }, boardNo) {
+
+        return axios.get(`http://localhost:9999/CustomerSound/getSound/${boardNo}`)
+        .then((res) =>{
+            commit(FETCH_CUSTOMER_SOUND, res.data)
+        }).catch(err=>{err.response.data.message})
+    }
 
     
   
