@@ -11,6 +11,7 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -245,4 +246,29 @@ public class JpaMemberController {
      service.ModifyPassword(memberNo,password);
         return new ResponseEntity<Void>(HttpStatus.OK);
  }
+
+@PostMapping("/FindByMemberNo")
+    public ResponseEntity<JpaMember> FindByMemberNo (@Validated @RequestBody MemberRequest memberRequest) throws  Exception {
+        String userid = memberRequest.getUserid();
+    System.out.println("userid: " + userid);
+       //    Long memberNo = service.FindByMemberNo(memberRequest);
+    try {
+        Optional<JpaMember> jpaMember = service.FindByMemberNo(memberRequest);
+
+        JpaMember jpaMember1 = jpaMember.get();
+        return new ResponseEntity<>(jpaMember1,HttpStatus.OK);
+    }catch (Exception e){
+        JpaMember jpaMember2 = null;
+        return new ResponseEntity<>(jpaMember2,HttpStatus.OK);
+    }
+
+}
+
+@PostMapping("/IdMatchedBirthday")
+    public ResponseEntity<Boolean> IdMatchedBirthday(@Validated @RequestBody MemberRequest memberRequest) throws  Exception {
+
+        Boolean result = service.IdMatchedBirthday(memberRequest);
+        return new ResponseEntity<>(result,HttpStatus.OK);
+}
+
 }

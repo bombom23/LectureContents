@@ -36,9 +36,9 @@
                 <img width="300px" v-if="product.productName =='왕사슴벌레세트'&&product.productName.includes(search)" src="@/assets/상우/왕사슴벌레세트.jpg"/>
                 <p v-if="product.productName.includes(search)" >제품명:{{product.productName}}</p>
                 <p v-if="product.productName.includes(search)" >제품가격:{{product.productPrice}}원</p>
-                <v-btn v-if="product.productName.includes(search)" @click="Buy(product.boardNo)"> 구매</v-btn>
-                <v-btn  v-if="User !=null&&product.productName.includes(search)" @click="Basket(product)">장바구니</v-btn>
-                <v-btn v-if="User ==null&&product.productName.includes(search)" @click="plzlogin">장바구니</v-btn>
+                <v-btn depressed v-if="product.productName.includes(search)" @click="Buy(product.boardNo)"><v-icon>mdi-location-enter</v-icon>구매</v-btn>
+                <v-btn depressed v-if="User !=null&&product.productName.includes(search)" @click="Basket(product)"><v-icon>mdi-basket</v-icon>장바구니</v-btn>
+                <v-btn depressed v-if="User ==null&&product.productName.includes(search)" @click="plzlogin">장바구니</v-btn>
             </li>
         </ul>
         

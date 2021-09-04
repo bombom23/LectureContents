@@ -40,4 +40,9 @@ public interface JpaMemberService {
     public Boolean checkingPassWord(MemberRequest memberRequest) throws  Exception;
 
     public  void ModifyPassword(Long memberNo ,String Password ) throws  Exception ;
+
+    public  Boolean IdMatchedBirthday(MemberRequest memberRequest) throws  Exception;
+
+    Optional<JpaMember> FindByMemberNo(MemberRequest memberRequest) throws  Exception ;
+
 }

@@ -67,16 +67,14 @@ public class JpaMemberServiceimpl implements JpaMemberService {
 
 
         Optional<JpaMember> maybeMember = memberRepository.findByUserId(memberRequest.getUserid());
-        if (maybeMember == null)
-        {
+        if (maybeMember == null) {
             log.info("login(): 그런 사람 없다.");
             return false;
         }
 
         JpaMember loginMember = maybeMember.get();
 
-        if (!passwordEncoder.matches(memberRequest.getPassword(), loginMember.getPassword()))
-        {
+        if (!passwordEncoder.matches(memberRequest.getPassword(), loginMember.getPassword())) {
             log.info("login(): 비밀번호 잘못 입력하였습니다.");
             return false;
         }
@@ -88,10 +86,10 @@ public class JpaMemberServiceimpl implements JpaMemberService {
     public boolean checkUserIdValidation(String userid) throws Exception {
         Optional<JpaMember> maybeJpaMember = memberRepository.findByUserId(userid);
 
-        if(maybeJpaMember == null){
-             log.info("login():  there is no id");
+        if (maybeJpaMember == null) {
+            log.info("login():  there is no id");
 
-             return  false;
+            return false;
         }
 
 
@@ -105,7 +103,7 @@ public class JpaMemberServiceimpl implements JpaMemberService {
 
     @Override
     public void addBasket(ProductBasketRequest productBasketRequest) throws Exception {
-        JpaMemberBasket jpaMemberBasket = new JpaMemberBasket(productBasketRequest.getMemberBasketNo(), productBasketRequest.getMemberNo(), productBasketRequest.getProductName(), productBasketRequest.getProductPrice(), productBasketRequest.getProductNum(),productBasketRequest.getRegDate());
+        JpaMemberBasket jpaMemberBasket = new JpaMemberBasket(productBasketRequest.getMemberBasketNo(), productBasketRequest.getMemberNo(), productBasketRequest.getProductName(), productBasketRequest.getProductPrice(), productBasketRequest.getProductNum(), productBasketRequest.getRegDate());
 
         jpaProductBasketRepository.save(jpaMemberBasket);
     }
@@ -118,7 +116,7 @@ public class JpaMemberServiceimpl implements JpaMemberService {
     @Override
     public void ModifyProductNum(ProductBasketRequest productBasketRequest) {
 
-        JpaMemberBasket jpaMemberBasket = new JpaMemberBasket(productBasketRequest.getMemberBasketNo(), productBasketRequest.getMemberNo(), productBasketRequest.getProductName(), productBasketRequest.getProductPrice(), productBasketRequest.getProductNum(),productBasketRequest.getRegDate());
+        JpaMemberBasket jpaMemberBasket = new JpaMemberBasket(productBasketRequest.getMemberBasketNo(), productBasketRequest.getMemberNo(), productBasketRequest.getProductName(), productBasketRequest.getProductPrice(), productBasketRequest.getProductNum(), productBasketRequest.getRegDate());
         jpaProductBasketRepository.save(jpaMemberBasket);
     }
 
@@ -129,12 +127,12 @@ public class JpaMemberServiceimpl implements JpaMemberService {
 
     @Override
     public void ModfiyEmail(Long memberNo, String email) throws Exception {
-        memberRepository.ModfiyEmail(memberNo,email);
+        memberRepository.ModfiyEmail(memberNo, email);
     }
 
     @Override
     public void ModfiyPhoneNo(Long memberNo, int phoneNo) throws Exception {
-        memberRepository.ModfiyPhoneNo(memberNo,phoneNo);
+        memberRepository.ModfiyPhoneNo(memberNo, phoneNo);
     }
 
     @Override
@@ -145,16 +143,14 @@ public class JpaMemberServiceimpl implements JpaMemberService {
     @Override
     public Boolean checkingPassWord(MemberRequest memberRequest) throws Exception {
         Optional<JpaMember> maybeMember = memberRepository.findByUserId(memberRequest.getUserid());
-        if (maybeMember == null)
-        {
+        if (maybeMember == null) {
             log.info("login(): 그런 사람 없다.");
             return false;
         }
 
         JpaMember loginMember = maybeMember.get();
 
-        if (!passwordEncoder.matches(memberRequest.getPassword(), loginMember.getPassword()))
-        {
+        if (!passwordEncoder.matches(memberRequest.getPassword(), loginMember.getPassword())) {
             log.info("login(): 비밀번호 잘못 입력하였습니다.");
             return false;
         }
@@ -164,11 +160,33 @@ public class JpaMemberServiceimpl implements JpaMemberService {
 
     @Override
     public void ModifyPassword(Long memberNo, String Password) throws Exception {
-      //  String encodedPassword = passwordEncoder.encode(jpaMember.getPassword());
+        //  String encodedPassword = passwordEncoder.encode(jpaMember.getPassword());
         //jpaMember.setPassword(encodedPassword);
-       // memberRepository.save(jpaMember);
+        // memberRepository.save(jpaMember);
 
-        memberRepository.ModifyPassword(memberNo,Password);
+        memberRepository.ModifyPassword(memberNo, Password);
 
+    }
+
+
+
+    @Override
+    public Optional<JpaMember> FindByMemberNo(MemberRequest memberRequest) throws Exception {
+        Optional<JpaMember> maybeMember = memberRepository.findByUserId(memberRequest.getUserid());
+
+            return maybeMember ;
+    }
+
+    @Override
+    public Boolean IdMatchedBirthday(MemberRequest memberRequest) throws Exception {
+
+        Optional<JpaMember> maybeMember = memberRepository.findByUserId(memberRequest.getUserid());
+           JpaMember loginmember = maybeMember.get();
+        if(loginmember.getEmail() == memberRequest.getEmail()) {
+
+            return true;
+        }
+
+        return false;
     }
 }
