@@ -1,0 +1,47 @@
+<template>
+    <v-container>
+        <h3>File Upload Result: </h3>
+        <div>
+            <label>Files
+                <input type="file" id="files" ref="files" multiple v-on:change="handleFileUpload()">
+            </label>
+            <button v-on:click="submitFiles()">업로드!</button>
+        </div>
+    </v-container>
+</template>
+
+<script>
+import axios from 'axios'
+// import snakecaseKeys from 'snakecase-keys'
+export default {
+    name: 'FileUploadPage',
+    data () {
+        return {
+            files: ''
+        }
+    },
+    methods: {
+        handleFileUpload () {
+            this.files = this.$refs.files.files
+        },
+        submitFiles () {
+            let formData = new FormData()
+            for (var idx = 0; idx < this.files.length; idx++) {
+                formData.append('fileList', this.files[idx])
+            }
+            axios.post('http://localhost:9999/file/uploadImg', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            .then (res => {
+                this.response = res.data
+            })
+            .catch (res => {
+                this.response = res.message
+            }) 
+            alert('Processing Complete!')
+        }
+    }
+}
+</script>

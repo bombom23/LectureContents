@@ -1,0 +1,171 @@
+<template>
+    <div>
+            <table style="margin-left:200px">
+                <tr>
+                    <th>등록번호</th>
+                    <td>{{member.memberNo}}</td>
+                </tr>
+                <tr>
+                    <th>회원이름</th>
+                    <td>{{member.name}}</td>
+                    
+                </tr>
+                <tr>
+                    <th>아이디</th>
+                    <td>{{member.userid}}</td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td v-if="emailModify == 0">{{member.email}}</td>
+                    <td v-if="emailModify == 1"><v-text-field v-model="email" :rules="emailRules"/></td>
+                    <v-btn v-if="emailModify == 0" @click="emailModifyON">이메일수정</v-btn>
+                    <v-btn v-if="emailModify == 1" @click="emailModifyOFF">취소</v-btn>
+                    <v-btn v-if="emailModify == 1" @click="StartemailModify(member.memberNo)">완료</v-btn>
+                </tr>
+                <tr>
+                    <th>주소</th>
+                    <td v-if="addressModify == 0" >{{member.address}}</td>
+                    <td v-if="addressModify == 1"><input v-model="address"/></td>
+                    <v-btn v-if="addressModify == 0" @click="addressModifyON">주소변경</v-btn>
+                    <v-btn v-if="addressModify == 1" @click="addressModifyOFF">취소</v-btn>
+                    <v-btn v-if="addressModify == 1" @click="StartaddressModify(member.memberNo)">완료</v-btn>
+                </tr>
+                <tr>
+                    <th>전화번호</th>
+                    <td v-if="phoneNoModify == 0" >{{member.phoneNo}}</td>
+                    <td v-if="phoneNoModify == 1"><input v-model="phoneNo"/></td>
+                    <v-btn v-if="phoneNoModify == 0" @click="phoneNoModifyON">연락처변경</v-btn>
+                    <v-btn v-if="phoneNoModify == 1" @click="phoneNoModifyOFF">취소</v-btn>
+                    <v-btn v-if="phoneNoModify == 1" @click="StartphoneNoModify(member.memberNo)">완료</v-btn>
+                </tr>
+            </table>
+            <tr>
+                <td>
+            <table style="margin-left:195px">
+                
+            <v-container style="max-width: 350px;">
+            <v-btn v-if="passwordModify == 0" @click="PasswordModifyON"> 비밀변호 변경</v-btn>
+            
+            <form @submit.prevent="StartpasswordModify(member)">
+            
+            <v-text-field v-if="passwordModify == 1" v-model="password" type="password" label="비밀번호">
+            </v-text-field>
+            <v-text-field v-if="passwordModify == 1" v-model="passwordcheck1" type="password" label="비밀번호확인"  :rules="passwordCheck">
+            </v-text-field>
+                <p>※주의비밀번호변경시 장바구니정보가 초기화됩니다.</p>
+            <v-btn v-if="passwordModify == 1" type="submit">변경</v-btn>
+            <v-btn v-if="passwordModify == 1" @click="PasswordModifyOFF">취소</v-btn>
+            </form>
+            </v-container>
+            </table>
+                </td>
+            </tr>
+    
+    </div>
+</template>
+
+<script>
+
+import axios from 'axios'
+import { mapActions, mapState } from 'vuex'
+export default {
+    name: 'MyInformationDetailForm',
+    
+    computed:{
+        ...mapState(['emailRules','member','loginMemberNo'])
+    },
+    data(){
+        return{
+            emailModify: 0,
+            addressModify: 0,
+            phoneNoModify: 0,
+            passwordModify: 0,
+            passwordcheck1: '',
+            passwordCheck: [
+            v => this.password ===v || '비밀번호가 일치하지않습니다'
+            ],
+            
+            password: '',
+            email: '',
+            phoneNo: 0,
+            address: '',
+            
+        }
+    },
+    created(){
+        this.fetchMember(this.loginMemberNo)
+    },
+    methods:{
+        ...mapActions(['fetchMember']),
+        emailModifyON() {
+            this.emailModify =1
+        },
+        addressModifyON(){
+            this.addressModify =1   
+        },
+        phoneNoModifyON() {
+            this.phoneNoModify = 1
+        },
+        emailModifyOFF() {
+            this.emailModify =0
+        },
+        addressModifyOFF(){
+            this.addressModify =0
+        },
+        phoneNoModifyOFF() {
+            this.phoneNoModify = 0
+        },
+        PasswordModifyON(){
+            this.passwordModify = 1
+        },
+        PasswordModifyOFF(){
+            this.passwordModify = 0
+        },
+        
+        StartemailModify(memberNo){
+                const {email} =this
+                axios.post(`http://localhost:9999/jpamemberManage/ModfiyEmail/${memberNo}`,{email})
+                .then(() =>{
+                    alert('수정이완료되었습니다.')
+                    this.$router.go()
+                })
+        },
+        StartphoneNoModify(memberNo){
+                const {phoneNo} =this
+                axios.post(`http://localhost:9999/jpamemberManage/ModfiyPhoneNo/${memberNo}`,{phoneNo})
+                .then(() =>{
+                    alert('수정이완료되었습니다.')
+                    this.$router.go()
+                })
+        },
+        StartaddressModify(memberNo){
+                const {address} =this
+                axios.post(`http://localhost:9999/jpamemberManage/ModfiyAddress/${memberNo}`,{address})
+                .then(() =>{
+                    alert('수정이완료되었습니다.')
+                    this.$router.go()
+                })
+        },                                                                                       
+        StartpasswordModify(member){
+                const {name, userid, email, address, phoneNo,  gender,birthday,regDate} =member
+                const {password} =this
+            axios.put(`http://localhost:9999/jpamemberManage/${this.member.memberNo}`,{name, userid, email, address, phoneNo,  gender,birthday,password,regDate})
+            .then( ()=> {
+                alert('비밀번호변경완료')
+                this.$router.go()
+            })
+        }
+      
+       
+
+
+    }
+}
+</script>
+
+<style scoped>
+table{
+    margin-top: 20px;
+    max-width: 700px;
+}
+</style>
