@@ -25,4 +25,6 @@ public interface StagbeetleService {
 
     public  void deleteComment(Long StagbeetleCommentNo) throws  Exception;
 
+    public  Optional<JpaStagbeetle>searchtitle (StagbeetleCommentRuquest stagbeetleCommentRuquest);
+
 }

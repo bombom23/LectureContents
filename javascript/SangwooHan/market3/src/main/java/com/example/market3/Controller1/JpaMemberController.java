@@ -40,7 +40,7 @@ public class JpaMemberController {
     public  ResponseEntity<Void> jpaMemberRegister (
             @Validated @RequestBody MemberRequest memberRequest) throws  Exception {
             service.register(memberRequest);
-
+        System.out.println(memberRequest.getBirthday());
             return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
@@ -266,7 +266,7 @@ public class JpaMemberController {
 
 @PostMapping("/IdMatchedBirthday")
     public ResponseEntity<Boolean> IdMatchedBirthday(@Validated @RequestBody MemberRequest memberRequest) throws  Exception {
-
+   System.out.println(memberRequest.getMaybebirthday() + memberRequest.getUserid());
         Boolean result = service.IdMatchedBirthday(memberRequest);
         return new ResponseEntity<>(result,HttpStatus.OK);
 }

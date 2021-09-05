@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 public interface DragonflyRepository extends JpaRepository<JpaDragonfly,Long> {
 
@@ -15,4 +16,6 @@ public interface DragonflyRepository extends JpaRepository<JpaDragonfly,Long> {
     @Query("UPDATE  JpaDragonfly J set J.vuecount = J.vuecount +1 where J.boardNo = :boardNo ")
     void addvuecount(@Param("boardNo")Long boardNo);
 
+    @Query("select j from JpaDragonfly j where j.title = :title")
+    Optional<JpaDragonfly> findBytitle(@Param("title")String title);
 }

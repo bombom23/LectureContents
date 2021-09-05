@@ -63,4 +63,14 @@ public class BeetleServiceimpl implements BeetleService {
 
         beetleCommentsRepository.deleteById(beetleCommentNo);
     }
+
+    @Override
+    public Optional<JpaBeetle> searchtitle(BeetleCommentRequest beetleCommentRequest) throws Exception {
+        String title = beetleCommentRequest.getTitle();
+
+        Optional<JpaBeetle> jpaBeetle = beetleRepository.findBytitle(title);
+
+
+        return jpaBeetle;
+    }
 }

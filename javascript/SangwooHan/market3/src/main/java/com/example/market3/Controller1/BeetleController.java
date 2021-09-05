@@ -4,6 +4,7 @@ import com.example.market3.Controller1.MemberRequset.BeetleCommentRequest;
 import com.example.market3.Controller1.MemberRequset.StagbeetleCommentRuquest;
 import com.example.market3.Entity.JpaBeetle;
 import com.example.market3.Entity.JpaBeetleComment;
+import com.example.market3.Entity.JpaStagbeetle;
 import com.example.market3.Entity.JpaStagbeetleComment;
 import com.example.market3.Service.BeetleService;
 import lombok.extern.slf4j.Slf4j;
@@ -90,6 +91,19 @@ public class BeetleController {
         service.DeleteComment(beetleCommentNo);
 
         return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @PostMapping("/searchtitle")
+    public ResponseEntity<JpaBeetle> searchtitle (@Validated @RequestBody BeetleCommentRequest beetleCommentRequest) throws  Exception {
+
+        try {
+            Optional<JpaBeetle> jpaBeetle = service.searchtitle(beetleCommentRequest);
+            JpaBeetle jpaBeetle1 = jpaBeetle.get();
+
+            return new ResponseEntity<>(jpaBeetle1, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        }
     }
 
 

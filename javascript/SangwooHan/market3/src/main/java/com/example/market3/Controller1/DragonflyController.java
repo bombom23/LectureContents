@@ -1,6 +1,8 @@
 package com.example.market3.Controller1;
 
+import com.example.market3.Controller1.MemberRequset.ButterflyCommentRequest;
 import com.example.market3.Controller1.MemberRequset.DragonflyCommentRequest;
+import com.example.market3.Entity.JpaButterfly;
 import com.example.market3.Entity.JpaDragonfly;
 import com.example.market3.Entity.JpaDragonflyComment;
 import com.example.market3.Rapository.DragonflyCommentRepository;
@@ -94,4 +96,18 @@ public class DragonflyController {
         service.deleteComment(dragonflyCommentNo);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
+    @PostMapping("/searchtitle")
+    public ResponseEntity<JpaDragonfly> searchtitle (@Validated @RequestBody DragonflyCommentRequest dragonflyCommentRequest) throws  Exception {
+
+        try {
+            Optional<JpaDragonfly> jpaDragonfly = service.searchtitle(dragonflyCommentRequest);
+            JpaDragonfly jpaDragonfly1 = jpaDragonfly.get();
+
+            return new ResponseEntity<>(jpaDragonfly1, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        }
+    }
+
 }

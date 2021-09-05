@@ -9,6 +9,7 @@
                <v-text-field type="password" label="비밀번호" v-model="pw">
                </v-text-field>
                <v-btn  class="green" @click="onSubmit"><v-icon>mdi-login-variant</v-icon>로그인</v-btn>
+               <v-btn route :to="{name: 'FindByPasswordPage'}">비밀번호찾기</v-btn>
                <!--
                <v-btn class="blue"  route :to="{ name: 'SignupPage' }">회원가입</v-btn>
                <v-btn class="red"  route :to="{ name: 'Home' }">취소</v-btn>

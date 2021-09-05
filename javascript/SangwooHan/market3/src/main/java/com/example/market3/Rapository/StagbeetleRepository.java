@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 public interface StagbeetleRepository extends JpaRepository<JpaStagbeetle,Long> {
 
@@ -14,4 +15,7 @@ public interface StagbeetleRepository extends JpaRepository<JpaStagbeetle,Long> 
     @Modifying
     @Query("UPDATE  JpaStagbeetle J set J.vuecount = J.vuecount +1 where J.boardNo = :boardNo ")
     void addvueCount(@Param("boardNo")Long boardNo);
+
+    @Query("select j from JpaStagbeetle j where j.title = :title")
+    Optional<JpaStagbeetle> findBytitle(@Param("title")String title);
 }

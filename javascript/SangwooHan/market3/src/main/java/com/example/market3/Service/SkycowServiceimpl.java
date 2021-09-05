@@ -63,4 +63,12 @@ public class SkycowServiceimpl implements  SkycowService {
     public void deleteComment(Long skycowCommentsNo) {
         skycowCommentRepository.deleteById(skycowCommentsNo);
     }
+
+    @Override
+    public Optional<JpaSkycow> searchtitle(SkycowCommentRequest skycowCommentRequest) throws Exception {
+        String title  = skycowCommentRequest.getTitle();
+
+        Optional<JpaSkycow> jpaSkycow = skycowRepository.findBytitle(title);
+        return jpaSkycow;
+    }
 }

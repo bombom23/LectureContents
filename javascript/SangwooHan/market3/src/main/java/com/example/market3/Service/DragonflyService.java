@@ -25,5 +25,7 @@ public interface DragonflyService {
 
     public void deleteComment(Long dragonflyCommentNo) throws Exception;
 
+    public Optional<JpaDragonfly> searchtitle(DragonflyCommentRequest dragonflyCommentRequest) throws  Exception;
+
 
 }

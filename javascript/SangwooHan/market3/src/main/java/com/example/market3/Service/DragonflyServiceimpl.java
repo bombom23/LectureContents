@@ -62,4 +62,12 @@ public class DragonflyServiceimpl  implements  DragonflyService{
     public void deleteComment(Long dragonflyCommentNo) throws Exception {
         dragonflyCommentRepository.deleteById(dragonflyCommentNo);
     }
+
+    @Override
+    public Optional<JpaDragonfly> searchtitle(DragonflyCommentRequest dragonflyCommentRequest) throws Exception {
+        String title =dragonflyCommentRequest.getTitle();
+
+        Optional<JpaDragonfly> jpaDragonfly = dragonflyRepository.findBytitle(title);
+        return jpaDragonfly;
+    }
 }

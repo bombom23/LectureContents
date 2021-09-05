@@ -25,5 +25,7 @@ public interface BeetleService {
 
     public  void DeleteComment(Long beetleCommentNo)throws  Exception;
 
+    public  Optional<JpaBeetle> searchtitle(BeetleCommentRequest beetleCommentRequest) throws  Exception;
+
 
 }

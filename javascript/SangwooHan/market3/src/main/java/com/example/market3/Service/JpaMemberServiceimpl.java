@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -182,10 +185,24 @@ public class JpaMemberServiceimpl implements JpaMemberService {
 
         Optional<JpaMember> maybeMember = memberRepository.findByUserId(memberRequest.getUserid());
            JpaMember loginmember = maybeMember.get();
-        if(loginmember.getEmail() == memberRequest.getEmail()) {
+
+        DateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = loginmember.getBirthday();
+        String UserBirthday = sdFormat.format(date1);
+
+
+        DateFormat sdFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+        Date date2 = memberRequest.getMaybebirthday();
+        String MaybeUserBirthday = sdFormat1.format(date2);
+
+        System.out.println("DB:"+UserBirthday +"Vue:"+MaybeUserBirthday);
+
+        if(UserBirthday.equals(MaybeUserBirthday)){
 
             return true;
         }
+
+
 
         return false;
     }

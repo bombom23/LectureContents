@@ -5,8 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.parameters.P;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 public interface SkycowRepository extends JpaRepository<JpaSkycow,Long> {
 
@@ -14,4 +16,8 @@ public interface SkycowRepository extends JpaRepository<JpaSkycow,Long> {
     @Modifying
     @Query("UPDATE  JpaSkycow J set J.vuecount = J.vuecount +1 where J.boardNo = :boardNo ")
     void vuecount(@Param("boardNo")Long boardNo);
+
+
+    @Query("select j from JpaSkycow j where j.title = :title")
+    Optional<JpaSkycow>findBytitle(@Param("title")String title);
 }

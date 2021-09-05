@@ -90,4 +90,16 @@ public class StagbeetleController {
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
+    @PostMapping("/searchtitle")
+    public ResponseEntity<JpaStagbeetle> searchtitle (@Validated @RequestBody StagbeetleCommentRuquest stagbeetleCommentRuquest) throws  Exception {
+
+        try {
+            Optional<JpaStagbeetle> jpaStagbeetle = service.searchtitle(stagbeetleCommentRuquest);
+            JpaStagbeetle jpaStagbeetle1 = jpaStagbeetle.get();
+
+            return new ResponseEntity<>(jpaStagbeetle1, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        }
+    }
 }

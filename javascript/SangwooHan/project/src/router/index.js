@@ -80,6 +80,8 @@ import PersonalQuestionRegister from '../views/MyPage/PersonalQuestionRegister'
 import CustomerSoundPage from '../views/MyPage/CustomerSoundPage'
 //마이페이지.고객의소리
 import CustomerSoundReadPage from '../views/MyPage/CustomerSoundReadPage'
+//비밀번호찾기
+import FindByPasswordPage from '../views/FindByPassword/FindByPasswordPage'
 Vue.use(VueRouter)
 
 const routes = [
@@ -482,6 +484,14 @@ const routes = [
     props: {
       default: true
     }
+  },
+
+  {
+    path: '/findByPasswordPage',
+    name: 'FindByPasswordPage',
+    components: {
+      default: FindByPasswordPage
+    },
   },
 ]
 

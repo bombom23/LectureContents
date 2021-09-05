@@ -1,6 +1,8 @@
 package com.example.market3.Controller1;
 
+import com.example.market3.Controller1.MemberRequset.ButterflyCommentRequest;
 import com.example.market3.Controller1.MemberRequset.SkycowCommentRequest;
+import com.example.market3.Entity.JpaButterfly;
 import com.example.market3.Entity.JpaSkycow;
 import com.example.market3.Entity.JpaSkycowComment;
 import com.example.market3.Service.SkycowService;
@@ -77,5 +79,18 @@ public class JpaSkycowController {
 
         skycowService.deleteComment(skycowCommentsNo);
         return new ResponseEntity<Void>(HttpStatus.OK );
+    }
+
+    @PostMapping("/searchtitle")
+    public ResponseEntity<JpaSkycow> searchtitle (@Validated @RequestBody SkycowCommentRequest skycowCommentRequest) throws  Exception {
+
+        try {
+            Optional<JpaSkycow> jpaSkycow = skycowService.searchtitle(skycowCommentRequest);
+            JpaSkycow jpaSkycow1 = jpaSkycow.get();
+
+            return new ResponseEntity<>(jpaSkycow1, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        }
     }
 }

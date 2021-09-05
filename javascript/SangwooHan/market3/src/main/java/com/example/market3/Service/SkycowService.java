@@ -22,4 +22,6 @@ public interface SkycowService {
 
     public  void deleteComment(Long skycowCommentsNo);
 
+    public  Optional<JpaSkycow> searchtitle( SkycowCommentRequest skycowCommentRequest) throws  Exception;
+
 }

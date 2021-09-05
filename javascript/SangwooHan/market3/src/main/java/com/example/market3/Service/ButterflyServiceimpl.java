@@ -62,4 +62,14 @@ public class ButterflyServiceimpl implements  ButterflyService {
     public void deleteComment(Long butterflyCommentNo) throws Exception {
         butterflyCommentRepository.deleteById(butterflyCommentNo);
     }
+
+    @Override
+    public Optional<JpaButterfly> searchtitle(ButterflyCommentRequest butterflyCommentRequest) throws Exception {
+        String title  = butterflyCommentRequest.getTitle();
+
+        Optional<JpaButterfly> jpaButterfly = butterflyRepository.findBytitle(title);
+
+
+        return jpaButterfly;
+    }
 }

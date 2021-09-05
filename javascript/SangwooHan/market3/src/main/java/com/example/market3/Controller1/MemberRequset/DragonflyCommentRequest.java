@@ -22,5 +22,6 @@ public class DragonflyCommentRequest {
     private Integer vuecount;
     private Long  dragonflyCommentNo;
     private Date regDate;
+    private Date maybebirthday;
 
 }

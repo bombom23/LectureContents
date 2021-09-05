@@ -1,6 +1,8 @@
 package com.example.market3.Controller1;
 
+import com.example.market3.Controller1.MemberRequset.BeetleCommentRequest;
 import com.example.market3.Controller1.MemberRequset.ButterflyCommentRequest;
+import com.example.market3.Entity.JpaBeetle;
 import com.example.market3.Entity.JpaButterfly;
 import com.example.market3.Service.ButterflyService;
 import lombok.extern.slf4j.Slf4j;
@@ -76,5 +78,18 @@ public class ButterflyController {
 
         butterflyService.deleteComment(butterflyCommentNo);
             return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @PostMapping("/searchtitle")
+    public ResponseEntity<JpaButterfly> searchtitle (@Validated @RequestBody ButterflyCommentRequest butterflyCommentRequest) throws  Exception {
+
+        try {
+            Optional<JpaButterfly> jpaButterfly = butterflyService.searchtitle(butterflyCommentRequest);
+            JpaButterfly jpaButterfly1 = jpaButterfly.get();
+
+            return new ResponseEntity<>(jpaButterfly1, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        }
     }
 }

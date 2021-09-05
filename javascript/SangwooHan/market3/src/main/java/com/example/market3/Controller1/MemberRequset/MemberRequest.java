@@ -16,10 +16,11 @@ public class MemberRequest {
         private String password;
         private String name;
         private String email;
-        private int birthday;
+        private Date birthday;
         private String  gender;
         private String address;
         private int phoneNo;
         private Long memberNo;
         private Date regDate;
+        private Date maybebirthday;
 }

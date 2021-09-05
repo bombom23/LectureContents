@@ -30,7 +30,7 @@ public class JpaMember {
     @Column(length = 64, nullable = false)
     private String email;
     @Column(length = 64, nullable = false)
-    private int birthday;
+    private Date birthday;
     @Column(length = 64, nullable = false)
     private String  gender;
     @Column(length = 100, nullable = false)
@@ -59,7 +59,7 @@ public class JpaMember {
 
 
        public JpaMember(String userid , String password , String name, String email,
-                        int birthday, String  gender, String address, int phoneNo) {
+                        Date birthday, String  gender, String address, int phoneNo) {
            this.userid = userid;
            this.password = password;
            this.name = name;

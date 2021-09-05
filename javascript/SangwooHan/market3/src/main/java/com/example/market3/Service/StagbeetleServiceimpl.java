@@ -66,4 +66,13 @@ public class StagbeetleServiceimpl implements StagbeetleService{
 
         stagbeetleCommentRepository.deleteById(StagbeetleCommentNo);
     }
+
+    @Override
+    public Optional<JpaStagbeetle> searchtitle(StagbeetleCommentRuquest stagbeetleCommentRuquest) {
+        String title = stagbeetleCommentRuquest.getTitle();
+
+       Optional<JpaStagbeetle> jpaStagbeetle = stagbeetleRepository.findBytitle(title);
+
+        return jpaStagbeetle;
+    }
 }
