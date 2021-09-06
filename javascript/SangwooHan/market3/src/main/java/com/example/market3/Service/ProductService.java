@@ -20,4 +20,6 @@ public interface ProductService {
     public  void ModifyComments(ProductCommentRequest productCommentRequest) throws  Exception;
 
     public  void deleteComment (Long productCommentNo) throws  Exception;
+
+    public List<JpaProduct> getsideProductList(String productType);
 }

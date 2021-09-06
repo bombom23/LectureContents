@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-container>
-        <v-btn @click="check">체크</v-btn>
+      <!--  <v-btn @click="check">체크</v-btn> -->
         <table>
             <tr>
                 <th align="center">제목[{{Dragonfly.title}}]</th>

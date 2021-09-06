@@ -31,7 +31,6 @@
                 <img width="300px" v-if="product.productName =='유산균젤리100개'&&product.productName.includes(search)" src="@/assets/상우/유산균젤리.jpg"/>
                 <img width="300px" v-if="product.productName =='유충병고급'&&product.productName.includes(search)" src="@/assets/상우/유충병고급.jpg"/>
                 <img width="300px" v-if="product.productName =='온도계스티커'&&product.productName.includes(search)" src="@/assets/상우/온도계스티커.jpg"/>
-
                 <img width="300px" v-if="product.productName =='장수풍뎅이세트'&&product.productName.includes(search)" src="@/assets/상우/장수풍뎅이세트.jpg"/>
                 <img width="300px" v-if="product.productName =='왕사슴벌레세트'&&product.productName.includes(search)" src="@/assets/상우/왕사슴벌레세트.jpg"/>
                 <p v-if="product.productName.includes(search)" >제품명:{{product.productName}}</p>

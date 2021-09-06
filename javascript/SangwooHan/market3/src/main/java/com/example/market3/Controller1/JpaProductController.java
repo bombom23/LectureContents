@@ -2,6 +2,7 @@ package com.example.market3.Controller1;
 
 import com.example.market3.Controller1.MemberRequset.ProductCommentRequest;
 import com.example.market3.Entity.JpaBoard;
+import com.example.market3.Entity.JpaMember;
 import com.example.market3.Entity.JpaProduct;
 import com.example.market3.Service.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -66,5 +67,15 @@ public class JpaProductController {
 
         productService.deleteComment(productCommentNo);
         return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
+    @PostMapping("/getsideProductList")
+    public  ResponseEntity<List<JpaProduct>>getsideProductList(@Validated @RequestBody ProductCommentRequest productCommentRequest) throws  Exception{
+
+        String productType = productCommentRequest.getProductType();
+        List<JpaProduct> jpaProducts = productService.getsideProductList(productType);
+
+
+        return  new ResponseEntity<>(jpaProducts,HttpStatus.OK);
     }
 }

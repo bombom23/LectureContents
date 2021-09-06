@@ -22,7 +22,7 @@
             label="회원이름" type="text" prepend-icon="mdi-account" flat solo>
             </v-text-field>
             <v-text-field class="pl-3 pr-3"  required v-model="birthday"
-            label="주민번호앞자리" type="Number"  prepend-icon="mdi-cake" flat solo>
+            label="주민번호앞자리" type="date"  prepend-icon="mdi-cake" flat solo>
             </v-text-field>
            
 

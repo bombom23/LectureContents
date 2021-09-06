@@ -11,4 +11,5 @@ public class OrderRequest {
 
     private String shipping;
     private Integer quantity;
+    private String userid;
 }

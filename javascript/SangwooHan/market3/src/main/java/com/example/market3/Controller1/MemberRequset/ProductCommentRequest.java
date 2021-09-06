@@ -11,7 +11,7 @@ import java.util.Date;
 @Slf4j
 @NoArgsConstructor
 public class ProductCommentRequest {
-
+    private String productType;
     private Long boardNo;
     private String id;
     private String title;

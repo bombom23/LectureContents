@@ -16,6 +16,8 @@ public interface OrderService {
 
     public  void deleteOrder(Long orderNo) throws  Exception;
 
+    public  List<JpaOrder> getorderlist(String userid) throws  Exception;
+
 
 
 

@@ -53,4 +53,9 @@ public class ProductServiceimpl implements  ProductService{
 
         productCommentRepository.deleteById(productCommentNo);
     }
+
+    @Override
+    public List<JpaProduct> getsideProductList(String productType) {
+        return productRepository.findByType(productType);
+    }
 }

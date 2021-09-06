@@ -24,7 +24,7 @@
                       <textarea  id="contentText" cols="30" rows="10" v-model="text" ></textarea>
                     </tr>
                 </table>
-                <v-btn @click="check">폼체크</v-btn>
+               <!-- <v-btn @click="check">폼체크</v-btn>-->
                 <v-btn type="submit">수정하기</v-btn>
               </v-container>
                 </form>

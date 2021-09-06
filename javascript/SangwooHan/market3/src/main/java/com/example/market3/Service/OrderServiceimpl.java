@@ -37,4 +37,9 @@ public class OrderServiceimpl implements OrderService{
     public void deleteOrder(Long orderNo) throws Exception {
         orderRepository.deleteById(orderNo);
     }
+
+    @Override
+    public List<JpaOrder> getorderlist(String userid) throws Exception {
+        return orderRepository.getorderlist(userid);
+    }
 }

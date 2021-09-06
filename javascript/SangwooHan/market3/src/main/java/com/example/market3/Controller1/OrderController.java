@@ -59,4 +59,15 @@ public class OrderController {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
+    @PostMapping("/getorderlist")
+    public  ResponseEntity<List<JpaOrder>> getorderlist(@Validated @RequestBody OrderRequest orderRequest) throws  Exception {
+
+        String userid = orderRequest.getUserid();
+        System.out.println("userid:"+userid);
+
+        List<JpaOrder> jpaOrders = orderService.getorderlist(userid);
+
+        return new ResponseEntity<>(jpaOrders, HttpStatus.OK);
+    }
+
 }

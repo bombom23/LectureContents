@@ -82,6 +82,9 @@ import CustomerSoundPage from '../views/MyPage/CustomerSoundPage'
 import CustomerSoundReadPage from '../views/MyPage/CustomerSoundReadPage'
 //비밀번호찾기
 import FindByPasswordPage from '../views/FindByPassword/FindByPasswordPage'
+
+// 페이지네이션
+import Pagenation from '../views/Pagenation'
 Vue.use(VueRouter)
 
 const routes = [
@@ -445,11 +448,14 @@ const routes = [
     },
   },
   {
-    path: '/myProductStatus',
+    path: '/myProductStatus/:User',
     name: 'MyProductStatus',
     components: {
       default: MyProductStatus
     },
+    props: {
+      default: true
+    }
   },
   {
     path: '/basketReadPage/:memberNo',
@@ -491,6 +497,13 @@ const routes = [
     name: 'FindByPasswordPage',
     components: {
       default: FindByPasswordPage
+    },
+  },
+  {
+    path: '/pagenation',
+    name: 'Pagenation',
+    components: {
+      default: Pagenation
     },
   },
 ]

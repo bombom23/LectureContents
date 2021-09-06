@@ -23,7 +23,12 @@ export default {
     data() {
         return{
             LogInlinks: [
-
+                {
+                
+                text: '검색',
+                 name: '검색',
+                 route: '/insectMuseumPage'
+                },
                 {
                 
                 text: '사슴벌레',

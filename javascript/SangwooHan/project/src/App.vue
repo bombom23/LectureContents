@@ -7,7 +7,7 @@
 -  <header align="center" id="header"><img id="homebtn" @click="GoHome" src="@/assets/상우/홈로고.png"/></header> 
     </div>
     <nav-bar/>
-   <!-- <v-btn width="80px" @click="check">로그인한사람</v-btn>-->
+    <v-btn width="80px" @click="check">로그인한사람</v-btn>
     
     <new-login-page-form v-if="this.$store.state.session ==null" @submit="onSubmit" :members="members"/>
      
@@ -71,6 +71,7 @@ check(){
    console.log('로그인유무정보'+this.$store.state.isLogin)
    console.log(this.$store.state.User)
    console.log(this.$store.state.loginMemberNo)
+   console.log(this.$store.state.userid2)
 },
 onSubmit (payload) {
            if(this.$store.state.session ==null){
@@ -87,8 +88,9 @@ onSubmit (payload) {
                                  this.$store.state.loginMemberNo = this.members[i].memberNo
                                }
                                                                           }
+                            this.$store.state.userid2 = res.data.userid
                             this.$cookies.set("memberNo",this.$store.state.loginMemberNo,'1h')
-
+                            this.$cookies.set("userid2",this.$store.state.userid2,'1h')
                             this.$store.state.isLogin = true;
                             this.$store.state.session = res.data;
                             this.$store.state.User = res.data.userid;
@@ -119,6 +121,7 @@ logout() {
   this.$cookies.remove('memberNo')
   this.$cookies.remove('setter')
   this.$cookies.remove('coin')
+  this.$cookies.remove('userid2')
             this.$store.state.isLogin = false
             this.$store.state.session =null
             this.$store.state.loginMemberNo =null
@@ -130,6 +133,7 @@ logout() {
           this.$store.state.session = this.$cookies.get('user')
           this.$store.state.loginUser = this.$cookies.get('user')
           this.$store.state.loginMemberNo =this.$cookies.get('memberNo')
+          this.$store.state.userid2 = this.$cookies.get('userid2')
           
           if( this.$store.state.session != null) {
               this.$store.state.isLogin =true
@@ -197,20 +201,11 @@ footer{
     
 }
 .footer {
-    border: 1px;
+   height: 200px;
+  margin-top: 2000px;
+  background-color: #000;
 
-
-    margin-top: 2000px;
-
-    left: 0%;
-
-    bottom: 0%;
-
-    width: 100%;
-
-	padding: 15px 0;
-
-	text-align: center;
+  
 
 }
 table {

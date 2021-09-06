@@ -65,7 +65,7 @@
         </v-container>
         </div>
         
-        <v-btn  @click="check">체크</v-btn>
+      <!--  <v-btn  @click="check">체크</v-btn> -->
     </div>
     
 </template>

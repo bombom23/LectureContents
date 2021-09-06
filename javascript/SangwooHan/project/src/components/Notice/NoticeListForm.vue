@@ -3,8 +3,6 @@
          <v-data-table :headers="headerTitle"  
                     :items="(notices)" item-key="boardNo"
                     :items-per-page="10"
-                    
-                
                    class="elevation-10" @click:row="handleClick"> 
          </v-data-table>
     </div>

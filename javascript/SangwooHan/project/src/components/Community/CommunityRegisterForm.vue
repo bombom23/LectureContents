@@ -1,8 +1,10 @@
 <template>
 <div>
+    <!--
         <v-btn @click="check">
             작성자체크
         </v-btn>
+        -->
         <section>
         <form @submit.prevent="OnSubmit">
                 <v-container >

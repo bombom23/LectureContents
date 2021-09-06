@@ -15,7 +15,7 @@ export default {
     name: 'StagbeetleReadPage',
     props: {
         boardNo: {
-            type: String,
+            type: Number,
             required: true
         }
     },
