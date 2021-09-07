@@ -66,4 +66,10 @@ public class JpaNoticeServiceimpl  implements JpaNoticeService{
 
         noticeCommentRepository.deleteById(noticeCommentNo);
     }
+
+    @Override
+    public void deleteNotice(Long boardNo) throws Exception {
+
+        jpaNoticeRepository.deleteById(boardNo);
+    }
 }

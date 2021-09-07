@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/상우/마이페이지로고.png"/>
         <my-information/>
     </div>
 </template>

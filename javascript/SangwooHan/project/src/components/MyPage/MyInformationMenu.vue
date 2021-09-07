@@ -17,7 +17,7 @@
         </tr>
         <tr>
             <th>
-            <v-btn depressed route :to="{name: 'MyProductStatus' }">
+            <v-btn depressed route :to="{name: 'MyProductStatus',params:{User: this.$store.state.User} }">
                 주문현황
             </v-btn>
             </th>

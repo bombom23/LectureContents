@@ -19,7 +19,8 @@ export default {
     barithdayRules: [
          v => !! 1<= v <=6 || '6자리 이하입니다 6자리이상으로해주세요'   
     ],
-    
+    //다음뉴스
+    lists:[],
     // 매니지먼트 회원리스트
     members: [],
     member: null,
@@ -63,6 +64,9 @@ export default {
     //마이페이지.고객의소리
     CustomerSoundList:[],
     CustomerSound: null,
+    //
+    UserOrderList:[],
+    PageArray: [],
 
     
 

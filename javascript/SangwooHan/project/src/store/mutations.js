@@ -31,7 +31,9 @@ import {
     FETCH_ORDER_LIST,
     //마이페이지
     FETCH_CUSTOMER_SOUND_LIST,
-    FETCH_CUSTOMER_SOUND
+    FETCH_CUSTOMER_SOUND,
+    //
+    FETCH_USER_ORDER_LIST
     
 
     
@@ -127,6 +129,9 @@ export default {
     },
     [FETCH_CUSTOMER_SOUND] (state, CustomerSound) {
         state.CustomerSound = CustomerSound
+    },
+    [FETCH_USER_ORDER_LIST] (state,UserOrderList){
+        state.UserOrderList = UserOrderList
     }
 }
 

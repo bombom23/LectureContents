@@ -1,94 +1,160 @@
 <template>
-    <div>
-        <table>
-            <tr>
-               <th>주문번호</th>
-               <th>아이디</th>
-               <th>주소</th>
-               <th>성함</th>
-               <th>연락처</th>
-               <th>물품이름</th>
-               <th>개수</th>
-               <th>가격</th>
-               <th>상태</th>
-               
-           </tr>
-           <tr v-for="item in OrderList" :key="item.orderNo">
-               <th v-if="User == item.userid" >{{item.orderNo}}</th>
-                  <th v-if="User == item.userid" >{{item.userid}}</th>
-                  <th v-if="User == item.userid" width="150px">{{ item.address}}</th>
-                  <td v-if="User == item.userid">{{item.buyUserName}}</td>
-                  <td v-if="User == item.userid">{{item.phoneNo}}</td>
-                  <td v-if="User == item.userid">{{item.productName}}</td>
-                  <td v-if="User == item.userid">{{item.productNum}}</td>
-                  <td v-if="User == item.userid">{{item.productPrice}}</td>
-                  <td v-if="User == item.userid">{{item.state}}</td>
-                  <td  v-if="User == item.userid && item.state =='입금확인중' && Modify !=item.orderNo" > <v-btn  @click="QuantityChange(item.orderNo)" v-if="User == item.userid && item.state =='입금확인중' && Modify !=item.orderNo">수량변경</v-btn> 
-                    <input style="max-width: 40px" v-if="User == item.userid && item.state =='입금확인중' && Modify ==item.orderNo" v-model="quantity" />
-                    <v-btn v-if="User == item.userid && item.state =='입금확인중' && Modify ==item.orderNo "  @click="QuantityChangeGo(quantity,item.orderNo)">확인</v-btn>
-                    <v-btn v-if="User == item.userid && item.state =='입금확인중' && Modify ==item.orderNo"  @click="Modifycancel">취소</v-btn>
-                 </td>
-                 <td v-if="User == item.userid && item.state =='입금확인중'" ><v-btn @click="deleteOrder(item.orderNo)" >주문취소</v-btn></td>            
-           </tr>
-        </table>
+  <div>
+      <v-container>
+    <table>
+      <tr>
+        <th>주문번호</th>
+        <th>상품명</th>
+        <th>상품가격</th>
+        <th>개수</th>
+        <th>주문일시</th>
+       <th>상태</th>
+       <th>비고</th>
+       
+      </tr>
+      <tr v-for="p in paginatedData" :key="p.orderNo">
+        <td>{{p.orderNo}}</td>
+        <td>{{p.productName}}</td>
+        <td>{{p.productPrice}}</td>
+        <td>{{p.productNum}}</td>
+        <td>{{p.createDate}}</td>
+        <td>{{p.state}}</td>
+        <button v-if="p.state =='입금확인중'" @click="deleteorder(p.orderNo)">주문취소</button>
+        <button v-if="Modify == 0 &&p.state =='입금확인중'" @click="ModifyOn(p.orderNo)">수량변경</button>
+        <input v-if="Modify ==  p.orderNo" style="max-width: 50px" type="Number" v-model="quantity"/>
+        <button v-if="Modify == p.orderNo" @click="ModifyOff">취소</button>
+        <button v-if="Modify == p.orderNo" @click="QuantityChange(p.orderNo)">/완료</button>
+      </tr>
+    </table>
+      </v-container>
+    <v-btn @click="check">체크</v-btn>
+    <div class="btn-cover">
+      <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
+        이전
+      </button>
+      <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} 페이지</span>
+      <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
+        다음
+      </button>
     </div>
+  </div>
 </template>
 
 <script>
-import axios from 'axios'
-import { mapState } from 'vuex'
+import axios from 'axios';
 export default {
-    
-    props:{
-        OrderList: {
-            type:Array
-        }
-    },
-    computed:{
-        ...mapState(['User'])
-    },
-    methods:{
-        QuantityChange(orderNo){
-            this.Modify =orderNo
-            
-        },
-        Modifycancel(){
-            this.Modify =null
-        },
-        QuantityChangeGo(quantity,orderNo){
-            console.log('Quantity:'+quantity+',orderNo:'+orderNo)
-            
-            if(quantity < 1 ){
-                alert('수량을 1개 이상으로 설정해주세요')
-            }else{
-                    axios.post(`http://localhost:9999/jpaOrder/QuantityChange/${orderNo}`,{quantity})
-                    .then(()=>{
-                        alert('수량이변경되었습니다')
-                        this.$router.go()
-                    })
-            }
-            
-        },
-        deleteOrder(orderNo){
-             axios.delete(`http://localhost:9999/jpaOrder/deleteOrder/${orderNo}`)
-             .then( () =>{
-                 alert('주문이 최소되었습니다.')
-                 this.$router.go()
-             })
-        }
-    },
-    data(){
-        return{
-            Modify: null,
-            quantity: 1
-        }
+  name: 'paginated-list',
+  data () {
+    return {
+      pageNum: 0,
+      Modify: 0,
+      quantity: 1
     }
+  },
+  props: {
+    listArray: {
+      type: Array,
+      required: true
+    },
+    pageSize: {
+      type: Number,
+      required: false,
+      default: 5
+    }
+  },
+  methods: {
+    ModifyOn(orderNo){
+      this.Modify = orderNo
+    },
+    ModifyOff(){
+      this.Modify = 0
+    },
+    nextPage () {
+      this.pageNum += 1;
+    },
+    prevPage () {
+      this.pageNum -= 1;
+    },
+    check(){
+        console.log(this.listArray)
+    },
+    deleteorder(orderNo){
+        axios.delete(`http://localhost:9999/jpaOrder/deleteOrder/${orderNo}`)
+        .then(()=>{
+            alert("주문취소하였습니다.")
+             this.$router.go()
+        })
+    },
+    QuantityChange(orderNo){
+        const {quantity} =this
+        if(quantity > 0){
+        axios.post(`http://localhost:9999/jpaOrder/QuantityChange/${orderNo}`,{quantity})
+        .then( () =>{
+           alert('수량이 변경되었습니다.')
+           this.$router.go()
+        })
+                        }
+        else {
+          axios.delete(`http://localhost:9999/jpaOrder/deleteOrder/${orderNo}`)
+        .then(()=>{
+            alert("주문취소하였습니다.")
+             this.$router.go()
+        })
+        }                
+    }
+  },
+  computed: {
+    pageCount () {
+      let listLeng = this.listArray.length,
+          listSize = this.pageSize,
+          page = Math.floor(listLeng / listSize);
+      if (listLeng % listSize > 0) page += 1;
+      
+      /*
+      아니면 page = Math.floor((listLeng - 1) / listSize) + 1;
+      이런식으로 if 문 없이 고칠 수도 있다!
+      */
+      return page;
+    },
+    paginatedData () {
+      const start = this.pageNum * this.pageSize,
+            end = start + this.pageSize;
+      return this.listArray.slice(start, end);
+    }
+  }
 }
 </script>
-<style scoped>
-table{
-    margin-left: 200px;
-    position: absolute;
-}
 
+<style>
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table th {
+  font-size: 1.2rem;
+}
+table tr {
+  height: 2rem;
+  text-align: center;
+  border-bottom: 1px solid #505050;
+}
+table tr:first-of-type {
+  border-top: 2px solid #404040;
+}
+table tr td {
+  padding: 1rem 0;
+  font-size: 1.1rem;
+}
+.btn-cover {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+.btn-cover .page-btn {
+  width: 5rem;
+  height: 2rem;
+  letter-spacing: 0.5px;
+}
+.btn-cover .page-count {
+  padding: 0 1rem;
+}
 </style>

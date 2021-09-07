@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/상우/마이페이지로고.png"/>
         <my-information-menu/>
         <form @submit.prevent="OnSubmit">
         <table v-if="coin == 0">
@@ -70,8 +71,8 @@ export default {
                 console.log(res.data)
                 if(res.data == true){
                     this.coin =1
-                        this.$cookies.set('coin', this.coin, '30s')
-                        this.$cookies.set('setter',this.coin, '30s')
+                        this.$cookies.set('coin', this.coin, '1h')
+                        this.$cookies.set('setter',this.coin, '1h')
 
                 }
                 else{

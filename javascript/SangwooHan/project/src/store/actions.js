@@ -37,7 +37,9 @@ FETCH_BASKET_LIST,
 FETCH_ORDER_LIST,
 //마이페이지.고객의소리
 FETCH_CUSTOMER_SOUND_LIST,
-FETCH_CUSTOMER_SOUND
+FETCH_CUSTOMER_SOUND,
+//
+FETCH_USER_ORDER_LIST
 
 
 
@@ -258,6 +260,13 @@ export default {
         .then((res) =>{
             commit(FETCH_CUSTOMER_SOUND, res.data)
         }).catch(err=>{err.response.data.message})
+    },
+    fetchUserOrderList({commit},User) {
+            console.log("action:"+User)
+        return axios.post('http://localhost:9999/jpaOrder/getorderlist',{userid:User})
+        .then((res)=>{
+            commit(FETCH_USER_ORDER_LIST,res.data)
+        })
     }
 
     

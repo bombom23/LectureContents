@@ -29,7 +29,7 @@
             장바구니
         </v-btn>
         -->
-        <v-btn depressed @click="logOut">
+        <v-btn depressed @click="handleClick">
             <v-icon>mdi-logout</v-icon>
             로그아웃
         </v-btn>
@@ -58,16 +58,21 @@ export default {
         ...mapState(['loginMemberNo','User'])
     },
     methods:{
-            logOut(){
-                this.$cookies.remove('user')
+            handleClick(value){
+  this.$cookies.remove('user')
   this.$cookies.remove('memberNo')
   this.$cookies.remove('setter')
   this.$cookies.remove('coin')
             this.$store.state.isLogin = false
             this.$store.state.session =null
             this.$store.state.loginMemberNo =null
-            this.$router.go()
-            }
+            console.log(value.srcElement.baseURI)
+      if(value.srcElement.baseURI == 'http://localhost:8080/'){
+        this.$router.go()
+      }else{
+        this.$router.push({name: 'Home'})
+      }
+                                }
     },
     data () {
         return {
@@ -90,7 +95,7 @@ export default {
                {
                     text: 'ㅣ장바구니ㅣ',
                     name: '장바구니',
-                    route: '/basketReadPage',params:{memberNo: 1}
+                    
                 },
                   {
                     text: 'ㅣ공지판ㅣ',

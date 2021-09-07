@@ -25,4 +25,7 @@ public interface JpaNoticeService {
     public  void ModifyComment (NoticeCommentRequest noticeCommentRequest) throws  Exception;
 
     public  void deleteComment (Long noticeCommentNo) throws  Exception;
+
+    public  void deleteNotice (Long boardNo) throws  Exception;
+
 }

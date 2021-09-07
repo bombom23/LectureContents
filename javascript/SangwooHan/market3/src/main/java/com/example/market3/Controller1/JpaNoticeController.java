@@ -96,4 +96,12 @@ public class JpaNoticeController {
 
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
+    @DeleteMapping("/deleteNotice/{boardNo}")
+    public  ResponseEntity<Void> deleteNotice (@PathVariable("boardNo")Long boardNo) throws  Exception {
+
+        service.deleteNotice(boardNo);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 }

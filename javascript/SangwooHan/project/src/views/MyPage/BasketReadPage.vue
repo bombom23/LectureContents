@@ -1,5 +1,6 @@
 <template>
     <div>
+        <img src="@/assets/상우/마이페이지로고.png"/>
         <basket-read-form v-if="this.$store.state.User !=null" :BasketList="BasketList"/>
         <p v-else>로그인후 이용해주세요!</p>
     </div>

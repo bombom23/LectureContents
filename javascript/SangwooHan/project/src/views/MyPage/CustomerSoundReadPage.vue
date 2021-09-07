@@ -1,7 +1,7 @@
 <template>
     <div>
+        <img src="@/assets/상우/마이페이지로고.png"/>
         <my-information-menu/>
-        
         <customer-sound-read-page-form v-if="CustomerSound" :CustomerSound="CustomerSound"/>
     </div>
 </template>
