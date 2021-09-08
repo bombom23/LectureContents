@@ -18,8 +18,8 @@
         <img v-if="Butterfly.title == '들신선나비'" src="@/assets/상우/박물관/박물관[들신선나비1].jpg"/>
         <img v-if="Butterfly.title == '들신선나비'" src="@/assets/상우/박물관/박물관[들신선나비2].jpg"/>
         <img v-if="Butterfly.title == '남방제비나비'" src="@/assets/상우/박물관/박물관[남방제비나비].jpg"/>
-        <img v-if="Butterfly.title == '담색긴꼬리부전나비'" src="@/assets/상우/박물관/박물관[담색긴꼬리나비].jpg"/>
-        <img v-if="Butterfly.title == '사향재비나비'" src="@/assets/상우/박물관/박물관[사향제비나비].jpg"/>
+        <img v-if="Butterfly.title == '담색긴꼬리나비'" src="@/assets/상우/박물관/박물관[담색긴꼬리나비].jpg"/>
+        <img v-if="Butterfly.title == '사향제비나비'" src="@/assets/상우/박물관/박물관[사향제비나비].jpg"/>
         <img v-if="Butterfly.title == '작은녹색부전나비'" src="@/assets/상우/박물관/박물관[작은녹색부전나비].jpg"/>
         <img v-if="Butterfly.title == '산녹색부전나비'" src="@/assets/상우/박물관/박물관[산녹색부전나비].jpg"/>
         <img v-if="Butterfly.title == '작은주홍부전나비'" src="@/assets/상우/박물관/박물관[작은주홍부전나비].jpg"/>
@@ -27,7 +27,7 @@
         <img v-if="Butterfly.title == '호랑나비'" src="@/assets/상우/박물관/박물관[호랑나비].jpg"/>
         
 
-        <p>{{Butterfly.text}}</p>
+        <pre>{{Butterfly.text}}</pre>
         <form @submit.prevent="OnSubmit" v-if="commentBox ==1 && this.$store.state.User !=null">
          <table >
              <tr>
@@ -142,3 +142,6 @@ export default {
     }
 }
 </script>
+<style scoped>
+
+</style>

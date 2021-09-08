@@ -2,7 +2,7 @@
     <div>
         <v-container>
        <!-- <v-btn @click="check">체크</v-btn> -->
-        
+        <v-btn v-if="this.$store.state.User =='관리자'" @click="deleteNotice(notice.boardNo)">삭제</v-btn>
         <table>
             <tr>
                 <th align="center">제목[{{notice.title}}]</th>
@@ -115,6 +115,14 @@ export default {
                          }).catch(err=>{alert(err.response.data.message)})
 
                                      },
+        deleteNotice(boardNo){
+            axios.delete(`http://localhost:9999/jpaNotice/deleteNotice/${boardNo}`)
+            .then( () =>{
+                alert('공지가삭제되었습니다.')
+                this.$router.push({name: 'NoticeListPage'})
+            })
+            
+        }                             
                               
            },
     data() {

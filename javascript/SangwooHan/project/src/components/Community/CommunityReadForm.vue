@@ -2,26 +2,27 @@
     <div>
         <v-container>
       <!--  <v-btn @click="check">체크</v-btn>--><v-btn v-if="board.id == User" @click="Modifyfing">수정</v-btn>
-        <table>
+        <table border="1">
             <tr>
-                <th align="center">제목[{{board.title}}]</th>
+           <h4 style="text-align:left;">{{board.title}}</h4>
+           <h6 align="left">{{board.id}} </h6>
+           <p align="left">{{$moment(board.createDate).format('YYYY-MM-DD/hh:mm')}} 조회{{board.vuecount}}</p>
             </tr>
             <tr>
-                <th aligen="center">작성자:{{board.id}}</th>
+                <pre align="left">{{board.text}}</pre>
             </tr>
         </table>
        
-        <h4>{{board.text}}</h4>
+        
         <form v-if="commentBox ==1 && this.$store.state.User !=null" @submit.prevent="OnSubmit">
          <table >
-             <tr>
-                 <th>작성자</th>
-                 <input v-model="ui" readonly/>
-             </tr>
-            <tr><th>댓글</th>
-                <textarea v-model="comments"/>
-                <button type="submit">등록</button>
-            </tr>
+          <tr>
+              <p>댓글</p>
+             <p>{{ui}}</p>
+            <v-textarea height="10px" auto-grow outlined v-model="comments">
+            </v-textarea>
+            <v-btn depressed style="float:right" type="submit"><v-icon>mdi-comment</v-icon></v-btn>
+          </tr>
         </table>
         </form>
          <table >
@@ -61,6 +62,9 @@
 <script>
 import axios from 'axios'
 import { mapState } from 'vuex'
+import Vue from 'vue'
+import VueMoment from 'vue-moment'
+Vue.use(VueMoment);
 export default {
     name: 'CommunityReadForm',
     props:{
@@ -70,6 +74,9 @@ export default {
     },
     computed:{
        ...mapState(['User'])
+    },
+    created(){
+         
     },
     methods: {
         check() {
@@ -154,8 +161,24 @@ export default {
 </script>
 
 <style scoped>
-h4{
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Noto+Serif+KR:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap');
+pre{
     width: 1000px;
     height: 700px;
+    border-block: 1px;
 }
+h4{
+   font-family: 'Noto Serif KR', serif;
+}
+
+P{
+    font-family: 'Oswald', sans-serif;
+}
+pre{
+font-family: 'Noto Sans SC', sans-serif;
+}
+
+
 </style>

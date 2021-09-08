@@ -34,9 +34,7 @@ export default {
         Layout
     },
     computed: {
-        ...mapState ({
-            lists: state => state.lists
-        })
+        ...mapState (['lists'])
     },
     methods: {
         start (category) {

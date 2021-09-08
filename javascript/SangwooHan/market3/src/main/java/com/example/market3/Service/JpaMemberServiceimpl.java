@@ -202,8 +202,11 @@ public class JpaMemberServiceimpl implements JpaMemberService {
             return true;
         }
 
-
-
         return false;
+    }
+
+    @Override
+    public List FindById(String email) throws Exception {
+        return memberRepository.FindById(email);
     }
 }

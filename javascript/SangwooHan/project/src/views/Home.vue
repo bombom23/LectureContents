@@ -1,8 +1,9 @@
 <template>
 <div>
    <!--<coverflow :coverList="coverList" :coverWidth="260" :index="2" id="coverflow" @click="handleClick"></coverflow> -->
+   <!--
    <a @click="goMuseum"><img src="@/assets/상우/곤충박물관배너1.jpg"/></a>
-   <v-container>
+   <v-container style="max-width:800px" id="vueMuseum"> 
         <v-row>
             <v-col v-for="(image,i) in images" :key="i" class="d-flex child-flex" cols="4">
                 
@@ -22,8 +23,11 @@
             </v-col>
         </v-row>
     </v-container>
-    <a @click="goShop"><img src="@/assets/상우/쇼핑몰배너1.jpg"/></a>
-    <v-container>
+    <v-container style="max-width:680px" id="VueNoitice">
+        <notice-list-new-form :listArray="PageArray"/>
+    </v-container>
+    <a @click="goShop"><img src="@/assets/상우/쇼핑몰배너다시1.png"/></a>
+    <v-container style="max-width:800px" id="vueProduct">
         <v-row>
             <v-col v-for="(image,i) in products" :key="i" class="d-flex child-flex" cols="4">
                 
@@ -37,12 +41,14 @@
                     
                 </v-progress-circular>
                
-                </v-row>
+                </v-row>665 475
                 </template>
             </v-img></a>
-            </v-col>
+            </v-col>        
         </v-row>
     </v-container>
+  -->
+<v-parallax height="700" src="@/assets/상우/똥구리.jpg"></v-parallax>
    
 </div>
 </template>
@@ -51,6 +57,7 @@
 //import coverflow from 'vue-coverflow'
 
 import axios from 'axios'
+//import NoticeListNewForm from '../components/Notice/NoticeListNewForm.vue'
 
 
 
@@ -59,6 +66,7 @@ import axios from 'axios'
     name: 'Home',
 
     components: {
+     //   NoticeListNewForm
    //  coverflow
     
        
@@ -79,7 +87,11 @@ import axios from 'axios'
               require('@/assets/상우/장수풍뎅이세트.jpg'),
               require('@/assets/상우/왕사슴벌레세트.jpg'),
               require('@/assets/상우/발효톱밥.jpg'),
-          ]
+              require('@/assets/상우/균사.jpg'),
+              require('@/assets/상우/수액젤리.jpg'),
+              require('@/assets/상우/유산균젤리.jpg')
+          ],
+          PageArray:[],
 
 
 
@@ -174,11 +186,25 @@ import axios from 'axios'
                  this.$router.push({name:"ProductReadPage", params:{boardNo: 5}})
             }if(pictureNo == 2){
                  this.$router.push({name:"ProductReadPage", params:{boardNo: 28}})
+            }if(pictureNo ==3) {
+                 this.$router.push({name:"ProductReadPage", params:{boardNo: 3}})
+            }
+            if(pictureNo ==4) {
+                 this.$router.push({name:"ProductReadPage", params:{boardNo: 6}})
+            }
+            if(pictureNo ==5) {
+                 this.$router.push({name:"ProductReadPage", params:{boardNo: 25}})
             }
            
         }
       
     },
+    created(){
+        axios.get('http://localhost:9999/jpaNotice/noticelist')
+        .then( (res)=>{
+            this.PageArray = res.data
+        })
+    }
    
     
     
@@ -200,7 +226,21 @@ span{
     background-color: red;
     font-size: 2.5em;
 }
-
+#vueMuseum{
+    float: left;
+}
+#VueNoitice{
+    float: right;
+    margin-right: 20px;
+}
+#vueProduct{
+     float: left;
+}
+#vueVideo{
+    position: absolute;
+    margin-left: 800px;
+    
+}
 
 
 </style>

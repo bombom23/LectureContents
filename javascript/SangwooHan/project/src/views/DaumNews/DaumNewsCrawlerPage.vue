@@ -1,10 +1,7 @@
 <template>
-    <Layout>
-        <template #menubar>
-            <v-btn @click="start('society')" text color="black"
-                    style="padding: 10px; width: 90px;">사회</v-btn>
-        </template>
-        <template #content>
+    <div>
+         <v-btn class="blue" @click="start('society')">최신정보받아오기</v-btn>
+     
             <v-simple-table>
                 <template v-slot:default>
                     
@@ -27,17 +24,14 @@
                     </tbody>
                 </template>
             </v-simple-table>
-        </template>
-    </Layout>
+       
+    </div>
 </template>
 
 <script>
-import Layout from '@/components/layout/Layout'
-import { mapState } from 'vuex'
+
+import {  mapState } from 'vuex'
 export default {
-    components: {
-        Layout
-    },
     data(){
         return{
                 search: ''
@@ -53,6 +47,8 @@ export default {
             // action 수동 호출
             this.$store.dispatch('crawlFind', category)
         }
-    }
+        
+    },
+
 }
 </script>

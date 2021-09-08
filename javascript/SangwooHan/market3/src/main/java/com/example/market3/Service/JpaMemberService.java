@@ -45,4 +45,6 @@ public interface JpaMemberService {
 
     Optional<JpaMember> FindByMemberNo(MemberRequest memberRequest) throws  Exception ;
 
+    public List FindById  (String email) throws  Exception;
+
 }

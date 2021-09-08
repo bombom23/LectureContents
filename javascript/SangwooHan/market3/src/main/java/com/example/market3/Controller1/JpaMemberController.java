@@ -271,4 +271,16 @@ public class JpaMemberController {
         return new ResponseEntity<>(result,HttpStatus.OK);
 }
 
+@PostMapping("/FindById")
+    public ResponseEntity<List> FindById(@Validated @RequestBody MemberRequest memberRequest) throws  Exception {
+
+        String email = memberRequest.getEmail();
+        List result = service.FindById(email);
+
+        return  new ResponseEntity<>(result,HttpStatus.OK);
+}
+
+
+
+
 }

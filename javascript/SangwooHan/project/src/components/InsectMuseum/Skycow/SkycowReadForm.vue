@@ -20,7 +20,7 @@
         <img v-if="Skycow.title == '봄산하늘소'" src="@/assets/상우/박물관/박물관[봄산하늘소].jpg"/>
         <img v-if="Skycow.title == '장수하늘소'" src="@/assets/상우/박물관/박물관[장수하늘소1].jpg"/>
         <img v-if="Skycow.title == '장수하늘소'" src="@/assets/상우/박물관/박물관[장수하늘소2].jpg"/>
-        <p>{{Skycow.text}}</p>
+        <pre>{{Skycow.text}}</pre>
         <form @submit.prevent="OnSubmit" v-if="commentBox ==1 && this.$store.state.User !=null">
         <table >
              <tr>

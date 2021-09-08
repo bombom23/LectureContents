@@ -15,9 +15,9 @@
             <i class="material-icons small teal-text">mail</i>
         </div>
         <div class="video-container">
-            <iframe width="1280" height="720" src="https://www.youtube.com/embed/3AyCy1UUlpU"
+            <iframe width="100" height="100" src="https://www.youtube.com/embed/3AyCy1UUlpU"
             frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
+            >
             </iframe>
         </div>
         <!-- 화면 보여주기 옵션-->

@@ -3,15 +3,16 @@
 <v-app>
     
     <div class="header">
-    <top-nav-bar/>
+    <top-nav-bar @submit="onSubmit" :members="members"/>
 -  <header align="center" id="header"><img id="homebtn" @click="GoHome" src="@/assets/상우/홈로고.png"/></header> 
     </div>
     <nav-bar/>
-    <v-btn width="80px" @click="check">로그인한사람</v-btn>
     
-    <new-login-page-form v-if="this.$store.state.session ==null" @submit="onSubmit" :members="members"/>
+   <!-- <v-btn width="80px" @click="check">로그인한사람</v-btn>-->
+    
+   <!-- <new-login-page-form v-if="this.$store.state.session ==null" @submit="onSubmit" :members="members"/> -->
      
-   <!-- <v-btn v-else @click="logout" width="80px">로그아웃</v-btn>-->
+   <!-- <v-btn  @click="logout" width="80px">로그아웃</v-btn>-->
     
     
 <div class="section">
@@ -19,8 +20,7 @@
 </div>
 
   <div class="footer" >
- <!-- <v-btn @click="logout" v-if="this.$store.state.session != null">로그아웃</v-btn> -->
-                                              <p>&copy; 곤충박사위원회</p>
+  <footer-component/>
    </div>
   
     
@@ -36,7 +36,8 @@ import NavBar from './views/NavigationVar/NavBar.vue'
 import TopNavBar from './views/NavigationVar/TopNavBar.vue'
 import { mapActions, mapState } from 'vuex'
 import axios from 'axios'
-import NewLoginPageForm from '../src/components/Login/NewLoginPageForm.vue'
+//import NewLoginPageForm from '../src/components/Login/NewLoginPageForm.vue'
+import FooterComponent from './components/footer/FooterComponent.vue'
 Vue.use(cookies)
 
 export default {
@@ -44,7 +45,9 @@ export default {
       components: {
        NavBar,
     TopNavBar ,
-    NewLoginPageForm
+   // NewLoginPageForm,
+    FooterComponent
+    
     },
     computed: {
       ...mapState(['members','loginMemberNo'])
@@ -71,7 +74,7 @@ check(){
    console.log('로그인유무정보'+this.$store.state.isLogin)
    console.log(this.$store.state.User)
    console.log(this.$store.state.loginMemberNo)
-   console.log(this.$store.state.userid2)
+  // console.log(this.$store.state.userid2)
 },
 onSubmit (payload) {
            if(this.$store.state.session ==null){
@@ -88,9 +91,9 @@ onSubmit (payload) {
                                  this.$store.state.loginMemberNo = this.members[i].memberNo
                                }
                                                                           }
-                            this.$store.state.userid2 = res.data.userid
+                          //  this.$store.state.userid2 = res.data.userid
                             this.$cookies.set("memberNo",this.$store.state.loginMemberNo,'1h')
-                            this.$cookies.set("userid2",this.$store.state.userid2,'1h')
+                            //this.$cookies.set("userid2",this.$store.state.userid2,'1h')
                             this.$store.state.isLogin = true;
                             this.$store.state.session = res.data;
                             this.$store.state.User = res.data.userid;
@@ -121,11 +124,12 @@ logout() {
   this.$cookies.remove('memberNo')
   this.$cookies.remove('setter')
   this.$cookies.remove('coin')
-  this.$cookies.remove('userid2')
+ // this.$cookies.remove('userid2')
             this.$store.state.isLogin = false
             this.$store.state.session =null
             this.$store.state.loginMemberNo =null
-            this.$router.go()
+        //    this.$store.state.userid2 =null
+            this.$router.push({name: 'Home'})
 }
 
     },
@@ -133,7 +137,7 @@ logout() {
           this.$store.state.session = this.$cookies.get('user')
           this.$store.state.loginUser = this.$cookies.get('user')
           this.$store.state.loginMemberNo =this.$cookies.get('memberNo')
-          this.$store.state.userid2 = this.$cookies.get('userid2')
+       //   this.$store.state.userid2 = this.$cookies.get('userid2')
           
           if( this.$store.state.session != null) {
               this.$store.state.isLogin =true
@@ -148,66 +152,24 @@ logout() {
 </script>
 
 <style>
-/*
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-
-#header {
- 
-  background-image: url('./assets/상우/타이틀수정.png');
-}
-#homebtn{
-  margin-right: 50%
-}
-#nav{
-  background-color: rgb(32, 32, 32);
-}
-footer{
-  width: 1700px;
-  height: 50px;
-  position: bottom;
-  background-color: rgb(170, 9, 9);
-  text-align: center;
-  
-}
-#HomeP{
-   background-color: rgb(32, 32, 32);
-   
-}
-*/
 .section{
-    margin-left:300px;
-    margin-top: 300px;
-    position:absolute;
-    width: 1500px;
+    
+    
+    
+    
     height: 2000px;
    
     
     
 }
+
 .footer {
    height: 200px;
   margin-top: 2000px;
-  background-color: #000;
-
-  
-
+  background-color: rgb(32, 32, 32);
+  text-decoration-color: seashell;
 }
+/*
 table {
   font-weight: bold;
   background: #eee;
@@ -216,7 +178,7 @@ h4{
     width: 700px;
     height: 700px;
 }
-
+*/
 
 
 </style>
