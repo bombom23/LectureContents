@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-coverflow": "^2.2.0",
+    "vue-moment": "^4.1.0",
     "vue-router": "^3.2.0",
     "vue-sidebar-menu": "^5.0.1",
     "vue-smart-pagination": "^2.0.9",

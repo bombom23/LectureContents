@@ -1,128 +1,125 @@
 <template>
     
     <div>
-        <table id="table" >
-           <tr>
-               <td>제품명:{{Product.productName}}</td>
-           </tr>
-           <tr>
-               <td>제품가격:{{Product.productPrice}}원</td>
-           </tr>
-           <tr>
-               <textarea id="textarea" :value="Product.productDesc" readonly/>
-           </tr>
-           
-           <tr>
-               
-               <v-btn @click="plusProduct">
-                   <v-icon>
-                       mdi-plus-thick
-                   </v-icon>
-               </v-btn>
-               <v-btn @click="minusProduct">
-                   <v-icon>
-                       mdi-minus-thick
-                   </v-icon>
-               </v-btn>
-           </tr>
-           <tr>
-               <td type="Number">수량{{productNum}}</td>
-               
-           </tr>
-           <tr>
-               <td>총가격(택배비3000원):{{Product.productPrice * productNum +3000}}</td>
-           </tr>
-           <tr>
-               
-                <v-btn v-if="this.$store.state.User !=null" @click="Basket(Product)" align="center" width="200"  height="80">장바구니</v-btn>
-                <v-btn v-if="this.$store.state.User ==null" @click="plzlogin" align="center" width="200"  height="80">장바구니</v-btn>
+<div id="goods">
+     <v-btn style="float:left" @click="plusProduct"> <v-icon>mdi-plus-thick</v-icon></v-btn >
+               <v-btn style="float:left" @click="minusProduct"><v-icon> mdi-minus-thick</v-icon></v-btn>
+    <v-btn v-if="this.$store.state.User !=null" @click="Basket(Product)" align="center" >장바구니</v-btn>
+                <v-btn v-if="this.$store.state.User ==null" @click="plzlogin" align="center">장바구니</v-btn>
 
-               <v-btn v-if="this.$store.state.User !=null"  @click="InitiatingPerchase" width="200" class="red" height="80">구매</v-btn>
-               <v-btn v-if="this.$store.state.User ==null"  @click="plzlogin" width="200" class="red" height="80">구매</v-btn>
-           </tr>
-           <tr v-if="perchaseBox ==1">
-               <textarea v-model="userid" readonly/>
-           </tr>
-           <tr v-if="perchaseBox ==1"><p>주소</p>
-               <textarea v-model="address"/>
-           </tr>
-           <tr v-if="perchaseBox ==1"><p>휴대전화(-빼고기입)</p>
-              <textarea v-model="phoneNo"/>
-           </tr>
-           <tr v-if="perchaseBox ==1"><p>주문자성함</p>
-              <textarea v-model="buyUserName"/>
-           </tr>
-           <tr v-if="perchaseBox ==1">
-               <v-btn @click="finalBuybtn(Product)" class="red">최종구매</v-btn>
-               <v-btn @click="prerchasecancle">취소</v-btn>
-           </tr>
-            </table>
-      
-       
-           
+               <v-dialog  v-model="dialog" persistent max-width="400">
+               <template v-slot:activator="{ on }">
+               <v-btn    dark v-on="on">구매</v-btn>
+               </template>
+               <v-card>
+               <v-card-title class="headline">
+                   주문
+               </v-card-title>
+               <v-card-text>
+                  <v-text-field label="주소" v-model="address" type="text" :rules="must" flat solo>
+              </v-text-field>
+              <v-text-field label="성함" v-model="buyUserName" type="text" :rules="must" flat solo>
+              </v-text-field>
+              <v-text-field label="핸드폰" v-model="phoneNo" type="text" :rules="must" flat solo>
+              </v-text-field>
+               </v-card-text>
+               <v-card-actions>
+                   <v-spacer></v-spacer>
+                   <v-btn @click.native="finalBuybtn(Product)" class="red">최종구매</v-btn>
+               <v-btn @click.native="prerchasecancle">취소</v-btn>
+               </v-card-actions>
+               </v-card>
+           </v-dialog>
             
-          
-      
-       <table id="imgtable">
-           <tr>
+</div>
+<v-container id="viewimg">
+       <table id="imgtable"> 
         <img width="600px" v-if="Product.productName =='[사슴벌레용]발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
-                <img width="500px" v-if="Product.productName =='[장수풍뎅이]발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
-                <img width="500px" height="560px" v-if="Product.productName =='산란목'" src="@/assets/상우/산란목.jpg"/>
-                <img width="500px" v-if="Product.productName =='발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
-                <img width="500px" v-if="Product.productName =='균사'" src="@/assets/상우/균사.jpg"/>
-                <img width="500px" v-if="Product.productName =='곤충젤리100개'" src="@/assets/상우/수액젤리.jpg"/>
-                <img width="500px" v-if="Product.productName =='곤충이끼'" src="@/assets/상우/곤충이끼.jpg"/>
-                <img width="500px" v-if="Product.productName =='오호히라균사'" src="@/assets/상우/균사.jpg"/>
-                <img width="500px" v-if="Product.productName =='레벤지균사'" src="@/assets/상우/균사.jpg"/>
-                <img width="500px" v-if="Product.productName =='놀이목'" src="@/assets/상우/놀이목.jpg"/>
-                <img width="500px" v-if="Product.productName =='광구병'" src="@/assets/상우/광구병.jpg"/>
-                <img width="500px" v-if="Product.productName =='오호히라균사묶음6개'" src="@/assets/상우/균사묶음.jpg"/>
-                <img width="500px" v-if="Product.productName =='균사스푼'" src="@/assets/상우/균사스푼.jpg"/>
-                <img width="500px" v-if="Product.productName =='일반균사묶음6개'" src="@/assets/상우/균사묶음.jpg"/>
-                <img width="500px" v-if="Product.productName =='사육케이스특대'" src="@/assets/상우/사육케이스.jpg"/>
-                <img width="500px" v-if="Product.productName =='사육케이스대'" src="@/assets/상우/사육케이스.jpg"/>
-                <img width="500px" v-if="Product.productName =='사육케이스중'" src="@/assets/상우/사육케이스.jpg"/>
-                <img width="500px" v-if="Product.productName =='사육케이스소'" src="@/assets/상우/사육케이스.jpg"/>
-                <img width="500px" v-if="Product.productName =='먹이접시1구'" src="@/assets/상우/먹이접시1구.jpg"/>
-                <img width="500px" v-if="Product.productName =='먹이접시2구'" src="@/assets/상우/먹이접시2구.jpg"/>
-                <img width="500px" v-if="Product.productName =='[사슴벌레용]발효톱밥5L묶음6개'" src="@/assets/상우/발효톱밥묶음.jpg"/>
-                <img width="500px" v-if="Product.productName =='[장수풍뎅이]발효톱밥5L묶음6개'" src="@/assets/상우/발효톱밥묶음.jpg"/>
-                <img width="500px" v-if="Product.productName =='유산균젤리100개'" src="@/assets/상우/유산균젤리.jpg"/>
-                <img width="500px" v-if="Product.productName =='유충병고급'" src="@/assets/상우/유충병고급.jpg"/>
-                <img width="500px" v-if="Product.productName =='온도계스티커'" src="@/assets/상우/온도계스티커.jpg"/>
-                <img width="500px" v-if="Product.productName =='장수풍뎅이세트'" src="@/assets/상우/장수풍뎅이세트.jpg"/>
-                <img width="500px" v-if="Product.productName =='왕사슴벌레세트'" src="@/assets/상우/왕사슴벌레세트.jpg"/>
-           </tr>
+                <img width="350px" v-if="Product.productName =='[장수풍뎅이]발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
+                <img width="350px"  v-if="Product.productName =='산란목'" src="@/assets/상우/산란목.jpg"/>
+                <img width="350px" v-if="Product.productName =='발효톱밥5L'" src="@/assets/상우/발효톱밥.jpg"/>
+                <img width="350px" v-if="Product.productName =='균사'" src="@/assets/상우/균사.jpg"/>
+                <img width="350px" v-if="Product.productName =='곤충젤리100개'" src="@/assets/상우/수액젤리.jpg"/>
+                <img width="350px" v-if="Product.productName =='곤충이끼'" src="@/assets/상우/곤충이끼.jpg"/>
+                <img width="350px" v-if="Product.productName =='오호히라균사'" src="@/assets/상우/균사.jpg"/>
+                <img width="350px" v-if="Product.productName =='레벤지균사'" src="@/assets/상우/균사.jpg"/>
+                <img width="350px" v-if="Product.productName =='놀이목'" src="@/assets/상우/놀이목.jpg"/>
+                <img width="350px" v-if="Product.productName =='광구병'" src="@/assets/상우/광구병.jpg"/>
+                <img width="350px" v-if="Product.productName =='오호히라균사묶음6개'" src="@/assets/상우/균사묶음.jpg"/>
+                <img width="350px" v-if="Product.productName =='균사스푼'" src="@/assets/상우/균사스푼.jpg"/>
+                <img width="350px" v-if="Product.productName =='일반균사묶음6개'" src="@/assets/상우/균사묶음.jpg"/>
+                <img width="350px" v-if="Product.productName =='사육케이스특대'" src="@/assets/상우/사육케이스.jpg"/>
+                <img width="350px" v-if="Product.productName =='사육케이스대'" src="@/assets/상우/사육케이스.jpg"/>
+                <img width="350px" v-if="Product.productName =='사육케이스중'" src="@/assets/상우/사육케이스.jpg"/>
+                <img width="350px" v-if="Product.productName =='사육케이스소'" src="@/assets/상우/사육케이스.jpg"/>
+                <img width="350px" v-if="Product.productName =='먹이접시1구'" src="@/assets/상우/먹이접시1구.jpg"/>
+                <img width="350px" v-if="Product.productName =='먹이접시2구'" src="@/assets/상우/먹이접시2구.jpg"/>
+                <img width="350px" v-if="Product.productName =='[사슴벌레용]발효톱밥5L묶음6개'" src="@/assets/상우/발효톱밥묶음.jpg"/>
+                <img width="350px" v-if="Product.productName =='[장수풍뎅이]발효톱밥5L묶음6개'" src="@/assets/상우/발효톱밥묶음.jpg"/>
+                <img width="350px" v-if="Product.productName =='유산균젤리100개'" src="@/assets/상우/유산균젤리.jpg"/>
+                <img width="350px" v-if="Product.productName =='유충병고급'" src="@/assets/상우/유충병고급.jpg"/>
+                <img width="350px" v-if="Product.productName =='온도계스티커'" src="@/assets/상우/온도계스티커.jpg"/>
+                <img width="350px" v-if="Product.productName =='장수풍뎅이세트'" src="@/assets/상우/장수풍뎅이세트.jpg"/>
+                <img width="350px" v-if="Product.productName =='왕사슴벌레세트'" src="@/assets/상우/왕사슴벌레세트.jpg"/>
        </table>
-       
-        <form  @submit.prevent="OnSubmit" v-if="commentBox ==1 && this.$store.state.User !=null">
-         <table id="commetTable" >
-             <tr>
-                 <td>후기</td>
-             </tr>
+      </v-container>
+
+    <v-container style="max-width:700px" id="viewProductDesc">
+        <table id="table" >
+          <h4>제품명:{{Product.productName}}</h4>
+           <h4>가격:{{Product.productPrice}}</h4>
+              <p>{{Product.productDesc}}</p>
+
+           
+  
+
               
-             <tr>
-                 <th>작성자</th>
-                 <input v-model="ui" readonly/>
-             </tr>
-            <tr><th>댓글</th>
-                <textarea v-model="comments"/>
-                <v-btn  type="submit">등록</v-btn>
-            </tr>
+                <h4>수량{{productNum}} 총가격(택배비3000원):{{Product.productPrice * productNum +3000}}</h4>
+
+ 
+
+
+               
+                
+           <!--
+           <tr style="border-left: none;" v-if="perchaseBox ==1">
+              <v-text-field label="주소" v-model="address" type="text" :rules="must" flat solo>
+              </v-text-field>
+              <v-text-field label="성함" v-model="address" type="text" :rules="must" flat solo>
+              </v-text-field>
+              <v-text-field label="이름" v-model="address" type="text" :rules="must" flat solo>
+              </v-text-field>
+              <v-btn @click.native="finalBuybtn(Product)" class="red">최종구매</v-btn>
+               <v-btn @click.native="prerchasecancle">취소</v-btn>
+           </tr>
+           -->
+            </table>
+    </v-container>
+  
+        <form  @submit.prevent="OnSubmit" v-if="commentBox ==1 && this.$store.state.User !=null">
+        <table >
+          <tr>
+              <p>후기</p><v-btn style="float:right" small route :to="{name: 'ShoppingMallpage'}">목록</v-btn>
+             <p>{{ui}}</p>
+            <v-textarea height="10px" auto-grow outlined v-model="comments">
+            </v-textarea>
+            <v-btn depressed style="float:right" type="submit"><v-icon>mdi-comment</v-icon></v-btn>
+          </tr>
         </table>
         </form>
+     
         <table>
             <tr v-for="(item, index) in Product.authList" :key="Product.authList[index].id">
                   
                   <th width="150px">{{ item.ui}}</th>
                   
-                  <td width="50px" >{{item.comments}}</td>
+                  <td >{{item.comments}}</td>
 
                    <td v-if="Modify == item.productCommentNo">
                     <textarea  v-model="comments" cols="1" rows="1"/><v-btn depressed @click="CommemtsModify(item)">수정완료</v-btn><v-btn depressed @click="ModifyOFF">취소</v-btn>
                 </td>
         <td>
-        <v-btn width="10px" depressed v-if="item.ui == User"  @click="deleteComment(item.productCommentNo)">
+        <v-btn  depressed v-if="item.ui == User"  @click="deleteComment(item.productCommentNo)">
             <v-icon>mdi-alpha-x-box-outline</v-icon>
         </v-btn>
         <v-btn depressed v-if="item.ui == User"   @click="ModifyOn(item.productCommentNo)">
@@ -163,8 +160,11 @@ export default {
             ui: this.$store.state.User,
             comments: '',
             Modify: '',
-            userid:this.$store.state.User
-
+            userid:this.$store.state.User,
+            dialog: false,
+            must: [
+                 v => !! v || '정보를입력해주세요.',
+            ]
              
         }
     },
@@ -195,7 +195,7 @@ export default {
             this.perchaseBox =1
         },
         prerchasecancle(){
-            this.perchaseBox= 0
+            this.dialog= false
         },
         Basket(Product){
             for(var i = 0 ; i <this.members.length ; i++){
@@ -213,6 +213,8 @@ export default {
         },
         
         finalBuybtn(Product){
+
+                if(this.$store.state.User !=null){
                const {productName,productPrice } =Product
                 const {productNum, buyUserName,address,phoneNo,userid} =this
 
@@ -224,7 +226,10 @@ export default {
                 }).catch(err=>{
                     alert(err.response.data.message)
                 })
-
+                }
+                else{
+                    alert('로그인후 이용해주세요')
+                }
 
 
         },
@@ -269,20 +274,17 @@ export default {
 
 <style scoped>
 
-#table{
-    margin-left: 500px;
-   width:1000px;
-   float: left;
+#viewimg{
+    float: left;
 }
-#textarea{
-    width:970px;
-    height: 230px;
-}
-#imgtable{
-    
+#viewProductDesc{
+    float: right;
     position: absolute;
-    width:300px;
-    height: 500px;
+    margin-left: 500px;
 }
-
+#goods{
+    position: absolute;
+    margin-top: 330px;
+    margin-left: 80px;
+}
 </style>

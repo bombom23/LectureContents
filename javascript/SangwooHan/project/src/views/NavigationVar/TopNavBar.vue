@@ -8,6 +8,7 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
+        <!--
         <v-btn depressed route :to="{name: 'SignupPage'}">
             
             <v-icon>
@@ -15,6 +16,109 @@
             </v-icon>
             회원가입
         </v-btn>
+        -->
+         <v-row justify="center">
+    <v-dialog
+      v-model="Signup"
+      persistent
+      max-width="600px"
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          height="75px"
+          v-bind="attrs"
+          v-on="on"
+        >
+          회원가입
+        </v-btn>
+      </template>
+      <v-card>
+        <v-card-title>
+          <span class="text-h5">회원가입</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            <v-row>
+              <v-text-field  class="pl-3 pr-3"  v-model="userid"
+            label="아이디" type="text" prepend-icon="mdi-account" flat solo>
+            </v-text-field>
+             <v-text-field  class="pl-3 pr-3"  :rules="passwordRules" required  v-model="password"
+            label="비밀번호" type="password" prepend-icon="mdi-lock" flat solo>
+            </v-text-field>
+            <v-text-field  class="pl-3 pr-3"  :rules="passwordCheck" required  v-model="passwordChecking"
+            label="비밀번호확인" type="password" prepend-icon="mdi-lock" flat solo>
+            </v-text-field>
+              <v-text-field class="pl-3 pr-3" :rules="emailRules" required v-model="email"
+            label="이메일" type="text" prepend-icon="mdi-email-multiple" flat solo>
+            </v-text-field>
+            <v-text-field class="pl-3 pr-3" :rules="nameRules"  required v-model="name"
+            label="회원이름" type="text" prepend-icon="mdi-account" flat solo>
+            </v-text-field>
+            <v-text-field class="pl-3 pr-3"  required v-model="birthday"
+            label="주민번호앞자리" type="date"  prepend-icon="mdi-cake" flat solo>
+            </v-text-field>
+           
+
+             <v-text-field class="pl-3 pr-3"   required v-model="phoneNo"
+            label="휴대전화" type="text" prepend-icon="mdi-phone" flat solo>
+            </v-text-field>
+             <v-text-field class="pl-3 pr-3"  required v-model="address"
+            label="주소" type="text" prepend-icon="mdi-home-map-marker" flat solo>
+            </v-text-field>
+            <v-select
+            :items="selectgender"
+            v-model="gender" label="성별">
+            </v-select>
+            </v-row>
+          </v-container>
+          <small>*indicates required field</small>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="blue darken-1"
+            text
+            @click="Signup = false"
+          >
+            취소
+          </v-btn>
+          <v-btn
+            color="blue darken-1"
+            text
+            @click="SignupStart()"
+          >
+            가입
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-row>
+
+
+
+         <v-dialog  v-model="dialog" persistent max-width="400">
+               <template v-slot:activator="{ on }">
+               <v-btn    dark v-on="on">로그인</v-btn>
+               </template>
+               <v-card>
+               <v-card-title class="headline">
+                   Login
+               </v-card-title>
+               <v-card-text>
+                  <v-text-field label="아이디" v-model="id" type="text" flat solo>
+              </v-text-field>
+              <v-text-field label="비밀번호" v-model="pw" type="password"  flat solo>
+              </v-text-field>
+               </v-card-text>
+               <v-card-actions>
+                   <v-spacer></v-spacer>
+                   <v-btn route @click.native="Logincancle" :to="{name: 'FindByPasswordPage'}">비밀번호찾기</v-btn>
+                   <v-btn @click="OnSubmit">로그인</v-btn>
+               <v-btn @click.native="Logincancle">취소</v-btn>
+               </v-card-actions>
+               </v-card>
+           </v-dialog>
+     
     </v-toolbar-items>
     </v-toolbar>
     <!--로그인일때-->
@@ -29,13 +133,49 @@
             장바구니
         </v-btn>
         -->
+        <!--
         <v-btn depressed @click="handleClick">
             <v-icon>mdi-logout</v-icon>
             로그아웃
         </v-btn>
+        -->
+        <v-bottom-sheet
+      v-model="sheet"
+      inset
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          depressed
+          
+          v-bind="attrs"
+          v-on="on"
+        >
+          <v-icon>mdi-logout</v-icon>
+            로그아웃
+        </v-btn>
+      </template>
+      <v-sheet
+        class="text-center"
+        height="200px"
+      >
+        <v-btn
+          class="mt-6"
+          text
+          color="error"
+          @click="handleClick"
+        >
+          로그아웃
+        </v-btn>
+        <div >
+          <p>GoodBye</p>
+        </div>
+      </v-sheet>
+    </v-bottom-sheet>
         <v-btn depressed route :to="{name: 'MyPage'}">
             {{this.User}}님
         </v-btn>
+
+
         <v-btn depressed route :to="{name: 'NoticeListPage'}" >
             공지판
         </v-btn>
@@ -52,12 +192,22 @@ import Vue from 'vue'
 
 Vue.use(cookies)
 import { mapState } from 'vuex'
+import axios from 'axios'
 
 export default {
     computed: {
-        ...mapState(['loginMemberNo','User'])
+        ...mapState(['loginMemberNo','User','emailRules',
+            'passwordRules',
+            'nameRules',
+            'loadingState',])
+    },
+    props:{
+        members:{
+            type:Array
+        }
     },
     methods:{
+
             handleClick(value){
   this.$cookies.remove('user')
   this.$cookies.remove('memberNo')
@@ -66,19 +216,88 @@ export default {
             this.$store.state.isLogin = false
             this.$store.state.session =null
             this.$store.state.loginMemberNo =null
+            this.sheet = false
             console.log(value.srcElement.baseURI)
       if(value.srcElement.baseURI == 'http://localhost:8080/'){
         this.$router.go()
       }else{
         this.$router.push({name: 'Home'})
       }
-                                }
+                                },
+                                 Logincancle(){
+            this.dialog  =false
+        },
+        OnSubmit () {
+            
+           for(var i = 0; i < this.members.length; i++){
+             if(this.members[i].userid == this.id){
+                 
+                 const {id ,pw } = this
+                 this.$emit('submit' ,{ id , pw})
+
+                 return {
+                     SelectedUser: 1
+                 }
+             }
+            
+             }
+             let SelectedUser = null
+        this.members.forEach(user =>{
+            if(user.userid === this.userid) SelectedUser = user})
+        if(SelectedUser ===null)alert('등록된 회원정보가없습니다.')
+             
+           },
+            SignupStart (){
+                let coin = null;
+                for(var i = 0 ; i < this.members.length ; i ++){
+
+                      if(this.members[i].userid === this.userid){
+                    alert('등록된 아이디가있습니다.')
+                    return coin = 1;
+                                                                 }
+                
+                                                                }
+                if(coin === null){
+                    
+            const { userid, password, name, email, birthday, gender, address, phoneNo } = this
+            axios.post('http://localhost:9999/jpamemberManage/register', {userid, password, name, email, birthday, gender, address, phoneNo})
+                .then(res =>{
+                    alert('회원가입 성공' + res)
+                    this.Signup = false
+                }).catch(res => {
+                    alert(res.response.data.message)
+                })
+             
+                }
+
+                  }
     },
     data () {
         return {
+            selectgender:[
+                {text: '남자', value: '남자'},
+                {text: '여자', value: '여자'}
+            ],
+            userid: '',
+            password: '',
+            name: '',
+            email: '',
+            birthday: '',
+            gender: '',
+            address: '',
+            phoneNo: '',
+            passwordChecking: '',
+            passwordCheck: [
+            v => this.password ===v || '비밀번호가 일치하지않습니다'
+    ],
+            Signup: false,
             nav_drawer: false,
             group: false,
-
+            dialog: false,
+            id: '',
+            pw: '',
+            sheet: false,
+            mypage: false,
             LogOutlinks: [
                 {  
                     text: '회원가입',
@@ -190,7 +409,12 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap');
 #toolbar{
     border-style: none;
+}
+p{
+    font-family: 'Roboto Slab', serif;
+    font-size: 3.0em;
 }
 </style>

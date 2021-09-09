@@ -1,6 +1,8 @@
 <template>
     <div>
+        <v-container>
         <community-list-form :boards="boards"/>
+        </v-container>
     </div>
 </template>
 

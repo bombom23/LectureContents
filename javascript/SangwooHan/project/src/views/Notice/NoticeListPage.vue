@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <notice-list-form :notices="notices"/>
     </div>

@@ -82,7 +82,8 @@ import CustomerSoundPage from '../views/MyPage/CustomerSoundPage'
 import CustomerSoundReadPage from '../views/MyPage/CustomerSoundReadPage'
 //비밀번호찾기
 import FindByPasswordPage from '../views/FindByPassword/FindByPasswordPage'
-
+// 아디찾기
+import FindByIdPage from '../views/FindById/FindByIdPage'
 // 페이지네이션
 import Pagenation from '../views/Pagenation'
 Vue.use(VueRouter)
@@ -504,6 +505,14 @@ const routes = [
     name: 'Pagenation',
     components: {
       default: Pagenation
+    },
+  },
+  //아디찾기 
+  {
+    path: '/findByIdPage',
+    name: 'FindByIdPage',
+    components: {
+      default: FindByIdPage
     },
   },
 ]

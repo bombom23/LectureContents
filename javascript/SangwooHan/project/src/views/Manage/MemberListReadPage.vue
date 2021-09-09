@@ -1,30 +1,10 @@
 <template>
     <div>
+        <v-container>
      <member-list-read-form v-if="member" :member="member"/>  
      <p v-else> 로딩중</p>
      <v-btn route :to="{ name: 'MemberModifyPage', params: {memberNo}}">수정하기</v-btn>
-     <v-dialog v-model="dialog" persistent max-width="400">
-               <template v-slot:activator="{ on }">
-               <v-btn color="primary" dark v-on="on">삭제</v-btn>
-               </template>
-               <v-card>
-               <v-card-title class="headline">
-                   회원 정보삭제
-               </v-card-title>
-               <v-card-text>
-                  정말 삭제하시겠습니까?
-               </v-card-text>
-               <v-card-actions>
-                   <v-spacer></v-spacer>
-                   <v-btn color="teal darken-1" text @click.native="btn_click($event)">
-                       취소
-                   </v-btn>
-                    <v-btn color="teal darken-1" text @click.native="btn_click($event)">
-                     확인
-                   </v-btn>
-               </v-card-actions>
-               </v-card>
-           </v-dialog>
+        </v-container>
     </div>
 </template>
 

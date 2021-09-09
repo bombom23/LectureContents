@@ -14,7 +14,7 @@
           <td @click="goDetail(i.boardNo)">{{i.title}}</td>
             <td>{{i.id}}</td>
             <td>{{i.vuecount}}</td>
-            <td>{{i.createDate}}</td>
+            <td>{{$moment(i.createDate).format('YYYY-MM-DD/hh:mm')}}</td>
           </tr>
         </table>
             <table>
@@ -37,7 +37,9 @@
 
 <script>
 import axios from 'axios';
-
+import Vue from 'vue'
+import VueMoment from 'vue-moment'
+Vue.use(VueMoment);
 
 export default {
     

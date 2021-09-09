@@ -1,11 +1,12 @@
 <template>
   <div>
+      <v-container>
      <insect-museum-bar/>
      <img src="@/assets/상우/곤충박물관로고.png"/>
         <h3>찾고싶은 곤충이 있나요?</h3>
-        <p>검색창</p>
+        <pre>search by insect.</pre>
         <input v-model="title">
-        <v-btn @click="searchtitle" >검색!</v-btn>
+        <v-btn @click="searchtitle" ><v-icon>mdi-magnify</v-icon></v-btn>
         
         <table>
             <tr>
@@ -23,6 +24,7 @@
                 <th>{{searchResult.vuecount}}</th>
             </tr>
         </table>
+        </v-container>
   </div>
 </template>
 
@@ -109,8 +111,12 @@ export default {
     }
    
 }
+
 </script>
 
 <style scoped>
-
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+pre{
+  font-family: 'Cabin', sans-serif;
+}
 </style>

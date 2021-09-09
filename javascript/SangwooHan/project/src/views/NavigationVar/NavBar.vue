@@ -98,13 +98,13 @@ export default {
                
                  {
                      
-                    text: 'ㅣ커뮤니티ㅣ',  
+                    text: '커뮤니티',  
                     name: '커뮤니티글올리기(수정예정)',
                     route: '/communityListpage',
                 },
                  {
                      
-                    text: 'ㅣ곤충박물관ㅣ',  
+                    text: '곤충박물관',  
                     name: '커뮤니티글올리기(수정예정)',
                     route: '/insectmuseumpage',
                 },
@@ -120,20 +120,20 @@ export default {
                
                 {
                      
-                    text: 'ㅣ커뮤니티ㅣ',  
+                    text: '커뮤니티',  
                     name: '커뮤니티글올리기(수정예정)',
                     route: '/communityListpage',
                 },
                   {
                      
-                    text: 'ㅣ곤충박물관ㅣ',  
+                    text: '곤충박물관',  
                     name: '곤충박물관',
                     route: '/insectmuseumpage',
                 },
                    {
                      
                     text: '쇼핑몰',  
-                    name: 'ㅣ곤충갤러리ㅣ',
+                    name: '곤충갤러리',
                     route: '/shoppingMallPage',
                 },
                
