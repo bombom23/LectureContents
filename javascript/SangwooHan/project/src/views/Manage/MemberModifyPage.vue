@@ -1,9 +1,10 @@
 <template>
     
     <div>
-        
+        <v-container>
         <h3>회원수정하기</h3>
       <member-modify-page-form :member="member" @submit="onSubmit"/>
+        </v-container>
     </div>
 </template>
 

@@ -1,7 +1,8 @@
 <template>
-    <div>
+    <div><v-container>
         <insect-museum-register-bar/>
        <skycow-register-form @submit="OnSubmit"/>
+       </v-container>
     </div>
 </template>
 

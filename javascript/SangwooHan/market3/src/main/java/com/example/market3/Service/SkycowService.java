@@ -24,4 +24,6 @@ public interface SkycowService {
 
     public  Optional<JpaSkycow> searchtitle( SkycowCommentRequest skycowCommentRequest) throws  Exception;
 
+    public  void Modify(Long boardNo, String text) throws  Exception;
+
 }

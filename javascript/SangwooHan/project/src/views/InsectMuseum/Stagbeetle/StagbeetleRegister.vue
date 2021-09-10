@@ -1,7 +1,9 @@
 <template>
     <div>
+        <v-container>
         <insect-museum-register-bar/>
-        <stagbeetle-register-form @submit="OnSubmit"/>
+        <stagbeetle-register-form   @submit="OnSubmit"/>
+        </v-container>
     </div>
 </template>
 
@@ -20,12 +22,14 @@ export default {
    
        
     },
+
     methods: {
         OnSubmit(payload){
             const {id , title, text } = payload
             axios.post('http://localhost:9999/stagbeetle/register', {id, title, text })
             .then(res => {
                 alert('등록성공' +res)
+                
             })
             .catch( err => { 
                 alert(err.response.data.message)

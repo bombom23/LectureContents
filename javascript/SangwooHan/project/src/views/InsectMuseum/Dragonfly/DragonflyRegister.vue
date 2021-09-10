@@ -1,7 +1,8 @@
 <template>
-    <div>
+    <div><v-container>
          <insect-museum-register-bar/>
         <dragonfly-register-form @submit="OnSumit"/>
+        </v-container>
     </div>
 </template>
 

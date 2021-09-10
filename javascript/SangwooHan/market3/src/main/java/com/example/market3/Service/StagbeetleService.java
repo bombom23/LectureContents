@@ -27,4 +27,6 @@ public interface StagbeetleService {
 
     public  Optional<JpaStagbeetle>searchtitle (StagbeetleCommentRuquest stagbeetleCommentRuquest);
 
+    public  void Modify(Long boardNo,String text) throws  Exception ;
+
 }

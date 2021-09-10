@@ -1,7 +1,9 @@
 <template>
     <div>
+        <v-container>
        <insect-museum-register-bar/>
         <butterfly-register-form @submit="OnSubmit"/>
+        </v-container>
     </div>
 </template>
 <script>

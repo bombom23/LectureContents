@@ -1,6 +1,6 @@
 <template>
     <div>
-            <table style="margin-left:200px">
+            <table >
                 <tr>
                     <th>등록번호</th>
                     <td>{{member.memberNo}}</td>
@@ -44,8 +44,8 @@
             <table style="margin-left:195px">
                 
             <v-container style="max-width: 350px;">
-            <v-btn v-if="passwordModify == 0" @click="PasswordModifyON"> 비밀변호 변경</v-btn>
-            
+           
+            <!--
             <form @submit.prevent="StartpasswordModify(member)">
             
             <v-text-field v-if="passwordModify == 1" v-model="password" type="password" label="비밀번호">
@@ -56,6 +56,28 @@
             <v-btn v-if="passwordModify == 1" type="submit">변경</v-btn>
             <v-btn v-if="passwordModify == 1" @click="PasswordModifyOFF">취소</v-btn>
             </form>
+            -->
+             <v-dialog  :retain-focus="false" v-model="dialog" persistent max-width="400" >
+               <template v-slot:activator="{ on }">
+               <v-btn    dark v-on="on">비밀번호 변경</v-btn>
+               </template>
+               <v-card>
+               <v-card-title class="headline">
+                   비밀번호초기화시 장바구니정보초기화
+               </v-card-title>
+               <v-card-text>
+                 <v-text-field v-model="password" type="password" label="비밀번호">
+            </v-text-field>
+            <v-text-field  v-model="passwordcheck1" type="password" label="비밀번호확인"  :rules="passwordCheck">
+            </v-text-field>
+               </v-card-text>
+               <v-card-actions>
+                   <v-spacer></v-spacer>
+                   <v-btn @click.native="StartpasswordModify(member)" class="red">변경</v-btn>
+               <v-btn @click.native="PasswordModifyOFF">취소</v-btn>
+               </v-card-actions>
+               </v-card>
+           </v-dialog>
             </v-container>
             </table>
                 </td>
@@ -89,6 +111,7 @@ export default {
             email: '',
             phoneNo: 0,
             address: '',
+            dialog: false
             
         }
     },
@@ -119,7 +142,7 @@ export default {
             this.passwordModify = 1
         },
         PasswordModifyOFF(){
-            this.passwordModify = 0
+            this.dialog =false
         },
         
         StartemailModify(memberNo){
@@ -164,8 +187,5 @@ export default {
 </script>
 
 <style scoped>
-table{
-    margin-top: 20px;
-    max-width: 700px;
-}
+
 </style>

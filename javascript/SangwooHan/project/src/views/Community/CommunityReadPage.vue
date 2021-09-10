@@ -1,6 +1,8 @@
 <template>
     <div>
+        <v-container>
         <community-read-form v-if="board" :board="board"/>
+        </v-container>
     </div>
 </template>
 

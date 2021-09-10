@@ -1,6 +1,6 @@
 <template>
 
-    <div style="max-width:1300px; margin-left: 200px;">
+    <div style="max-width:1300px;">
         <v-data-table
         :headers="headerTitle"
         :items="CustomerSoundList"

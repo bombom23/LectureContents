@@ -72,4 +72,11 @@ public class ButterflyServiceimpl implements  ButterflyService {
 
         return jpaButterfly;
     }
+
+    @Override
+    public void Modify(Long boardNo, String text) throws Exception {
+
+        butterflyRepository.Modify(boardNo, text);
+
+    }
 }

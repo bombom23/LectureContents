@@ -48,8 +48,83 @@
         </v-row>
     </v-container>
   -->
-<v-parallax height="700" src="@/assets/상우/똥구리.jpg"></v-parallax>
-   
+  <v-carousel 
+  cycle
+  hide-delimiters
+  height="700px">
+    <v-carousel-item
+      v-for="(item,i) in items" :key="i" :src="item.src" >
+      <v-row class="fill-height" align="center" justify="center" >
+      </v-row>
+      </v-carousel-item>
+  </v-carousel>
+
+ <v-container class="pa-4 text-center">
+    <v-row
+      class="fill-height"
+      align="center"
+      justify="center"
+    >
+      <template v-for="(item, i) in items2">
+        <v-col
+          :key="i"
+          cols="12"
+          md="4"
+        >
+          <v-hover v-slot="{ hover }">
+            <v-card
+              :elevation="hover ? 12 : 2"
+              :class="{ 'on-hover': hover }"
+            >
+              <v-img
+                :src="item.img"
+                height="225px"
+              >
+                <v-card-title class="text-h6 white--text">
+                  <v-row
+                    class="fill-height flex-column"
+                    justify="space-between"
+                  >
+                    <p class="mt-4 subheading text-left">
+                      {{ item.title }}
+                    </p>
+
+                    <div>
+                      <p class="ma-0 text-body-1 font-weight-bold font-italic text-left">
+                        {{ item.text }}
+                      </p>
+                      <p class="text-caption font-weight-medium font-italic text-left">
+                        {{ item.subtext }}
+                      </p>
+                    </div>
+
+                    <div class="align-self-center">
+                      <v-btn
+                        @click="topgapzz(i)"
+                        v-for="(icon, index) in icons"
+                        :key="index"
+                        :class="{ 'show-btns': hover }"
+                        :color="transparent"
+                        icon
+                      >
+                        <v-icon
+                          :class="{ 'show-btns': hover }"
+                          :color="transparent"
+                        >
+                          {{ icon }}
+                        </v-icon>
+                      </v-btn>
+                    </div>
+                  </v-row>
+                </v-card-title>
+              </v-img>
+            </v-card>
+          </v-hover>
+        </v-col>
+      </template>
+    </v-row>
+  </v-container>
+  
 </div>
 </template>
 
@@ -73,6 +148,29 @@ import axios from 'axios'
     },
     data(){
         return{
+          items:[
+               {
+            src: require('@/assets/상우/배경화면뮤엘러리.jpg'),
+            text: '곤충을 사랑하는 박물관',
+          },
+            {
+            src: require('@/assets/상우/배경화면개구리와딱정이.jpg'),
+            text: '곤충을 사랑하는 박물관',
+          },
+          {
+            src: require('@/assets/상우/배경화면데이지와곤충.jpg'),
+            text: '곤충을 사랑하는 박물관',
+          },
+           {
+            src: require('@/assets/상우/배경화면나비잠자리.jpg'),
+            text: '곤충을 사랑하는 박물관',
+          },
+          {
+              src: require('@/assets/상우/배경화면하늘소.jpg'),
+              text: '곤충을 사랑하는 박물관',
+          },
+          ],
+
           bgImage: require('@/assets/상우/박물관/박물관[왕사슴벌레].jpg'),
 
           images:[
@@ -92,6 +190,30 @@ import axios from 'axios'
               require('@/assets/상우/유산균젤리.jpg')
           ],
           PageArray:[],
+
+          icons: ['mdi-arrow-right-bold-hexagon-outline'],
+      items2: [
+        {    
+          title: '곤충박물관',
+          text: `아름다운 곤충을 소개합니다.`,
+          subtext: 'Let me introduce beautiful insects.',
+          img: require('@/assets/상우/배경화면뮤엘러리.jpg'),
+        },
+        {
+            
+          title: '곤충쇼핑몰',
+          text: '우리집도 곤충박물관이다!',
+          subtext: 'InsectShoppingMall',
+          img:  require('@/assets/상우/발효톱밥5LX6.jpg'),
+        },
+        {
+          title: '커뮤니티',
+          text: '우리만의 곤충이야기',
+          subtext: 'top gap zz.',
+          img: require('@/assets/상우/배경화면개구리와딱정이.jpg'),
+        },
+      ],
+      transparent: 'rgba(255, 255, 255, 0)',
 
 
 
@@ -141,6 +263,18 @@ import axios from 'axios'
         }
     },
     methods: {
+        topgapzz(i){
+            console.log(i)
+            if(i == 0){
+                this.$router.push({name: 'InsectMuseumPage'})
+            }
+            if(i == 1){
+                this.$router.push({name: 'ShoppingMallpage'})
+            }
+            if(i == 2){
+                this.$router.push({name: 'CommunityListPage'})
+            }
+        },
       removeSession () {
             axios.post('http://localhost:9999/jpamemberManage/removeSession')
                     .then(res => {
@@ -241,6 +375,14 @@ span{
     margin-left: 800px;
     
 }
-
+.v-card {
+  transition: opacity .4s ease-in-out;
+}
+.v-card:not(.on-hover) {
+  opacity: 0.6;
+ }
+.show-btns {
+  color: rgba(255, 255, 255, 1) !important;
+}
 
 </style>

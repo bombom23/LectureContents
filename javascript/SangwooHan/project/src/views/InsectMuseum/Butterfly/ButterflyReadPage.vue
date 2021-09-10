@@ -1,7 +1,9 @@
 <template>
     <div>
+        <v-container>
         <butterfly-read-form v-if="Butterfly" :Butterfly="Butterfly"/>
-        
+        </v-container>
+   
     </div>
 </template>
 

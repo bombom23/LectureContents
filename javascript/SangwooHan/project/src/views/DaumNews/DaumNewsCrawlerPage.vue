@@ -1,5 +1,6 @@
 <template>
     <div>
+        <v-container>
          <v-btn class="blue" @click="start('society')">최신정보받아오기</v-btn>
      
             <v-simple-table>
@@ -24,7 +25,7 @@
                     </tbody>
                 </template>
             </v-simple-table>
-       
+        </v-container>
     </div>
 </template>
 

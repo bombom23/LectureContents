@@ -1,8 +1,10 @@
 <template>
     <div>
+        <v-container>
     <community-modify-page-form @submit="OnSubmit" v-if="board" :board="board"/>
-    
+        
      <p v-else> 공사중입니다</p>
+     </v-container>
    <!-- <v-btn @click="checking">체킹boardNo</v-btn> -->
 
     

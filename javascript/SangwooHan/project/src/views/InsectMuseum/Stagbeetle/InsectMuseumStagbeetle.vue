@@ -1,8 +1,10 @@
 <template>
     <div>
+        <v-container>
         <insect-museum-bar/>
         <stagbeetle-list-form  v-if="StagbeetleList" :StagbeetleList="StagbeetleList"/>
         <p v-else> 공사중입니다 </p>
+        </v-container>
     </div>
 </template>
 

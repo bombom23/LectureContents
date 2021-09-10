@@ -20,4 +20,9 @@ public interface SkycowRepository extends JpaRepository<JpaSkycow,Long> {
 
     @Query("select j from JpaSkycow j where j.title = :title")
     Optional<JpaSkycow>findBytitle(@Param("title")String title);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE JpaSkycow J set J.text  = :text where J.boardNo = :boardNo")
+    void Modify(@Param("boardNo")Long boardNo,@Param("text")String text);
 }

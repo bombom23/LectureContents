@@ -1,7 +1,9 @@
 <template>
     <div>
+        <v-container>
         <insect-museum-bar/>
         <beetle-list-form :BeetleList="BeetleList"/>
+        </v-container>
     </div>
 </template>
 

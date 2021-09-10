@@ -1,7 +1,7 @@
   
 <template>
 <v-app>
-    
+    <body>
     <div class="header">
     <top-nav-bar @submit="onSubmit" :members="members"/>
 -  <header align="center" id="header"><img id="homebtn" @click="GoHome" src="@/assets/상우/홈로고.png"/></header> 
@@ -24,7 +24,7 @@
    </div>
   
     
-
+    </body>
 </v-app>
 </template>
 
@@ -152,23 +152,15 @@ logout() {
 </script>
 
 <style>
-.section{
-    
-    
-    
-    
-    height: 2000px;
-   
-    
-    
-}
 
+/*
 .footer {
    height: 200px;
   margin-top: 2000px;
   background-color: rgb(32, 32, 32);
   text-decoration-color: seashell;
 }
+*/
 /*
 table {
   font-weight: bold;

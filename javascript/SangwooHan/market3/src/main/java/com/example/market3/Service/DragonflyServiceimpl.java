@@ -70,4 +70,11 @@ public class DragonflyServiceimpl  implements  DragonflyService{
         Optional<JpaDragonfly> jpaDragonfly = dragonflyRepository.findBytitle(title);
         return jpaDragonfly;
     }
+
+    @Override
+    public void Modify(Long boardNo, String text) throws Exception {
+
+        dragonflyRepository.Modify(boardNo, text);
+
+    }
 }

@@ -19,4 +19,11 @@ public interface ButterflyRepository extends JpaRepository<JpaButterfly,Long> {
 
     @Query("select j from JpaButterfly j where j.title = :title")
     Optional<JpaButterfly> findBytitle(@Param("title")String title);
+
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE  JpaButterfly J set J.text = :text where J.boardNo = :boardNo ")
+    void Modify(@Param("boardNo")Long boardNo , @Param("text")String text);
+
 }

@@ -75,4 +75,10 @@ public class StagbeetleServiceimpl implements StagbeetleService{
 
         return jpaStagbeetle;
     }
+
+    @Override
+    public void Modify(Long boardNo,String text) throws Exception {
+
+        stagbeetleRepository.Modify(boardNo,text);
+    }
 }

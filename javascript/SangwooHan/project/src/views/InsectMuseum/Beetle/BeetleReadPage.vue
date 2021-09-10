@@ -1,7 +1,10 @@
 <template>
+    
     <div>
+        <v-container>
     <beetle-read-form v-if="Beetle" :Beetle="Beetle"/>
       <p v-else>공사중입니다.</p>
+      </v-container>
     </div>
 </template>
 

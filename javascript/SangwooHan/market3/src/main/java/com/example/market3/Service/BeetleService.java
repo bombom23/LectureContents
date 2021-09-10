@@ -27,5 +27,7 @@ public interface BeetleService {
 
     public  Optional<JpaBeetle> searchtitle(BeetleCommentRequest beetleCommentRequest) throws  Exception;
 
+    public  void Modify(Long boardNo ,  String text) throws  Exception;
+
 
 }

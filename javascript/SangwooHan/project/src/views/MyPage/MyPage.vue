@@ -1,7 +1,9 @@
 <template>
     <div>
-        <img src="@/assets/상우/마이페이지로고.png"/>
+        <v-container>
+
         <my-information/>
+        </v-container>
     </div>
 </template>
 
@@ -9,8 +11,9 @@
 import { mapActions, mapState } from 'vuex'
 import MyInformation from '../../components/MyPage/MyInformation.vue'
 
+
 export default {
-  components: { MyInformation },
+  components: { MyInformation,  },
     name: 'MyPage',
   
     computed: {

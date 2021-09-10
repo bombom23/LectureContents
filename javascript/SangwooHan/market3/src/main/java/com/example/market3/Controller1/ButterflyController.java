@@ -92,4 +92,14 @@ public class ButterflyController {
             return new ResponseEntity<>(null, HttpStatus.OK);
         }
     }
+    @PostMapping("/Modify/{boardNo}")
+    public  ResponseEntity<Void> Modify(@PathVariable("boardNo")Long boardNo , @Validated @RequestBody ButterflyCommentRequest  butterflyCommentRequest ) throws  Exception {
+
+            String text = butterflyCommentRequest.getText();
+
+        butterflyService.Modify(boardNo,text);
+
+
+            return new ResponseEntity<Void>(HttpStatus.OK);
+    }
 }

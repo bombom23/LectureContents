@@ -18,4 +18,9 @@ public interface StagbeetleRepository extends JpaRepository<JpaStagbeetle,Long> 
 
     @Query("select j from JpaStagbeetle j where j.title = :title")
     Optional<JpaStagbeetle> findBytitle(@Param("title")String title);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE JpaStagbeetle J set J.text  = :text where J.boardNo = :boardNo ")
+    void Modify(@Param("boardNo")Long boardNo,@Param("text")String text);
 }

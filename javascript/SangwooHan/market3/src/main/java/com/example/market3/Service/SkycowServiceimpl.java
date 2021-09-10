@@ -71,4 +71,10 @@ public class SkycowServiceimpl implements  SkycowService {
         Optional<JpaSkycow> jpaSkycow = skycowRepository.findBytitle(title);
         return jpaSkycow;
     }
+
+    @Override
+    public void Modify(Long boardNo, String text) throws Exception {
+
+        skycowRepository.Modify(boardNo,text);
+    }
 }

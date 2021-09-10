@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -108,6 +109,13 @@ public class DragonflyController {
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.OK);
         }
+    }
+    @PostMapping("/Modify/{boardNo}")
+    public ResponseEntity<Void> Modify(@PathVariable("boardNo")Long boardNo, @Validated @RequestBody DragonflyCommentRequest dragonflyCommentRequest) throws  Exception {
+
+        String text = dragonflyCommentRequest.getText();
+        service.Modify(boardNo, text);
+        return new ResponseEntity<Void>(HttpStatus.OK );
     }
 
 }

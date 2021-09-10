@@ -1,8 +1,10 @@
 <template>
     <div>
+        <v-container>
         <dragonfly-read-form v-if="Dragonfly" :Dragonfly="Dragonfly" />
 
         <p v-else>공사중입니다.</p>
+        </v-container>
     </div>
 </template>
 

@@ -102,4 +102,15 @@ public class StagbeetleController {
             return new ResponseEntity<>(null, HttpStatus.OK);
         }
     }
+
+    @PostMapping("/Modify/{boardNo}")
+    public  ResponseEntity<Void> Modify(@PathVariable("boardNo")Long boardNo, @Validated @RequestBody StagbeetleCommentRuquest stagbeetleCommentRuquest) throws  Exception {
+
+        String text = stagbeetleCommentRuquest.getText();
+
+        service.Modify(boardNo,text);
+
+        return  new ResponseEntity<Void>(HttpStatus.OK );
+    }
+
 }

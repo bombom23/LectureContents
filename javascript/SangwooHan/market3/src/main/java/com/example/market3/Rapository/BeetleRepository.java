@@ -19,4 +19,9 @@ public interface BeetleRepository extends JpaRepository<JpaBeetle,Long> {
 
     @Query("select j from JpaBeetle j where j.title = :title")
     Optional<JpaBeetle> findBytitle(@Param("title")String title);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE JpaBeetle J set J.text = :text where J.boardNo = :boardNo")
+    void Modify(@Param("boardNo")Long boardNo , @Param("text") String text);
 }

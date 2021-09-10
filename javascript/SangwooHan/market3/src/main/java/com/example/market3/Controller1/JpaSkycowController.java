@@ -93,4 +93,13 @@ public class JpaSkycowController {
             return new ResponseEntity<>(null, HttpStatus.OK);
         }
     }
+
+    @PostMapping("Modify/{boardNo}")
+    public  ResponseEntity<Void> Modify (@PathVariable("boardNo")Long boardNo, @Validated @RequestBody SkycowCommentRequest skycowCommentRequest) throws  Exception {
+
+            String text = skycowCommentRequest.getText();
+        skycowService.Modify(boardNo,text);
+
+        return  new ResponseEntity<Void>(HttpStatus.OK );
+    }
 }

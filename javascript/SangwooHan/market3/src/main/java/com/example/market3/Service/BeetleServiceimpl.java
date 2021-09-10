@@ -73,4 +73,11 @@ public class BeetleServiceimpl implements BeetleService {
 
         return jpaBeetle;
     }
+
+    @Override
+    public void Modify(Long boardNo, String text) throws Exception {
+
+        beetleRepository.Modify(boardNo, text);
+
+    }
 }

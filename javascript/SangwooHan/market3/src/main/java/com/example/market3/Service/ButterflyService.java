@@ -23,4 +23,6 @@ public interface ButterflyService {
     public void deleteComment(Long butterflyCommentNo ) throws  Exception;
 
     public Optional<JpaButterfly> searchtitle(ButterflyCommentRequest butterflyCommentRequest) throws  Exception;
+
+    public  void Modify(Long boardNo , String text) throws  Exception ;
 }

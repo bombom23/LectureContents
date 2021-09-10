@@ -106,6 +106,16 @@ public class BeetleController {
         }
     }
 
+    @PostMapping("/Modify/{boardNo}")
+    public  ResponseEntity<Void> Modify(@PathVariable("boardNo")Long boardNo, @Validated @RequestBody BeetleCommentRequest beetleCommentRequest) throws  Exception {
+
+        String text = beetleCommentRequest.getText();
+
+        service.Modify(boardNo ,text);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+    }
+
 
 
 

@@ -1,22 +1,23 @@
 <template>
     <div>
-        <img src="@/assets/상우/마이페이지로고.png"/>
-        <my-information-menu/>
+        <v-container>
+            <my-information-menu/>
         <form @submit.prevent="OnSubmit">
-        <table v-if="coin == 0">
+        <table  v-if="coin == 0">
             <tr style="border: none;">
-          <td> 비밀번호 <v-text-field v-model="password" type="password" label="비밀번호" style="max-width: 150px" flat solo-inverted>
+          <td style="max-height: 800px"> 비밀번호 <v-text-field v-model="password" type="password" label="비밀번호" style="max-width: 150px" flat solo-inverted>
             </v-text-field>
             <p v-if="NoMatchPassword == 1"> 비밀번호가 일치하지않습니다.</p>
+            <v-btn type="submit">확인</v-btn>
           </td>
             
             </tr>
-            <v-btn type="submit">확인</v-btn>
+            
         </table>
         </form>
         <my-information-detail-form v-if="coin == 1"/>
         <!--<v-btn @click="check">체크</v-btn>-->
-        
+        </v-container>
     </div>
 </template>
 
@@ -25,14 +26,15 @@ import cookies from 'vue-cookies'
 import Vue from 'vue'
 import { mapActions, mapState } from 'vuex'
 import MyInformationDetailForm from '../../components/MyPage/MyInformationDetailForm.vue'
-import MyInformationMenu from '../../components/MyPage/MyInformationMenu.vue'
+
 import axios from 'axios'
+import MyInformationMenu from '../../components/MyPage/MyInformationMenu.vue'
 
 Vue.use(cookies)
 export default {
     name: 'MyInformaitonDetail',
 
-  components: { MyInformationMenu, MyInformationDetailForm },
+  components: {  MyInformationDetailForm, MyInformationMenu },
     computed:{
         ...mapState(['User','members',])
     },
@@ -96,13 +98,7 @@ export default {
 }
 </script>
 <style scoped>
-table{
-    float: right;
-    position: absolute;
-    margin-top: 50px;
-    margin-left: 200px;
-    
-}
+
 p{
     color: red;
 }

@@ -1,6 +1,8 @@
 <template>
     <div>
+        <v-container>
      <community-register-form @submit="OnSubmit"/>
+        </v-container>
     </div>
 </template>
 

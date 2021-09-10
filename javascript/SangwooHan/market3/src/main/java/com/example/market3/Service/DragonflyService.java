@@ -27,5 +27,7 @@ public interface DragonflyService {
 
     public Optional<JpaDragonfly> searchtitle(DragonflyCommentRequest dragonflyCommentRequest) throws  Exception;
 
+    public  void Modify(Long boardNo, String text) throws  Exception ;
+
 
 }

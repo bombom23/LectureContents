@@ -1,7 +1,9 @@
 <template>
     <div>
+        <v-container>
         <skycow-read-form  v-if="Skycow" :Skycow="Skycow"/>
         <p v-else> 공사중</p>
+        </v-container>
     </div>
 </template>
 <script>
