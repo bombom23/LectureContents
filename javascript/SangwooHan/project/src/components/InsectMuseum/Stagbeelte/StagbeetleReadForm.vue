@@ -1,16 +1,12 @@
 <template>
      <div>
+         <v-btn v-if="Stagbeetle.id == this.$store.state.User" @click="Modifyfing">수정</v-btn>
         <v-container>
-     <!--   <v-btn @click="check">체크</v-btn> -->
-        <table>
-            <tr>
-                <th align="center">제목[{{Stagbeetle.title}}]</th>
-            </tr>
-            <tr>
-                <th aligen="center">작성자:{{Stagbeetle.id}}</th>
-            </tr>
-        </table>
-        <img v-if="Stagbeetle.title == '애사슴벌레'" src="@/assets/상우/박물관/박물관[애사슴벌레].jpg"/>
+        <v-row id="input-usage">
+      <v-col cols="12">
+          <h4>{{Stagbeetle.title}}</h4><br>
+          <p align="left">[{{$moment(Stagbeetle.createDate).format('YYYY-MM-DD/hh:mm')}} 조회{{Stagbeetle.vuecount}}]</p>
+          <img v-if="Stagbeetle.title == '애사슴벌레'" src="@/assets/상우/박물관/박물관[애사슴벌레].jpg"/>
         <img v-if="Stagbeetle.title == '털보왕사슴벌레'" src="@/assets/상우/박물관/박물관[털보왕사슴벌레].jpg"/>
         <img v-if="Stagbeetle.title == '왕사슴벌레'" src="@/assets/상우/박물관/박물관[왕사슴벌레].jpg"/>
         <img v-if="Stagbeetle.title == '넓적사슴벌레'" src="@/assets/상우/박물관/박물관[넓적사슴벌레].jpg"/>
@@ -26,18 +22,20 @@
         <img v-if="Stagbeetle.title == '길쭉꼬마사슴벌레'" src="@/assets/상우/박물관/박물관[길쭉꼬마사슴벌레].jpg"/>
         <img v-if="Stagbeetle.title == '큰꼬마사슴벌레'" src="@/assets/상우/박물관/박물관[큰꼬마사슴벌레].jpg"/>
         <img v-if="Stagbeetle.title == '다우리아사슴벌레'" src="@/assets/상우/박물관/박물관[다우리아사슴벌레].jpg"/>
-        <p>{{Stagbeetle.text}}</p>
-      
-        <form @submit.prevent="OnSubmit" v-if="commentBox ==1 && this.$store.state.User !=null">
+        <pre>{{Stagbeetle.text}}</pre>
+      </v-col>
+    </v-row>
+
+
+        <form v-if="commentBox ==1 && this.$store.state.User !=null" @submit.prevent="OnSubmit">
          <table >
-             <tr>
-                 <th>작성자</th>
-                 <input v-model="ui" readonly/>
-             </tr>
-            <tr><th>댓글</th>
-                <textarea v-model="comments"/>
-                <button type="submit">등록</button>
-            </tr>
+          <tr>
+              <p>댓글</p>
+             <p>{{ui}}</p>
+            <v-textarea height="10px" auto-grow outlined v-model="comments">
+            </v-textarea>
+            <v-btn depressed style="float:right" type="submit"><v-icon>mdi-comment</v-icon></v-btn>
+          </tr>
         </table>
         </form>
          <table >
@@ -47,7 +45,8 @@
                   <th width="150px">{{ item.ui}}</th>
                   
                   <td>{{item.comments}}</td>
-                   <td v-if="Modify == item.stagbeetleCommentNo">
+                 
+                <td v-if="Modify == item.stagbeetleCommentNo">
                     <textarea  v-model="comments" cols="1" rows="1"/><v-btn depressed @click="CommemtsModify(item)">수정완료</v-btn><v-btn depressed @click="ModifyOFF">취소</v-btn>
                 </td>
         <td>
@@ -59,9 +58,7 @@
         </v-btn>
         </td>
               </tr>
-              
-           
-          </table>
+         </table>
         </v-container>
     </div>
 </template>
@@ -69,6 +66,9 @@
 <script>
 import axios from 'axios'
 import { mapState } from 'vuex'
+import Vue from 'vue'
+import VueMoment from 'vue-moment'
+Vue.use(VueMoment);
 export default {
     name: 'StagbeetleReadForm',
     props: {
@@ -89,6 +89,9 @@ export default {
         }
     },
     methods: {
+        Modifyfing(){
+              this.$router.push({ name: 'StagbeetleModifyPage', params: {Stagbeetle: this.Stagbeetle}})
+        },
         check(){console.log(this.Stagbeetle)},
         ModifyOn(stagbeetleCommentNo){
              this.commentBox = 0
@@ -141,5 +144,24 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Noto+Serif+KR:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap');
 
+h4{
+   font-family: 'Noto Serif KR', serif;
+}
+
+P{
+    font-family: 'Oswald', sans-serif;
+}
+pre{
+font-family: 'Noto Sans SC', sans-serif;
+}
+#input-usage .v-input__prepend-outer,
+  #input-usage .v-input__append-outer,
+  #input-usage .v-input__slot,
+  #input-usage .v-messages {
+    border: 1px dashed rgba(0,0,0, .4);
+  }
 </style>

@@ -45,13 +45,13 @@
     </ul>
           </tr>
           <tr>
-                <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
-        이전
-      </button>
-      <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }} 페이지</span>
-      <button :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
-        다음
-      </button>
+                <v-btn  depressed :disabled="pageNum === 0" @click="prevPage" class="page-btn">
+      <v-icon>mdi-arrow-left-box</v-icon>   
+                </v-btn>
+      <span class="page-count">{{ pageNum + 1 }} / {{ pageCount }}</span>
+      <v-btn  depressed :disabled="pageNum >= pageCount - 1" @click="nextPage" class="page-btn">
+        <v-icon>mdi-arrow-right-box</v-icon>   
+      </v-btn>
           </tr>
       </table>
 
@@ -86,7 +86,7 @@ export default {
     pageSize: {
       type: Number,
       required: false,
-      default: 10
+      default: 14
     }
   },
   methods: {
@@ -155,6 +155,7 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@700&display=swap');
 table {
   width: 100%;
   border-collapse: collapse;
@@ -191,5 +192,8 @@ ul{
 }
 li {
     float: left;
+}
+p{
+ font-family: 'IBM Plex Sans KR', sans-serif;
 }
 </style>

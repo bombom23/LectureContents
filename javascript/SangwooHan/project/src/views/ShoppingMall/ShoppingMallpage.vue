@@ -1,9 +1,9 @@
 <template>
     <div>
        <!-- <shopping-mallpage-from v-if="ProductList" :ProductList="ProductList"/> -->
-
-        <shopping-mallpage-form-new-ver :listArray="pageArray"/>
         
+        <shopping-mallpage-form-new-ver :listArray="pageArray"/>
+       
     </div>
 </template>
 <script>

@@ -2,15 +2,15 @@
    <form @submit.prevent="OnSubmit">
             <div>
               
-                <v-container >
+                <v-container style="max-width: 1000px">
                     <h3>공지게시</h3>
-           <v-text-field label="id" v-model="id"  readonly type="text" append-icon="mid-account">
+           <v-text-field label="id" v-model="id"  readonly type="text" append-icon="mid-account" flat solo>
            </v-text-field>
             <v-radio-group v-model="type1" row>
                     <v-radio label="이벤트" value="이벤트"></v-radio>
                     <v-radio label="공지" value="공지"></v-radio>
                 </v-radio-group>   
-            <v-text-field label="title" v-model="title" type="text" append-icon="mid-account">
+            <v-text-field label="title" v-model="title" type="text" append-icon="mid-account" flat solo>
            </v-text-field>
            <p>내용</p>
           <textarea name="contentText" id="contentText" cols="30" rows="10" v-model="text"></textarea>

@@ -29,13 +29,15 @@ export default {
         onSubmit (payload) {
             console.log("payload: " + JSON.stringify(payload)+ 'this.memberNo' +this.memberNo)
             const {memberNo, userid,password ,name, email , birthday, phoneNo ,gender,address, regDate } = payload
-            axios.put(`http://localhost:9999/jpamemberManage/${this.memberNo}`, {memberNo, userid,password,name, email , birthday, phoneNo ,gender,address, regDate})
+            axios.post(`http://localhost:9999/jpamemberManage/ModifyMember/${this.memberNo}`, {memberNo, userid,password,name, email , birthday, phoneNo ,gender,address, regDate})
             .then(res => {
                 alert('수정성공' + res)
+                
                 this.$router.push({
                     name: 'MemberList',
                  
                 })
+                
             })
             .catch(err => {
                 alert(err.response.data.message)

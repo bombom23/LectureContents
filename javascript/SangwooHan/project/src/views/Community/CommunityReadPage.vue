@@ -14,7 +14,7 @@ export default {
     name: 'CommunityReadPage',
     props: {
         boardNo: {
-            type: String,
+            type: Number,
             required : true
         }
     },

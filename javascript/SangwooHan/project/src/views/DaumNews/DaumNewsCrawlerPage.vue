@@ -2,29 +2,13 @@
     <div>
         <v-container>
          <v-btn class="blue" @click="start('society')">최신정보받아오기</v-btn>
-     
-            <v-simple-table>
-                <template v-slot:default>
-                    
-                    <thead>
-                        <tr>
-                            <p>검색</p>
-                            <input v-model="search"/>
-                        </tr>
-                        <tr>
-                            <th class="text-left">No.</th>
-                            <th class="text-left">제목</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="list of lists" :key="list.title">
-                            <td  v-if="list.title.includes(search)" style="color: gray">{{ list.newsNo }}</td>
-                            <!-- <td><a @click="clickNews(list.newsNo)">{{ list.title }}</a></td> -->
-                            <td  v-if="list.title.includes(search)" >{{ list.title }}</td>
-                        </tr>
-                    </tbody>
-                </template>
-            </v-simple-table>
+    <p>검색</p>
+    <input v-model="search" />
+            <ul>
+                <li  v-for="i in lists " :key="i.newsNo">
+                    <p v-if="i.title.includes(search)"> {{i.newsNo}}.{{i.title}} </p>
+                </li>
+            </ul>
         </v-container>
     </div>
 </template>

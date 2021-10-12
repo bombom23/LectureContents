@@ -1,16 +1,12 @@
 <template>
   <div>
+         <v-btn v-if="Skycow.id == this.$store.state.User" @click="Modifyfing">수정</v-btn>
         <v-container>
-       <v-btn @click="checking">확인</v-btn>
-        <table>
-            <tr>
-                <th align="center">제목[{{Skycow.title}}]</th>
-            </tr>
-            <tr>
-                <th aligen="center">작성자:{{Skycow.id}}</th>
-            </tr>
-        </table>
-        <img v-if="Skycow.title == '루리하늘소'" src="@/assets/상우/박물관/박물관[루리하늘소].jpg"/>
+        <v-row id="input-usage">
+      <v-col cols="12">
+          <h4>{{Skycow.title}}</h4><br>
+          <p align="left">[{{$moment(Skycow.createDate).format('YYYY-MM-DD/hh:mm')}} 조회{{Skycow.vuecount}}]</p>
+         <img v-if="Skycow.title == '루리하늘소'" src="@/assets/상우/박물관/박물관[루리하늘소].jpg"/>
         <img v-if="Skycow.title == '고운산하늘소'" src="@/assets/상우/박물관/박물관[고운산하늘소].jpg"/>
         <img v-if="Skycow.title == '무늬소주홍하늘소'" src="@/assets/상우/박물관/박물관[무늬소주홍하늘소].jpg"/>
         <img v-if="Skycow.title == '애호랑하늘소'" src="@/assets/상우/박물관/박물관[애호랑하늘소].jpg"/>
@@ -21,16 +17,19 @@
         <img v-if="Skycow.title == '장수하늘소'" src="@/assets/상우/박물관/박물관[장수하늘소1].jpg"/>
         <img v-if="Skycow.title == '장수하늘소'" src="@/assets/상우/박물관/박물관[장수하늘소2].jpg"/>
         <pre>{{Skycow.text}}</pre>
-        <form @submit.prevent="OnSubmit" v-if="commentBox ==1 && this.$store.state.User !=null">
-        <table >
-             <tr>
-                 <th>작성자</th>
-                 <input v-model="ui" readonly/>
-             </tr>
-            <tr><th>댓글</th>
-                <textarea v-model="comments"/>
-                <button type="submit">등록</button>
-            </tr>
+      </v-col>
+    </v-row>
+
+
+        <form v-if="commentBox ==1 && this.$store.state.User !=null" @submit.prevent="OnSubmit">
+         <table >
+          <tr>
+              <p>댓글</p>
+             <p>{{ui}}</p>
+            <v-textarea height="10px" auto-grow outlined v-model="comments">
+            </v-textarea>
+            <v-btn depressed style="float:right" type="submit"><v-icon>mdi-comment</v-icon></v-btn>
+          </tr>
         </table>
         </form>
          <table >
@@ -40,7 +39,8 @@
                   <th width="150px">{{ item.ui}}</th>
                   
                   <td>{{item.comments}}</td>
-                   <td v-if="Modify == item.skycowCommentsNo">
+                 
+                <td v-if="Modify == item.skycowCommentsNo">
                     <textarea  v-model="comments" cols="1" rows="1"/><v-btn depressed @click="CommemtsModify(item)">수정완료</v-btn><v-btn depressed @click="ModifyOFF">취소</v-btn>
                 </td>
         <td>
@@ -52,9 +52,7 @@
         </v-btn>
         </td>
               </tr>
-              
-           
-          </table>
+         </table>
         </v-container>
     </div>
 </template>
@@ -62,7 +60,9 @@
 <script>
 import axios from 'axios'
 import { mapState } from 'vuex'
-
+import Vue from 'vue'
+import VueMoment from 'vue-moment'
+Vue.use(VueMoment);
 export default {
     name: 'SkycowReadForm',
     props:{
@@ -83,6 +83,9 @@ export default {
         }
     },
     methods:{
+        Modifyfing(){
+              this.$router.push({ name: 'SkycowModifyPage', params: {Skycow: this.Skycow}})
+        },
         ModifyOn(skycowCommentsNo){
                 this.commentBox = 0
                 this.Modify = skycowCommentsNo
@@ -136,3 +139,26 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Noto+Serif+KR:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap');
+
+h4{
+   font-family: 'Noto Serif KR', serif;
+}
+
+P{
+    font-family: 'Oswald', sans-serif;
+}
+pre{
+font-family: 'Noto Sans SC', sans-serif;
+}
+#input-usage .v-input__prepend-outer,
+  #input-usage .v-input__append-outer,
+  #input-usage .v-input__slot,
+  #input-usage .v-messages {
+    border: 1px dashed rgba(0,0,0, .4);
+  }
+</style>

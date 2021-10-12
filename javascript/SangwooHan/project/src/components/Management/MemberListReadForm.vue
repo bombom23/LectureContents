@@ -1,62 +1,66 @@
 <template>
     <div>
        
-                <table style="max-width: 500px">
+                <table >
             <tr>
                 <td>회원번호</td>
-                <td><input type="number" :value="member.memberNo" readonly></td>
+                <td>{{member.memberNo}}</td>
             </tr>
 
             <tr>
                   <td>아이디</td>
-                <td><input type="text" :value="member.userid" readonly></td>
+                <td>{{member.userid}}</td>
             </tr>
              <tr>
                 <td>비밀번호</td>
-                <td><input type="text" :value="member.password" readonly></td>
+                <td>암호화되어있습니다.</td>
             </tr>
 
             <tr>
                   <td>이름</td>
-                <td><input type="text" :value="member.name" readonly></td>
+                <td>{{member.name}}</td>
             </tr>
 
             <tr>
                   <td>이메일</td>
-                <td><input type="text" :value="member.email" readonly></td>
+                <td>{{member.email}}</td>
             </tr>
 
             <tr>
                   <td>생년월일</td>
-                <td><input type="text" :value="member.birthday" readonly></td>
+                <td>{{$moment(member.birthday).format('YYYY-MM-DD/hh:mm')}}</td>
             </tr>
 
             <tr>
                   <td>휴대전화</td>
-                <td><input type="text" :value="member.phoneNo" readonly></td>
+                <td>{{member.phoneNo}}</td>
             </tr>
 
             <tr>
                   <td>성별</td>
-                <td><input type="text" :value="member.gender" readonly></td>
+                <td>{{member.gender}}</td>
             </tr>
 
             <tr>
                   <td>주소</td>
-                <td><input type="text" :value="member.address" readonly></td>
+                <td>{{member.address}}</td>
             </tr>
 
             <tr>
                   <td>생성일자</td>
-                <td><input type="text" :value="member.createDate" readonly></td>
+                <td>{{$moment(member.regDate).format('YYYY-MM-DD/hh:mm')}}</td>
             </tr>
         </table>
-        <h3>하하</h3>
+       
        
     </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import VueMoment from 'vue-moment'
+Vue.use(VueMoment)
+
 export default {
     name: 'MemberListReadForm',
     props:{
@@ -73,8 +77,5 @@ export default {
 </script>
 <style scoped>
 
-table{
-    margin-right: 500px;
-    float: left;
-}
+
 </style>

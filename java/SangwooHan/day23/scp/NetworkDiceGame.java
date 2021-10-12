@@ -147,3 +147,4 @@ class GameStartProcess extends NetworkDiceGame {
         receiver.start();
     }
 }
+

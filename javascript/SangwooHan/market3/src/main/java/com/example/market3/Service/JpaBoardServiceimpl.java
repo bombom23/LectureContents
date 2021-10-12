@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class JpaBoardServiceimpl implements JpaBoardService{
+public class JpaBoardServiceimpl implements JpaBoardService {
 
     @Autowired
     JpaBoardRepository repository;
@@ -25,6 +25,7 @@ public class JpaBoardServiceimpl implements JpaBoardService{
     public void register(JpaBoard jpaBoard) throws Exception {
         repository.save(jpaBoard);
     }
+
 
     @Override
     public List<JpaBoard> boardlist() throws Exception {

@@ -4,7 +4,7 @@
     <body>
     <div class="header">
     <top-nav-bar @submit="onSubmit" :members="members"/>
--  <header align="center" id="header"><img id="homebtn" @click="GoHome" src="@/assets/상우/홈로고.png"/></header> 
+ <header align="center" id="header"><img id="homebtn" @click="GoHome" src="@/assets/상우/홈로고.png"/></header> 
     </div>
     <nav-bar/>
     

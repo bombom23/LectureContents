@@ -1,10 +1,10 @@
 <template>
     <div>
-        <v-container>
+
         <dragonfly-read-form v-if="Dragonfly" :Dragonfly="Dragonfly" />
 
         <p v-else>공사중입니다.</p>
-        </v-container>
+   
     </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
     },
     props: {
         boardNo: {
-            type: String,
+            type: Number,
             required: true
         }
     },

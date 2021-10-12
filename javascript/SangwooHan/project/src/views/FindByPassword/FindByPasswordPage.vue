@@ -88,9 +88,9 @@
 
       <v-stepper-content step="3">
        <p >비밀번호 재설정</p>
-    <v-text-field   v-model="password" :rules="passwordRules">
+    <v-text-field  type="password" v-model="password" :rules="passwordRules">
     </v-text-field>
-    <v-text-field  v-model="passwordchecking" :rules="passwordCheck">
+    <v-text-field type="password" v-model="passwordchecking" :rules="passwordCheck">
     </v-text-field>
 
         <v-btn @click="PasswordReset" >
@@ -179,7 +179,7 @@ export default {
             PasswordReset(){
 
                     const {memberNo, userid, name, birthday,address,phoneNo,email,password,regDate,gender } = this
-                    axios.put(`http://localhost:9999/jpamemberManage/${memberNo}`,{name, userid, email, address, phoneNo,  gender,birthday,password,regDate})
+                    axios.post(`http://localhost:9999/jpamemberManage/ModifyMember/${memberNo}`,{name, userid, email, address, phoneNo,  gender,birthday,password,regDate})
                     .then( () =>{
                         alert("수정완료")
                         this.$router.go()

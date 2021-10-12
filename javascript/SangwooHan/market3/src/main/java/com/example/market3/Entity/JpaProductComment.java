@@ -13,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 @Entity
-public class JpaProductComment {
+public class  JpaProductComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

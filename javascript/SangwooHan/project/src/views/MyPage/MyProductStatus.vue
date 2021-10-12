@@ -4,7 +4,7 @@
             <my-information-menu/>
     <my-product-status-form  v-if="this.$store.state.session = true" :listArray="UserOrderList"/>
     <p v-else>로그인후 이용해주세요</p>
-    <v-btn @click="check">확인</v-btn>
+   <!-- <v-btn @click="check">확인</v-btn> -->
         </v-container>
     </div>
 </template>

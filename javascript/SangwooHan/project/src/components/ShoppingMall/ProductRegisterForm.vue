@@ -5,9 +5,9 @@
             <tr>
                 <td>상품명</td>
                 <input v-model="productName" type="text"/>
-                <td>상품가격</td>
+                <td>상품가</td>
                 <input v-model="productPrice" type="Number"/>
-                <td>상품분류</td>
+                <td>분류</td>
                 <v-select v-model="productType"
                 :items="items">
                 </v-select>
@@ -16,19 +16,10 @@
             </tr>
             <tr>
                 <td>상품설명</td>
-                <td>
-                    <textarea v-model="productDesc" type="text" rows="400" cols="400"/>
-                </td>
+                    <v-textarea auto-grow v-model="productDesc"  style="width: 1300px;"/>
             </tr>
 
             <tr>
-        <p></p>
-        <div>
-            <label>Files
-                <input type="file" id="files" ref="files" multiple v-on:change="handleFileUpload()">
-            </label>
-            <button v-on:click="submitFiles()">업로드!</button>
-        </div>
             </tr>
 
             <v-btn type="submit">등록하기</v-btn>
@@ -56,7 +47,7 @@ export default {
             ],
             productName: '',
             productPrice: 0,
-            productDesc: 0,
+            productDesc: '',
             productType: '',
             productStock: 0,
         }
@@ -72,21 +63,10 @@ export default {
             handleFileUpload () {
             this.files = this.$refs.files.files
         },
-        submitFiles () {
-            
-            let formData = new FormData()
-            for (var idx = 0; idx < this.files.length; idx++) {
-                formData.append('fileList', this.files[idx])
-            }
-            axios.post('http://localhost:9999/file/uploadImg', formData, {headers: { 'Content-Type': 'multipart/form-data'}})
-            .then (res => {
-                this.response = res.data
-            })
-            .catch (res => {
-                this.response = res.message
-            }) 
-            alert('Processing Complete!')
-        }
     }
 }
 </script>
+
+<style scoped>
+
+</style>

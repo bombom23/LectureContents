@@ -1,8 +1,8 @@
 <template>
     <div>
         <v-container>
-
         <my-information/>
+        <v-parallax src="@/assets/상우/자연사진1.jpg"></v-parallax>
         </v-container>
     </div>
 </template>

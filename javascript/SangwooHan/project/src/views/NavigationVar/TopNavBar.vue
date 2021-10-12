@@ -24,10 +24,11 @@
       max-width="600px"
     >
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          height="75px"
+        <v-btn depressed
+          height="76px"
           v-bind="attrs"
           v-on="on"
+          
         >
           회원가입
         </v-btn>
@@ -71,7 +72,6 @@
             </v-select>
             </v-row>
           </v-container>
-          <small>*indicates required field</small>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -98,7 +98,7 @@
 
          <v-dialog  v-model="dialog" persistent max-width="400">
                <template v-slot:activator="{ on }">
-               <v-btn    dark v-on="on">로그인</v-btn>
+               <v-btn   depressed v-on="on">로그인</v-btn>
                </template>
                <v-card>
                <v-card-title class="headline">
@@ -222,6 +222,7 @@ export default {
         this.$router.go()
       }else{
         this.$router.push({name: 'Home'})
+        this.$router.go()
       }
                                 },
                                  Logincancle(){
@@ -263,6 +264,7 @@ export default {
             axios.post('http://localhost:9999/jpamemberManage/register', {userid, password, name, email, birthday, gender, address, phoneNo})
                 .then(res =>{
                     alert('회원가입 성공' + res)
+                    this.$router.go()
                     this.Signup = false
                 }).catch(res => {
                     alert(res.response.data.message)

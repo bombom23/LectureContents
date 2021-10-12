@@ -1,6 +1,7 @@
 <template>
     <div>
         <notice-read-form v-if="notice" :notice="notice"/>
+        <p v-else>공지조회에 실패하였습니다.</p>
     </div>
 </template>
 

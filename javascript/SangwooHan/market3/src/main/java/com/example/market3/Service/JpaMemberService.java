@@ -47,4 +47,8 @@ public interface JpaMemberService {
 
     public List FindById  (String email) throws  Exception;
 
+    public void deleteMember (Long memberNo)throws  Exception;
+
+    public  void ModifyMember(JpaMember jpaMember)throws  Exception;
+
 }

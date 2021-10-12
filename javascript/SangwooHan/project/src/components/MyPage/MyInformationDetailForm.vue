@@ -78,6 +78,22 @@
                </v-card-actions>
                </v-card>
            </v-dialog>
+           
+           <v-dialog  :retain-focus="false" v-model="dialog2" persistent max-width="400" >
+               <template v-slot:activator="{ on }">
+               <v-btn    dark v-on="on">회원탈퇴</v-btn>
+               </template>
+               <v-card>
+               <v-card-title class="headline">
+                  정말회원탈퇴하시겟습니까?
+               </v-card-title>
+               <v-card-actions>
+                   <v-spacer></v-spacer>
+                   <v-btn @click.native="MemberEnd(member.memberNo)" class="red">예</v-btn>
+               <v-btn @click.native="MemberEndCancle">아니오</v-btn>
+               </v-card-actions>
+               </v-card>
+           </v-dialog>
             </v-container>
             </table>
                 </td>
@@ -87,7 +103,10 @@
 </template>
 
 <script>
+import cookies from 'vue-cookies'
+import Vue from 'vue'
 
+Vue.use(cookies)
 import axios from 'axios'
 import { mapActions, mapState } from 'vuex'
 export default {
@@ -111,7 +130,8 @@ export default {
             email: '',
             phoneNo: 0,
             address: '',
-            dialog: false
+            dialog: false,
+            dialog2: false,
             
         }
     },
@@ -144,6 +164,9 @@ export default {
         PasswordModifyOFF(){
             this.dialog =false
         },
+        MemberEndCancle(){
+            this.dialog2 = false
+        },
         
         StartemailModify(memberNo){
                 const {email} =this
@@ -172,11 +195,30 @@ export default {
         StartpasswordModify(member){
                 const {name, userid, email, address, phoneNo,  gender,birthday,regDate} =member
                 const {password} =this
-            axios.put(`http://localhost:9999/jpamemberManage/${this.member.memberNo}`,{name, userid, email, address, phoneNo,  gender,birthday,password,regDate})
+            axios.post(`http://localhost:9999/jpamemberManage/ModifyMember/${this.member.memberNo}`,{name, userid, email, address, phoneNo,  gender,birthday,password,regDate})
             .then( ()=> {
                 alert('비밀번호변경완료')
                 this.$router.go()
             })
+        },
+        MemberEnd(memberNo){
+            axios.delete(`http://localhost:9999/jpamemberManage/deleteMember/${memberNo}`)
+            .then( ()=>{
+                alert('회원탈퇴되었습니다.')
+                this.$cookies.remove('user')
+                this.$cookies.remove('memberNo')
+                this.$cookies.remove('setter')
+                this.$cookies.remove('coin')
+                this.$store.state.isLogin = false
+                this.$store.state.session =null
+                this.$store.state.loginMemberNo =null
+                this.sheet = false
+                this.dialog2 = false
+                this.$router.push({name: 'Home'})
+                this.$router.go()
+            })
+               
+            
         }
       
        

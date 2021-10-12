@@ -15,17 +15,21 @@
             </tr>
         </table>
        
+
+
+
+
+
         <h4>{{notice.text}}</h4>
         <form @submit.prevent="OnSubmit" v-if="commentBox ==1 && this.$store.state.User !=null">
          <table >
-             <tr>
-                 <th>작성자</th>
-                 <input v-model="ui" readonly/>
-             </tr>
-            <tr><th>댓글</th>
-                <textarea v-model="comments"/>
-                <button type="submit">등록</button>
-            </tr>
+          <tr>
+              <p>댓글</p>
+             <p>{{ui}}</p>
+            <v-textarea height="10px" auto-grow outlined v-model="comments">
+            </v-textarea>
+            <v-btn depressed style="float:right" type="submit"><v-icon>mdi-comment</v-icon></v-btn>
+          </tr>
         </table>
         </form>
          <table >

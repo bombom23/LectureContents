@@ -1,8 +1,7 @@
 <template>
     <div>
          <v-toolbar  flat   >
-    <v-app-bar-nav-icon @click="nav_drawer = !nav_drawer">
-    </v-app-bar-nav-icon>
+   
     <v-toolbar-title>
         <span class="font-weight-light"></span>
     </v-toolbar-title>

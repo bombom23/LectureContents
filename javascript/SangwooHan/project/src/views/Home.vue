@@ -173,22 +173,8 @@ import axios from 'axios'
 
           bgImage: require('@/assets/상우/박물관/박물관[왕사슴벌레].jpg'),
 
-          images:[
-                require('@/assets/상우/박물관/박물관[왕사슴벌레].jpg'),
-                require('@/assets/상우/박물관/박물관[장수풍뎅이].jpg'),
-                require('@/assets/상우/박물관/박물관[나비잠자리1].jpg'),
-                require('@/assets/상우/박물관/박물관[사향제비나비].jpg'),
-                require('@/assets/상우/박물관/박물관[노란팔점긴하늘소1].jpg'),
-                require('@/assets/상우/박물관/박물관[넓적사슴벌레].jpg'),
-          ],
-          products:[
-              require('@/assets/상우/장수풍뎅이세트.jpg'),
-              require('@/assets/상우/왕사슴벌레세트.jpg'),
-              require('@/assets/상우/발효톱밥.jpg'),
-              require('@/assets/상우/균사.jpg'),
-              require('@/assets/상우/수액젤리.jpg'),
-              require('@/assets/상우/유산균젤리.jpg')
-          ],
+  
+         
           PageArray:[],
 
           icons: ['mdi-arrow-right-bold-hexagon-outline'],

@@ -1,16 +1,12 @@
 <template>
-    <div>
+<div>
+      <v-btn v-if="Dragonfly.id == this.$store.state.User" @click="Modifyfing">수정</v-btn>
         <v-container>
-      <!--  <v-btn @click="check">체크</v-btn> -->
-        <table>
-            <tr>
-                <th align="center">제목[{{Dragonfly.title}}]</th>
-            </tr>
-            <tr>
-                <th aligen="center">작성자:{{Dragonfly.id}}</th>
-            </tr>
-        </table>
-        <img v-if="Dragonfly.title == '도깨비왕잠자리'" src="@/assets/상우/박물관/박물관[도깨비왕잠자리].jpg"/>
+        <v-row id="input-usage">
+      <v-col cols="12">
+          <h4>{{Dragonfly.title}}</h4><br>
+          <p align="left">[{{$moment(Dragonfly.createDate).format('YYYY-MM-DD/hh:mm')}} 조회{{Dragonfly.vuecount}}]</p>
+         <img v-if="Dragonfly.title == '도깨비왕잠자리'" src="@/assets/상우/박물관/박물관[도깨비왕잠자리].jpg"/>
         <img v-if="Dragonfly.title == '고추잠자리'" src="@/assets/상우/박물관/박물관[고추잠자리].jpg"/>
         <img v-if="Dragonfly.title == '측범잠자리'" src="@/assets/상우/박물관/박물관[측범잠자리1].jpg"/>
         <img v-if="Dragonfly.title == '측범잠자리'" src="@/assets/상우/박물관/박물관[측범잠자리2].jpg"/>
@@ -21,17 +17,20 @@
         <img v-if="Dragonfly.title == '나비잠자리'" src="@/assets/상우/박물관/박물관[나비잠자리2].jpg"/>
         <img v-if="Dragonfly.title == '나비잠자리'" src="@/assets/상우/박물관/박물관[나비잠자리3].jpg"/>
         <img v-if="Dragonfly.title == '장수잠자리'" src="@/assets/상우/박물관/박물관[장수잠자리].jpg"/>
-        <p>{{Dragonfly.text}}</p>
-        <form @submit.prevent="OnSubmit" v-if="commentBox ==1 && this.$store.state.User !=null">
+        <pre>{{Dragonfly.text}}</pre>
+      </v-col>
+    </v-row>
+
+
+        <form v-if="commentBox ==1 && this.$store.state.User !=null" @submit.prevent="OnSubmit">
          <table >
-             <tr>
-                 <th>작성자</th>
-                 <input v-model="ui" readonly/>
-             </tr>
-            <tr><th>댓글</th>
-                <textarea v-model="comments"/>
-                <button type="submit">등록</button>
-            </tr>
+          <tr>
+              <p>댓글</p>
+             <p>{{ui}}</p>
+            <v-textarea height="10px" auto-grow outlined v-model="comments">
+            </v-textarea>
+            <v-btn depressed style="float:right" type="submit"><v-icon>mdi-comment</v-icon></v-btn>
+          </tr>
         </table>
         </form>
          <table >
@@ -41,7 +40,8 @@
                   <th width="150px">{{ item.ui}}</th>
                   
                   <td>{{item.comments}}</td>
-                   <td v-if="Modify == item.dragonflyCommentNo">
+                 
+                <td v-if="Modify == item.dragonflyCommentNo">
                     <textarea  v-model="comments" cols="1" rows="1"/><v-btn depressed @click="CommemtsModify(item)">수정완료</v-btn><v-btn depressed @click="ModifyOFF">취소</v-btn>
                 </td>
         <td>
@@ -53,9 +53,7 @@
         </v-btn>
         </td>
               </tr>
-              
-           
-          </table>
+         </table>
         </v-container>
     </div>
 </template>
@@ -85,6 +83,9 @@ export default {
         }
     },
     methods:{
+        Modifyfing(){
+              this.$router.push({ name: 'DragonflyModifyPage', params: {Dragonfly: this.Dragonfly}})
+        },
         check(){console.log(this.Dragonfly)},
         ModifyOn(dragonflyCommentNo){
                     this.commentBox = 0
@@ -136,3 +137,26 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Noto+Serif+KR:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap');
+
+h4{
+   font-family: 'Noto Serif KR', serif;
+}
+
+P{
+    font-family: 'Oswald', sans-serif;
+}
+pre{
+font-family: 'Noto Sans SC', sans-serif;
+}
+#input-usage .v-input__prepend-outer,
+  #input-usage .v-input__append-outer,
+  #input-usage .v-input__slot,
+  #input-usage .v-messages {
+    border: 1px dashed rgba(0,0,0, .4);
+  }
+</style>

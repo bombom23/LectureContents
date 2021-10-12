@@ -14,14 +14,11 @@
             <p>내용</p>
               <textarea name="contentText" id="contentText" cols="30" rows="10" v-model="text"></textarea>
            
-           <v-btn id="btn" class="green" type="submit">등록</v-btn>
+           <v-btn id="btn" class="green" type="submit"><v-icon>mdi-pencil</v-icon>글쓰기</v-btn>
                 </v-container>
             
         </form>
         </section>
-          <aside>
-              <h3>광고</h3>
-          </aside>
 </div>
         
     
@@ -89,13 +86,8 @@ border-style:solid;
 			resize: both;
            
 }
-#btn{
-    margin-left: 74.5%;
-}
 p{
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
-    font-size: 3em;
+    font-size: 2.5em;
 }
 </style>
 

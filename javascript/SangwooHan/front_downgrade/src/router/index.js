@@ -91,7 +91,20 @@ import TestSignupPage from '@/views/TestSignupPage.vue'
 //파일업로드 
 import FileUploadPage from '@/views/FileUploadPage.vue'
 
+// 파이썬 
+
+import PythonLoginTestPage from '@/views/PythonLoginTestPage'
+
+// 카카오 로그인
+import kakaoLoginPage from  '@/views/kakaoLoginPage'
+//오더 테스트 페이지
+
+import OrderTestPage from '@/views/OrderTestPage'
+//파이선 크롤링
+import PythonCrawlTest from '@/views/PythonCrawlTest'
 Vue.use(VueRouter)
+
+
 
 
 const routes = [
@@ -381,7 +394,7 @@ const routes = [
     path: '/testsignuppage',
     name: 'TestSignupPage',
     components: {
-      default: TestSignupPage
+      default: TestSignupPage 
     }
   },
   { 
@@ -389,6 +402,34 @@ const routes = [
     name: 'FileUploadPage',
     components: {
       default: FileUploadPage
+    }         
+  },
+  { 
+    path: '/pythonLoginTestPage', 
+    name: 'PythonLoginTestPage',
+    components: {
+      default: PythonLoginTestPage 
+    }
+  },
+  { 
+    path: '/kakaologinpage', 
+    name: 'kakaoLoginPage',
+    components: {
+      default: kakaoLoginPage  
+    }
+  },
+  { 
+    path: '/orderTestPage', 
+    name: 'OrderTestPage',
+    components: {
+      default: OrderTestPage  
+    }
+  },
+  { 
+    path: '/pythonCrawlTest', 
+    name: 'PythonCrawlTest',
+    components: {
+      default: PythonCrawlTest  
     }
   },
  

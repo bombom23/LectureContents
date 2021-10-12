@@ -59,17 +59,18 @@ public class JpaMemberController {
         log.info("jpa" + jpaMember1);
         return new ResponseEntity<JpaMember>(jpaMember1, HttpStatus.OK);
     }
-    @PutMapping("/{memberNo}")
-    public ResponseEntity<JpaMember> modifyMember(@PathVariable("memberNo") Long memberNo,
-                                                 @Validated @RequestBody JpaMember jpaMember) throws Exception {
+    @PostMapping("/ModifyMember/{memberNo}")
+    public  ResponseEntity<Void> ModifyMember(@PathVariable("memberNo")Long memberNo, @Validated @RequestBody JpaMember jpaMember) throws  Exception {
 
-            jpaMember.setMemberNo(memberNo);
+        System.out.println("memberNo:"+memberNo);
+        jpaMember.setMemberNo(memberNo);
+        System.out.println(",userid:" +jpaMember.getUserid() +",password:"+jpaMember.getPassword()+",name:"+jpaMember.getName()+",email:"+jpaMember.getEmail()
+        +",birthday:"+jpaMember.getBirthday()+",phoneNo:"+jpaMember.getPhoneNo()+",gender:"+jpaMember.getGender()+",address:"+jpaMember.getAddress()+",regDate"+jpaMember.getRegDate());
 
 
-        service.modify(jpaMember);
+        service.ModifyMember(jpaMember);
 
-       return new ResponseEntity<JpaMember>(jpaMember, HttpStatus.OK);
-
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
 
@@ -279,6 +280,16 @@ public class JpaMemberController {
 
         return  new ResponseEntity<>(result,HttpStatus.OK);
 }
+
+@DeleteMapping("/deleteMember/{memberNo}")
+    public ResponseEntity<Void> deleteMember(@PathVariable("memberNo")Long memberNo) throws  Exception {
+
+    service.deleteMember(memberNo);
+
+        return new ResponseEntity<Void>(HttpStatus.OK);
+}
+
+
 
 
 

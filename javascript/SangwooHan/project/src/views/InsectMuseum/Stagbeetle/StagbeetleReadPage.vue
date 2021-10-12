@@ -1,8 +1,8 @@
 <template>
     <div>
-       <v-container>
+    
       <stagbeetle-read-form v-if="Stagbeetle" :Stagbeetle="Stagbeetle"/>
-       </v-container>
+     
     </div>
 </template>
 

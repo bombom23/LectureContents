@@ -39,23 +39,28 @@ import NoticeReadPage from '../views/Notice/NoticeReadPage.vue'
 import InsectMuseumStagbeetle from '../views/InsectMuseum/Stagbeetle/InsectMuseumStagbeetle.vue'
 import StagbeetleRegister from '../views/InsectMuseum/Stagbeetle/StagbeetleRegister'
 import StagbeetleReadPage from '../views/InsectMuseum/Stagbeetle/StagbeetleReadPage'
+import StagbeetleModifyPage from '../components/InsectMuseum/Stagbeelte/StagbeetleModifyPage'
 //장수풍뎅이
 import InsectMuseumbeetle from '../views/InsectMuseum/Beetle/InsectMuseumBeetle.vue'
 import BeetleRegister from '../views/InsectMuseum/Beetle/BeetleRegister'
 import BeetleReadPage from '../views/InsectMuseum/Beetle/BeetleReadPage'
+import BeetleModifyPage from '../components/InsectMuseum/Beetle/BeetleModifyPage'
 //잠자리
 import InsectMuseumDragonfly from '../views/InsectMuseum/Dragonfly/InsectMuseumDragonfly'
 import DragonflyRegister from '../views/InsectMuseum/Dragonfly/DragonflyRegister'
 import DragonflyReadPage from '../views/InsectMuseum/Dragonfly/DragonflyReadPage'
+import DragonflyModifyPage from '../components/InsectMuseum/Dragonfly/DragonflyModifyPage'
 //하늘소
 import InsectMuseumSkycow from '../views/InsectMuseum/Skycow/InsectMuseumSkycow'
 import SkycowRegister from '../views/InsectMuseum/Skycow/SkycowRegister'
 import SkycowReadPage from '../views/InsectMuseum/Skycow/SkycowReadPage'
+import SkycowModifyPage from '../components/InsectMuseum/Skycow/SkycowModifyPage'
 
 //나비/나방
 import ButterflyRegister from '../views/InsectMuseum/Butterfly/ButterflyRegister'
 import InsectMuseumButterfly from '../views/InsectMuseum/Butterfly/InsectMuseumButterfly'
 import ButterflyReadPage from '../views/InsectMuseum/Butterfly/ButterflyReadPage'
+import ButterflyModifyPage from '../components/InsectMuseum/Butterfly/ButterflyModifyPage'
 //페이지 리스팅
 //쇼핑몰
 import ProductRegister from '../views/ShoppingMall/ProductRegister'
@@ -243,11 +248,11 @@ const routes = [
     }
   },
   {
-    path: '/stagbeetleRegister',
+    path: '/stagbeetleRegister/',
     name: 'StagbeetleRegister',
     components: {
       default: StagbeetleRegister
-    }
+    },
   },
   {
     path: '/stagbeetleReadPage/:boardNo/',
@@ -507,13 +512,63 @@ const routes = [
       default: Pagenation
     },
   },
-  //아디찾기 
+  //아디찾기 StagbeetleModifyPage SkycowModifyPage DragonflyModifyPage  ButterflyModifyPage BeetleModifyPage
   {
     path: '/findByIdPage',
     name: 'FindByIdPage',
     components: {
       default: FindByIdPage
     },
+  },
+  {
+    path: '/stagbeetleModifyPage',
+    name: 'StagbeetleModifyPage',
+    components: {
+      default: StagbeetleModifyPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/skycowModifyPage',
+    name: 'SkycowModifyPage',
+    components: {
+      default: SkycowModifyPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/dragonflyModifyPage',
+    name: 'DragonflyModifyPage',
+    components: {
+      default: DragonflyModifyPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/butterflyModifyPage',
+    name: 'ButterflyModifyPage',
+    components: {
+      default: ButterflyModifyPage
+    },
+    props: {
+      default: true
+    }
+  },
+  {
+    path: '/beetleModifyPage',
+    name: 'BeetleModifyPage',
+    components: {
+      default: BeetleModifyPage
+    },
+    props: {
+      default: true
+    }
   },
 ]
 

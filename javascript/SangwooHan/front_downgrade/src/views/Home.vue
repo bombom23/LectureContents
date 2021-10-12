@@ -169,10 +169,32 @@
                     active-class="active">
             [파일업로드페이지]
             </router-link>
-         
-         
-              
+  <!-- 파이선 테스트 -->
 
+             <router-link :to="{ name: 'PythonLoginTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+            [PythonLoginTestPage]
+            </router-link>
+         <!-- 카카오 로그인 테스트 -->
+          <router-link :to="{ name: 'kakaoLoginPage' }"
+                    class="nav-link"
+                    active-class="active">
+            [kakaoLogin]
+            </router-link>
+              
+              <!-- 오더 테스트 페이지 -->
+              <router-link :to="{ name: 'OrderTestPage' }"
+                    class="nav-link"
+                    active-class="active">
+            [OrderTestPage]
+            </router-link>
+<!-- Python crawl Test -->
+ <router-link :to="{ name: 'PythonCrawlTest' }"
+                    class="nav-link"
+                    active-class="active">
+            [PythonCrawlTest]
+            </router-link>
             
         </div>
        

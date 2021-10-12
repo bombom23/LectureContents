@@ -27,7 +27,7 @@
       </tr>
     </table>
       </v-container>
-    <v-btn @click="check">체크</v-btn>
+  <!--  <v-btn @click="check">체크</v-btn> -->
     <div class="btn-cover">
       <button :disabled="pageNum === 0" @click="prevPage" class="page-btn">
         이전

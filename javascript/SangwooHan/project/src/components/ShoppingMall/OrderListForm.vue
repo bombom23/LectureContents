@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!--
        <table>
            <tr>
                <th>주문번호</th>
@@ -25,12 +26,16 @@
                 <v-btn @click="Shipping(item.orderNo)">배송</v-btn>
                 </tr>
        </table>
+       -->
+       <order-list-new-form :listArray="OrderList"/>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
+import OrderListNewForm from './OrderListNewForm.vue'
 export default {
+  components: { OrderListNewForm },
     name: 'OrderListForm',
     props: {
         OrderList:{

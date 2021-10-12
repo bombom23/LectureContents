@@ -1,6 +1,6 @@
 <template>
 <div>
-<shopping-mall-menu-bar :ProductList="ProductList"/>
+<shopping-mall-menu-bar />
 <insect-mall-mushroom-form  :listArray="PageArray"/>
 </div>
 </template>

@@ -20,7 +20,7 @@
                 <th>{{searchResult.boardNo}}</th>
                 <th>{{searchResult.id}}</th>
                 <a @click="gogo(searchResult.title,searchResult.boardNo)"><th>{{searchResult.title}}</th></a>
-                <th>{{searchResult.createDate}}</th>
+                <th>{{$moment(searchResult.createDate).format('YYYY-MM-DD/hh:mm')}}</th>
                 <th>{{searchResult.vuecount}}</th>
             </tr>
         </table>
@@ -33,7 +33,9 @@ import axios from 'axios'
 
 import InsectMuseumBar from '../NavigationVar/InsectMuseumBar.vue'
 
-
+import Vue from 'vue'
+import VueMoment from 'vue-moment'
+Vue.use(VueMoment)
 
 
 export default {

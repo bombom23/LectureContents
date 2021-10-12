@@ -23,14 +23,24 @@
     >
       <v-card-text>
         <v-btn
-          v-for="icon in icons"
-          :key="icon"
-          class="mx-4 white--text"
-          icon
-        >
-          <v-icon size="24px">
-            {{ icon }}
-          </v-icon>
+        class="mx-4 white--text"
+        href="https://www.facebook.com/profile.php?id=100007057508611">
+        <v-icon>mdi-facebook</v-icon>
+        </v-btn>
+        <v-btn
+        class="mx-4 white--text"
+        href="https://www.facebook.com/profile.php?id=100007057508611">
+        <v-icon>mdi-twitter</v-icon>
+        </v-btn>
+        <v-btn
+        class="mx-4 white--text"
+        href="https://www.facebook.com/profile.php?id=100007057508611">
+        <v-icon>mdi-linkedin</v-icon>
+        </v-btn>
+        <v-btn
+        class="mx-4 white--text"
+        href="https://www.facebook.com/profile.php?id=100007057508611">
+        <v-icon>mdi-instagram</v-icon>
         </v-btn>
       </v-card-text>
 

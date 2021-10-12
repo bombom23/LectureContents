@@ -1,7 +1,9 @@
 <template>
     <div>
+         <v-btn v-if="board.id == User" @click="Modifyfing">수정</v-btn>
         <v-container>
-      <!--  <v-btn @click="check">체크</v-btn>--><v-btn v-if="board.id == User" @click="Modifyfing">수정</v-btn>
+            <!--
+      <v-btn v-if="board.id == User" @click="Modifyfing">수정</v-btn>
         <table border="1">
             <tr>
            <h4 style="text-align:left;">{{board.title}}</h4>
@@ -12,7 +14,16 @@
                 <pre align="left">{{board.text}}</pre>
             </tr>
         </table>
+       -->
        
+    <v-row id="input-usage">
+      <v-col cols="12">
+          <h4>{{board.title}}</h4><br>
+          <p align="left">[{{$moment(board.createDate).format('YYYY-MM-DD/hh:mm')}} 조회{{board.vuecount}}]</p>
+        <pre>{{board.text}}</pre>
+      </v-col>
+    </v-row>
+  
         
         <form v-if="commentBox ==1 && this.$store.state.User !=null" @submit.prevent="OnSubmit">
          <table >
@@ -141,7 +152,9 @@ export default {
                           },
         Modifyfing(){
             this.$router.push({ name: 'CommunityModifyPage', params: {board: this.board}})
-        }
+        },
+          appendIconCallback () {},
+      prependIconCallback () {},
     },
     data() {
 
@@ -150,7 +163,8 @@ export default {
             comments: '',
             ui: this.$store.state.User,
             Modify: '',
-            commentBox: 1
+            commentBox: 1,
+            text: ''
 
                }
            },
@@ -179,6 +193,12 @@ P{
 pre{
 font-family: 'Noto Sans SC', sans-serif;
 }
+#input-usage .v-input__prepend-outer,
+  #input-usage .v-input__append-outer,
+  #input-usage .v-input__slot,
+  #input-usage .v-messages {
+    border: 1px dashed rgba(0,0,0, .4);
+  }
 
 
 </style>

@@ -209,4 +209,17 @@ public class JpaMemberServiceimpl implements JpaMemberService {
     public List FindById(String email) throws Exception {
         return memberRepository.FindById(email);
     }
+
+    @Override
+    public void deleteMember(Long memberNo) throws Exception {
+        memberRepository.deleteById(memberNo);
+    }
+
+    @Override
+    public void ModifyMember(JpaMember jpaMember) throws Exception {
+
+        String encodedPassword = passwordEncoder.encode(jpaMember.getPassword());
+        jpaMember.setPassword(encodedPassword);
+        memberRepository.save(jpaMember);
+    }
 }

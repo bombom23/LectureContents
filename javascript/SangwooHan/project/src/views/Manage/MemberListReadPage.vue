@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 import { mapState, mapActions} from 'vuex'
 //import router from '@/router'
 import MemberListReadForm from '../../components/Management/MemberListReadForm.vue'
@@ -38,23 +38,7 @@ export default {
     methods: {
         ...mapActions(['fetchMember']),
         //여백
-       btn_click ($event){
-                if($event.target.innerHTML == " 확인 ") {
-                    alert('삭제시작...')
-                    
-                    const { memberNo} = this
-                    axios.delete(`http://localhost:9999/jpamemberManage/${memberNo}`)
-                    .then(() => {
-                        alert('삭제완료')
-                        this.$router.push({ name: 'MemberList'})
-                    }).catch(err =>{ alert(err.response.data.message)})
-                   
-                }
-                else{
-                    alert('취소합니다.')
-                    this.dialog = false;
-                }
-        },
+       
 
         
         
